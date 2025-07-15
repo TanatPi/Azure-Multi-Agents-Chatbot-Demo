@@ -1,6 +1,7 @@
 import streamlit as st
 
 from semantic_kernel.agents import AzureAssistantAgent
+from azure.core.credentials import AzureKeyCredential
 
 # === Fusion agent system prompt ===
 system_prompt = """You are a helpful and intelligent financial assistant. Your task is to take multiple assistant-generated answers and write a single, unified, well-structured response.
@@ -26,7 +27,7 @@ async def get_ochestrator_agent() -> AzureAssistantAgent:
     # Step 1: Create a client with Azure config
     client = AzureAssistantAgent.create_client(
         deployment_name=deployment,
-        api_key=subscription_key,
+        api_key=AzureKeyCredential(subscription_key),
         endpoint=endpoint,
     )
 
