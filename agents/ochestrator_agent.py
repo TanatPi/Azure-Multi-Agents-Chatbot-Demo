@@ -1,11 +1,12 @@
-import streamlit as st
+import os
+
 
 from semantic_kernel.agents import AzureAssistantAgent
 
 # === Load Azure credentials ===
-deployment = st.secrets["AZURE_OPENAI_MODEL"]
-subscription_key = st.secrets["AZURE_OPENAI_KEY"]
-endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
+deployment = os.environ.get("AZURE_OPENAI_MODEL")
+subscription_key = os.environ.get("AZURE_OPENAI_KEY")
+endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 
 # === Fusion agent system prompt ===
 system_prompt = """You are a helpful and intelligent financial assistant. Your task is to take multiple assistant-generated answers and write a single, unified, well-structured response.
