@@ -39,6 +39,8 @@ def get_ochestrator_agent() -> AzureAssistantAgent:
         instructions=system_prompt,
     )
 
+    print("Definition:", type(definition))
+
     # Step 3: Instantiate the agent (no plugins for now)
     agent = AzureAssistantAgent(
         client=client,
