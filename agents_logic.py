@@ -51,11 +51,16 @@ async def run_agent(agent, search, user_query, filter=None):
 # === Final Orchestrator ===
 async def get_agent_response(user_query: str, thread=None) -> tuple[str, str, str, str]:
     # Step 1: Run the 3 sub-agents in parallel
+    '''
     response_1, response_2, response_3 = await asyncio.gather(
         run_agent(pdf_rag_agent, pdf_search, user_query, filter="key_prefix eq 'monthlystandpoint'"),
         run_agent(pdf_rag_agent, pdf_search, user_query, filter="key_prefix eq 'ktm'"),
         run_agent(pdf_rag_agent, pdf_search, user_query, filter="key_prefix eq 'kcma'"),
-    )
+    )'''
+
+    response_1 =""
+    response_2 =""
+    response_3 =""
 
     # Step 2: Combine them and send to the ochestrator agent
     ochestrator_prompt = f"""You are the final assistant. Your job is to synthesize and consolidate the following three answers into a single, coherent, complete response for the user:
