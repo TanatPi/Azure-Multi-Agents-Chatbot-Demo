@@ -15,7 +15,7 @@ Instructions:
 
 Think carefully before responding. Be concise but complete."""
 
-async def get_ochestrator_agent(deployment,subscription_key,endpoint) -> AzureAssistantAgent:
+async def get_ochestrator_agent(deployment,subscription_key,endpoint):
     # Step 1: Create a client with Azure config
     client = AzureAssistantAgent.create_client(
         deployment_name=deployment,
