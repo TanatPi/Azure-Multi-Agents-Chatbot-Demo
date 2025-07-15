@@ -1,6 +1,10 @@
 import streamlit as st
 import asyncio
 
+# not need in real st deployment
+from dotenv import load_dotenv
+load_dotenv()
+
 from agents_logic import get_agent_response
 
 st.set_page_config(page_title="Economic News GPT Chatbot", page_icon="💬", layout="wide")

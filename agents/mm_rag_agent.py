@@ -1,7 +1,9 @@
+# rag_agent.py
+
+import os
 import asyncio
 import json
 import requests
-import streamlit as st
 
 from typing import Annotated
 
@@ -17,16 +19,16 @@ from azure.core.credentials import AzureKeyCredential
 
 
 # === ENV ===
-deployment = st.secrets["AZURE_OPENAI_MODEL"]
-subscription_key = st.secrets["AZURE_OPENAI_KEY"]
-endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
-embedding_endpoint = st.secrets['AZURE_OPENAI_EMBEDDING_MODEL_RESOURCE']
+deployment = os.environ.get("AZURE_OPENAI_MODEL")
+subscription_key = os.environ.get("AZURE_OPENAI_KEY")
+endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
+embedding_endpoint = os.environ.get('AZURE_OPENAI_EMBEDDING_MODEL_RESOURCE')
 headers = {
     "Content-Type": "application/json",
-    "Authorization": st.secrets['AZURE_OPENAI_EMBEDDING_MODEL_RESOURCE_KEY']
+    "Authorization": os.environ.get('AZURE_OPENAI_EMBEDDING_MODEL_RESOURCE_KEY')
 }
-search_endpoint = st.secrets['COG_SEARCH_ENDPOINT']
-admin_key = st.secrets['COG_SEARCH_ADMIN_KEY']
+search_endpoint = os.environ.get('COG_SEARCH_ENDPOINT')
+admin_key = os.environ.get('COG_SEARCH_ADMIN_KEY')
 
 
 # === Search Plugin ===
