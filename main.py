@@ -1,9 +1,18 @@
+import os
 import streamlit as st
 import asyncio
 
-# not need in real st deployment
-from dotenv import load_dotenv
-load_dotenv()
+# === ENV ===
+deployment = os.environ.get("AZURE_OPENAI_MODEL")
+subscription_key = os.environ.get("AZURE_OPENAI_KEY")
+endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
+embedding_endpoint = os.environ.get('AZURE_OPENAI_EMBEDDING_MODEL_RESOURCE')
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": os.environ.get('AZURE_OPENAI_EMBEDDING_MODEL_RESOURCE_KEY')
+}
+search_endpoint = os.environ.get('COG_SEARCH_ENDPOINT')
+admin_key = os.environ.get('COG_SEARCH_ADMIN_KEY')
 
 from agents_logic import get_agent_response
 
