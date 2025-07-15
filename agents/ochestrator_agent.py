@@ -47,5 +47,3 @@ async def get_ochestrator_agent() -> AzureAssistantAgent:
     )
 
     return agent
-
-get_ochestrator_agent() 
