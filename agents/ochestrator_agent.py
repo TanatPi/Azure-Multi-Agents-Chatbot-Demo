@@ -1,4 +1,5 @@
 import streamlit as st
+import asyncio
 
 from semantic_kernel.agents import AzureAssistantAgent
 from azure.core.credentials import AzureKeyCredential
