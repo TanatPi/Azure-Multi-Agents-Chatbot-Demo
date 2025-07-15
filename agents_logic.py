@@ -7,11 +7,6 @@ from agents.mm_rag_agent import (
     get_search_plugin as get_search,
 )
 
-# === Load Azure credentials ===
-deployment = st.secrets["AZURE_OPENAI_MODEL"]
-subscription_key = st.secrets["AZURE_OPENAI_KEY"]
-endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
-
 
 # === Initialize the 3 sub-agents ===
 pdf_rag_agent = get_agent()

@@ -15,8 +15,15 @@ Instructions:
 
 Think carefully before responding. Be concise but complete."""
 
+
+# === Load Azure credentials ===
+deployment = st.secrets["AZURE_OPENAI_MODEL"]
+subscription_key = st.secrets["AZURE_OPENAI_KEY"]
+endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
+
+
 @st.cache
-async def get_ochestrator_agent(deployment,subscription_key,endpoint) -> AzureAssistantAgent:
+async def get_ochestrator_agent() -> AzureAssistantAgent:
     # Step 1: Create a client with Azure config
     client = AzureAssistantAgent.create_client(
         deployment_name=deployment,
