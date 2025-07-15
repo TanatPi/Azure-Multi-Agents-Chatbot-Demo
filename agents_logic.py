@@ -79,7 +79,7 @@ async def get_agent_response(user_query: str, thread=None) -> tuple[str, str, st
     ochestrator_message = ChatMessageContent(role="user", content=ochestrator_prompt)
 
     final_response = ""
-    async for ochestration in ochestrator_agent.invoke(messages=[ochestrator_message], thread=thread):
+    for ochestration in ochestrator_agent.invoke(messages=[ochestrator_message], thread=thread):
         final_response = str(ochestration)
         thread = ochestration.thread  # update thread for memory
 
