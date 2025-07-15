@@ -7,4 +7,5 @@ openai==1.93.0
 python-dotenv==1.1.1
 Requests==2.32.4
 semantic-kernel==1.34.0
+streamlit==1.46.1
 pymupdf==1.26.3
