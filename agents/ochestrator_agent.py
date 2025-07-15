@@ -17,33 +17,28 @@ Instructions:
 
 Think carefully before responding. Be concise but complete."""
 
-
-# === Load Azure credentials ===
-deployment = st.secrets["AZURE_OPENAI_MODEL"]
-subscription_key = st.secrets["AZURE_OPENAI_KEY"]
-endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
-
-
-async def get_ochestrator_agent() -> AzureAssistantAgent:
-    # Step 1: Create a client with Azure config
+# === Sync wrapper for async orchestration ===
+async def _build_ochestrator_agent(deployment, subscription_key, endpoint):
     client = AzureAssistantAgent.create_client(
         deployment_name=deployment,
-        api_key=AzureKeyCredential(subscription_key),
+        api_key=subscription_key,
         endpoint=endpoint,
     )
 
-    # Step 2: Create assistant definition (only once; reused during session)
     definition = await client.beta.assistants.create(
         model=deployment,
         name="ochestrator-agent",
         instructions=system_prompt,
     )
 
-    # Step 3: Instantiate the agent (no plugins for now)
-    agent = AzureAssistantAgent(
-        client=client,
-        definition=definition,
-        plugins=[],  # optionally pass your SK plugins here
-    )
+    return AzureAssistantAgent(client=client, definition=definition, plugins=[])
 
-    return agent
+@st.cache_resource
+def get_ochestrator_agent():
+    deployment = st.secrets["AZURE_OPENAI_MODEL"]
+    subscription_key = st.secrets["AZURE_OPENAI_KEY"]
+    endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    return loop.run_until_complete(_build_ochestrator_agent(deployment, subscription_key, endpoint))
