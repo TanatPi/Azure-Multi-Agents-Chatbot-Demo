@@ -1,10 +1,17 @@
 import asyncio
+import streamlit as st
 from semantic_kernel.contents.chat_message_content import ChatMessageContent
 
 from agents.mm_rag_agent import (
     get_mm_rag_agent as get_agent,
     get_search_plugin as get_search,
 )
+
+# === Load Azure credentials ===
+deployment = st.secrets["AZURE_OPENAI_MODEL"]
+subscription_key = st.secrets["AZURE_OPENAI_KEY"]
+endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
+
 
 # === Initialize the 3 sub-agents ===
 pdf_rag_agent = get_agent()
@@ -16,7 +23,7 @@ pdf_search = get_search(
 
 # === Initialize the final orchestrator agent (same model, but could be a different prompt/setup) ===
 from agents.ochestrator_agent import get_ochestrator_agent
-ochestrator_agent = asyncio.run(get_ochestrator_agent())
+ochestrator_agent = asyncio.run(get_ochestrator_agent(deployment,subscription_key,endpoint))
 
 
 # === Helper to call one sub-agent ===
