@@ -1,12 +1,6 @@
 import streamlit as st
 
 from semantic_kernel.agents import AzureAssistantAgent
-from semantic_kernel.connectors.ai.open_ai import AzureOpenAISettings
-
-# === Load Azure credentials ===
-deployment = st.secrets["AZURE_OPENAI_MODEL"]
-subscription_key = st.secrets["AZURE_OPENAI_KEY"]
-endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
 
 # === Fusion agent system prompt ===
 system_prompt = """You are a helpful and intelligent financial assistant. Your task is to take multiple assistant-generated answers and write a single, unified, well-structured response.
@@ -22,6 +16,12 @@ Instructions:
 Think carefully before responding. Be concise but complete."""
 
 async def get_ochestrator_agent() -> AzureAssistantAgent:
+
+    # === Load Azure credentials ===
+    deployment = await st.secrets["AZURE_OPENAI_MODEL"]
+    subscription_key = await st.secrets["AZURE_OPENAI_KEY"]
+    endpoint = await st.secrets["AZURE_OPENAI_RESOURCE"]
+
     # Step 1: Create a client with Azure config
     client = AzureAssistantAgent.create_client(
         deployment_name=deployment,
