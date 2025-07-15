@@ -1,0 +1,10 @@
+azure-core==1.35.0
+azure-ai-documentintelligence==1.0.2
+azure-cognitiveservices-vision-computervision==0.9.1
+azure-search-documents==11.5.3
+msrest==0.7.1
+openai==1.95.1
+python-dotenv==1.1.1
+Requests==2.32.4
+streamlit==1.46.1
+pymupdf==1.26.3
