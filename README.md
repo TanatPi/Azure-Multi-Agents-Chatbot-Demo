@@ -4,7 +4,8 @@ An intelligent financial assistant powered by Azure OpenAI and Azure Cognitive S
 
 I created this during my internship at an undisclosed company, and no sensitive data is used.
 
-👉 **Try it here**: [https://mm-rag-agent-demo-xil5jtaiwjk6hnbtzkkh4x.streamlit.app/](https://mm-rag-agent-demo-xil5jtaiwjk6hnbtzkkh4x.streamlit.app/)
+👉 **current deployment on Streamlit Cloud does not work**
+However, you can try: streamlit run <your directory>/main.py to try the application locally.
 
 ---
 
