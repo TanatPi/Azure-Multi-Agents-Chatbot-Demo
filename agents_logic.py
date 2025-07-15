@@ -16,7 +16,7 @@ pdf_search = get_search(
 
 # === Initialize the final orchestrator agent (same model, but could be a different prompt/setup) ===
 from agents.ochestrator_agent import get_ochestrator_agent
-ochestrator_agent = asyncio.run(get_ochestrator_agent())
+#ochestrator_agent = asyncio.run(get_ochestrator_agent())
 
 
 # === Helper to call one sub-agent ===
@@ -76,9 +76,10 @@ async def get_agent_response(user_query: str, thread=None) -> tuple[str, str, st
 
     ochestrator_message = ChatMessageContent(role="user", content=ochestrator_prompt)
 
-    final_response = ""
-    async for ochestration in ochestrator_agent.invoke(messages=[ochestrator_message], thread=thread):
-        final_response = str(ochestration)
-        thread = ochestration.thread  # update thread for memory
+    #final_response = ""
+    #async for ochestration in ochestrator_agent.invoke(messages=[ochestrator_message], thread=thread):
+        #final_response = str(ochestration)
+        #thread = ochestration.thread  # update thread for memory
+    final_response = response_3
 
     return final_response, thread
