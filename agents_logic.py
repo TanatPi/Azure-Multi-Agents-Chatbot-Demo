@@ -18,7 +18,7 @@ pdf_search = get_search(
 
 # === Initialize the final orchestrator agent (same model, but could be a different prompt/setup) ===
 from agents.ochestrator_agent import get_ochestrator_agent
-ochestrator_agent = asyncio.run(get_ochestrator_agent())
+ochestrator_agent = get_ochestrator_agent()
 
 
 # === Helper to call one sub-agent ===
