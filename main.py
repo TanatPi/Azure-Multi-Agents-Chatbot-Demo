@@ -17,7 +17,7 @@ for msg in st.session_state.chat_history:
         st.markdown(msg["content"])
 
 # Chat input
-user_query = st.chat_input("Ask me anything about KAsset reports...")
+user_query = st.chat_input("Ask me anything about Economic reports...")
 
 if user_query:
     st.session_state.chat_history.append({"role": "user", "content": user_query})
