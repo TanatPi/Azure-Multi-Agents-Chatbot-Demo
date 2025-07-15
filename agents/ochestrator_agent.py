@@ -24,7 +24,7 @@ subscription_key = st.secrets["AZURE_OPENAI_KEY"]
 endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
 
 
-def get_ochestrator_agent() -> AzureAssistantAgent:
+async def get_ochestrator_agent() -> AzureAssistantAgent:
     # Step 1: Create a client with Azure config
     client = AzureAssistantAgent.create_client(
         deployment_name=deployment,
@@ -33,13 +33,11 @@ def get_ochestrator_agent() -> AzureAssistantAgent:
     )
 
     # Step 2: Create assistant definition (only once; reused during session)
-    definition = client.beta.assistants.create(
+    definition = await client.beta.assistants.create(
         model=deployment,
         name="ochestrator-agent",
         instructions=system_prompt,
     )
-
-    print("Definition:", type(definition))
 
     # Step 3: Instantiate the agent (no plugins for now)
     agent = AzureAssistantAgent(
@@ -49,3 +47,5 @@ def get_ochestrator_agent() -> AzureAssistantAgent:
     )
 
     return agent
+
+get_ochestrator_agent() 
