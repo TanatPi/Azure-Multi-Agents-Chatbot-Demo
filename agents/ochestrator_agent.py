@@ -18,9 +18,9 @@ Think carefully before responding. Be concise but complete."""
 async def get_ochestrator_agent() -> AzureAssistantAgent:
 
     # === Load Azure credentials ===
-    deployment = await st.secrets["AZURE_OPENAI_MODEL"]
-    subscription_key = await st.secrets["AZURE_OPENAI_KEY"]
-    endpoint = await st.secrets["AZURE_OPENAI_RESOURCE"]
+    deployment = st.secrets["AZURE_OPENAI_MODEL"]
+    subscription_key = st.secrets["AZURE_OPENAI_KEY"]
+    endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
 
     # Step 1: Create a client with Azure config
     client = AzureAssistantAgent.create_client(
