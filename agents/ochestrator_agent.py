@@ -1,6 +1,7 @@
 import streamlit as st
 
 from semantic_kernel.agents import AzureAssistantAgent
+from semantic_kernel.connectors.ai.open_ai import AzureOpenAISettings
 
 # === Load Azure credentials ===
 deployment = st.secrets["AZURE_OPENAI_MODEL"]
@@ -30,7 +31,7 @@ async def get_ochestrator_agent() -> AzureAssistantAgent:
 
     # Step 2: Create assistant definition (only once; reused during session)
     definition = await client.beta.assistants.create(
-        model=deployment,
+        model=AzureOpenAISettings().chat_deployment_name,
         name="ochestrator-agent",
         instructions=system_prompt,
     )
