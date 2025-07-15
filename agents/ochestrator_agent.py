@@ -31,7 +31,7 @@ async def get_ochestrator_agent() -> AzureAssistantAgent:
 
     # Step 2: Create assistant definition (only once; reused during session)
     definition = await client.beta.assistants.create(
-        model=AzureOpenAISettings().chat_deployment_name,
+        model=deployment,
         name="ochestrator-agent",
         instructions=system_prompt,
     )
