@@ -26,7 +26,7 @@ endpoint = st.secrets["AZURE_OPENAI_RESOURCE"]
 
 async def get_ochestrator_agent() -> AzureAssistantAgent:
     # Step 1: Create a client with Azure config
-    client = AzureAssistantAgent.create_client(
+    client = await AzureAssistantAgent.create_client(
         deployment_name=deployment,
         api_key=AzureKeyCredential(subscription_key),
         endpoint=endpoint,

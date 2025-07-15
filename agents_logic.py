@@ -81,9 +81,6 @@ async def get_agent_response(user_query: str, thread=None) -> tuple[str, str, st
     from agents.ochestrator_agent import get_ochestrator_agent
     ochestrator_agent = await get_ochestrator_agent()
 
-    print(type(pdf_rag_agent))
-    print(type(ochestrator_agent))
-
     async for ochestration in ochestrator_agent.invoke(
         messages=[ochestrator_message], 
         thread=thread
