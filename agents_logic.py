@@ -1,12 +1,10 @@
 import asyncio
-import streamlit as st
 from semantic_kernel.contents.chat_message_content import ChatMessageContent
 
 from agents.mm_rag_agent import (
     get_mm_rag_agent as get_agent,
     get_search_plugin as get_search,
 )
-
 
 # === Initialize the 3 sub-agents ===
 pdf_rag_agent = get_agent()
@@ -15,6 +13,10 @@ pdf_search = get_search(
     table_index_name="pdf-economic-summary-tables",
     image_index_name="pdf-economic-summary-images"
 )
+
+# === Initialize the final orchestrator agent (same model, but could be a different prompt/setup) ===
+from agents.ochestrator_agent import get_ochestrator_agent
+ochestrator_agent = asyncio.run(get_ochestrator_agent())
 
 
 # === Helper to call one sub-agent ===
@@ -51,16 +53,11 @@ async def run_agent(agent, search, user_query, filter=None):
 # === Final Orchestrator ===
 async def get_agent_response(user_query: str, thread=None) -> tuple[str, str, str, str]:
     # Step 1: Run the 3 sub-agents in parallel
-    '''
     response_1, response_2, response_3 = await asyncio.gather(
         run_agent(pdf_rag_agent, pdf_search, user_query, filter="key_prefix eq 'monthlystandpoint'"),
         run_agent(pdf_rag_agent, pdf_search, user_query, filter="key_prefix eq 'ktm'"),
         run_agent(pdf_rag_agent, pdf_search, user_query, filter="key_prefix eq 'kcma'"),
-    )'''
-
-    response_1 =""
-    response_2 =""
-    response_3 =""
+    )
 
     # Step 2: Combine them and send to the ochestrator agent
     ochestrator_prompt = f"""You are the final assistant. Your job is to synthesize and consolidate the following three answers into a single, coherent, complete response for the user:
@@ -80,16 +77,7 @@ async def get_agent_response(user_query: str, thread=None) -> tuple[str, str, st
     ochestrator_message = ChatMessageContent(role="user", content=ochestrator_prompt)
 
     final_response = ""
-
-    
-    # === Initialize the final orchestrator agent (same model, but could be a different prompt/setup) ===
-    from agents.ochestrator_agent import get_ochestrator_agent
-    ochestrator_agent = await get_ochestrator_agent()
-
-    async for ochestration in ochestrator_agent.invoke(
-        messages=[ochestrator_message], 
-        thread=thread
-    ):
+    async for ochestration in ochestrator_agent.invoke(messages=[ochestrator_message], thread=thread):
         final_response = str(ochestration)
         thread = ochestration.thread  # update thread for memory
 
