@@ -30,12 +30,15 @@ async def get_ochestrator_agent() -> AzureAssistantAgent:
     )
 
     # Step 2: Create assistant definition (only once; reused during session)
-    definition = await client.beta.assistants.create(
-        model=deployment,
-        name="ochestrator-agent",
-        instructions=system_prompt,
-    )
-
+    try:
+        definition = await client.beta.assistants.create(
+            model=deployment,
+            name="ochestrator-agent",
+            instructions=system_prompt,
+        )
+    except Exception as e:
+        print("Assistant creation failed:", e)
+        raise
 
     # Step 3: Instantiate the agent (no plugins for now)
     agent = AzureAssistantAgent(
