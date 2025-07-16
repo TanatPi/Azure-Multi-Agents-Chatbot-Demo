@@ -8,7 +8,7 @@ deployment = os.environ.get("AZURE_OPENAI_MODEL")
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 
-# === Fusion agent system prompt ===
+# === Ochestrator agent system prompt ===
 system_prompt = """You are a helpful and intelligent financial assistant. Your task is to take multiple assistant-generated answers and write a single, unified, well-structured response.
 
 Instructions:
@@ -45,3 +45,4 @@ async def get_ochestrator_agent() -> AzureAssistantAgent:
     )
 
     return agent
+

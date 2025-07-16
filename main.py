@@ -1,48 +1,81 @@
-import os
 import streamlit as st
 import asyncio
 
-# === ENV ===
-deployment = os.environ.get("AZURE_OPENAI_MODEL")
-subscription_key = os.environ.get("AZURE_OPENAI_KEY")
-endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
-embedding_endpoint = os.environ.get('AZURE_OPENAI_EMBEDDING_MODEL_RESOURCE')
-headers = {
-    "Content-Type": "application/json",
-    "Authorization": os.environ.get('AZURE_OPENAI_EMBEDDING_MODEL_RESOURCE_KEY')
-}
-search_endpoint = os.environ.get('COG_SEARCH_ENDPOINT')
-admin_key = os.environ.get('COG_SEARCH_ADMIN_KEY')
+# not need in real st deployment
+from dotenv import load_dotenv
+load_dotenv()
 
 from agents_logic import get_agent_response
 
+# === Initialize Agents ===
+from agents.mm_rag_agent import (
+    get_mm_rag_agent,
+    get_search_plugin,
+)
+from agents.ochestrator_agent import get_ochestrator_agent
+from agents_logic import (get_agent_response)
+
+
+# === Initialize Streamlit UI ===
 st.set_page_config(page_title="Economic News GPT Chatbot", page_icon="💬", layout="wide")
 st.title("💬 Economic News Chatbot")
 
+# === Initialize session state for agent and memory ===
 if "thread" not in st.session_state:
     st.session_state.thread = None
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
+if "ochestrator_agent" not in st.session_state:
+    st.session_state.ochestrator_agent = None
+if "pdf_rag_agent" not in st.session_state:
+    st.session_state.pdf_rag_agent = None
+if "pdf_search" not in st.session_state:
+    st.session_state.pdf_search = None
+if "initialized" not in st.session_state:
+    st.session_state.initialized = False
 
-# Display full history
-for msg in st.session_state.chat_history:
-    with st.chat_message(msg["role"]):
-        st.markdown(msg["content"])
+# === Async initializer ===
+async def initialize_agents():
+    st.session_state.pdf_rag_agent = get_mm_rag_agent()
+    st.session_state.pdf_search = get_search_plugin(
+        text_index_name="pdf-economic-summary",
+        table_index_name="pdf-economic-summary-tables",
+        image_index_name="pdf-economic-summary-images"
+    )
+    st.session_state.ochestrator_agent = await get_ochestrator_agent()
+    st.session_state.initialized = True
 
-# Chat input
-user_query = st.chat_input("Ask me anything about KAsset reports...")
+# === Async main loop ===
+async def main():
+    if not st.session_state.initialized:
+        await initialize_agents()
 
-if user_query:
-    st.session_state.chat_history.append({"role": "user", "content": user_query})
-    with st.chat_message("user"):
-        st.markdown(user_query)
+    # Display full history
+    for msg in st.session_state.chat_history:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
 
-    with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            assistant_response, thread = asyncio.run(
-                get_agent_response(user_query, thread=st.session_state.thread)
-            )
-            st.session_state.thread = thread
-            st.markdown(assistant_response)
+    # Chat input
+    user_query = st.chat_input("Ask me anything about KAsset reports...")
 
-    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+    if user_query:
+        st.session_state.chat_history.append({"role": "user", "content": user_query})
+        with st.chat_message("user"):
+            st.markdown(user_query)
+
+        with st.chat_message("assistant"):
+            with st.spinner("Thinking..."):
+                response, thread = await get_agent_response(
+                    user_query,
+                    st.session_state.thread,
+                    st.session_state.ochestrator_agent,
+                    st.session_state.pdf_rag_agent,
+                    st.session_state.pdf_search
+                )
+                st.session_state.thread = thread
+                st.markdown(response)
+
+        st.session_state.chat_history.append({"role": "assistant", "content": response})
+
+# === Run async main with asyncio.create_task inside Streamlit ===
+asyncio.run(main())

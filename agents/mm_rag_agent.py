@@ -31,6 +31,8 @@ search_endpoint = os.environ.get('COG_SEARCH_ENDPOINT')
 admin_key = os.environ.get('COG_SEARCH_ADMIN_KEY')
 
 
+
+
 # === Search Plugin ===
 class SearchPlugin:
     def __init__(self, text_index_name = "pdf-economic-summary", table_index_name = "pdf-economic-summary-tables", image_index_name="pdf-economic-summary-images"):
@@ -84,16 +86,16 @@ class SearchPlugin:
         ], ensure_ascii=False, indent=2)
 
     @kernel_function(description="Search document text content")
-    async def search_text_content(self, query: Annotated[str, "User query"], filter=None) -> Annotated[str, "Search results"]:
-        return await self._search(query, self.search_client_text, select=["content", "page", "doc_name"], filter=filter)
+    async def search_text_content(self, query: Annotated[str, "User query"], filter=None, top_k=10) -> Annotated[str, "Search results"]:
+        return await self._search(query, self.search_client_text, select=["content", "page", "doc_name"], filter=filter, top_k=top_k)
 
     @kernel_function(description="Search table data")
-    async def search_table_content(self, query: Annotated[str, "User query"], filter=None) -> Annotated[str, "Search results"]:
-        return await self._search(query, self.search_client_table, select=["content", "page", "table", "doc_name"], filter=filter)
+    async def search_table_content(self, query: Annotated[str, "User query"], filter=None, top_k=10) -> Annotated[str, "Search results"]:
+        return await self._search(query, self.search_client_table, select=["content", "page", "table", "doc_name"], filter=filter, top_k=top_k)
 
     @kernel_function(description="Search image data")
-    async def search_image_content(self, query: Annotated[str, "User query"], filter=None) -> Annotated[str, "Search results"]:
-        return await self._search(query, self.search_client_image, select=["content", "page", "figure", "doc_name"], filter=filter)
+    async def search_image_content(self, query: Annotated[str, "User query"], filter=None, top_k=10) -> Annotated[str, "Search results"]:
+        return await self._search(query, self.search_client_image, select=["content", "page", "figure", "doc_name"], filter=filter, top_k=top_k)
 
 
 # === System Prompt ===
@@ -109,18 +111,19 @@ system_prompt_RAG = f"""You are a helpful and friendly female assistant. You mus
             - อเมริกา, สหรัฐฯ and สหรัฐ in this context is the same country.
             - Document name can be found in 'filename' field of the given information.
             - If information from image and text coexist, includes its explanation if it is supporting the argument.
+            - No need to mention figure number.
 
             Example:
             input 'How is Thai Economy?' 
             output
-            'According to page 6 table 4 and page 11 figure 1, Thai economy is likely to go under recession due to:
+            'According to page 6 table 4 and figures on page 11, Thai economy is likely to go under recession due to:
             - Thailand’s Economy in Q1/2025 Grew 3.1% YoY, mainly supported by a significant surge in exports, which expanded by 13.8%. This growth was driven by many trading partners accelerating imports from Thailand ahead of the implementation of the U.S. tariff hike. However, Thailand’s economic outlook remains highly uncertain. Close attention must be paid to the outcomes of tariff negotiations with the U.S., both for Thailand and other countries in the region, in order to assess competitiveness. Additionally, domestic demand remains fragile, and tourism is beginning to show signs of slowing, posing further risks to the economy.
             - Although Q1 earnings improved compared to the previous quarter, they were flat compared to the same period last year. Sectors that outperformed expectations include ICT, agriculture and food, banking, and electronics. The market still expects listed company profits to grow 20% this year, but we anticipate downside risks to earnings ahead due to the economic slowdown.
-            - In the short term, the figure 1 from page 12 supports that the SET Index faces pressure from economic uncertainties and increasing political instability. However, at current levels, downside risks to the SET Index appear limited, as it is trading at a low level comparable to during the COVID-19 period.
+            - In the short term, the figures on from page 12 supports that the SET Index faces pressure from economic uncertainties and increasing political instability. However, at current levels, downside risks to the SET Index appear limited, as it is trading at a low level comparable to during the COVID-19 period.
 
             We maintain our recommendation to focus portfolios on high-dividend stocks, as they offer consistent returns and long-term growth potential. This strategy is suitable in the current environment of high economic uncertainty driven by multiple factors discussed above.
 
-            Reference: Page 6 table 4, page 11 figure 1, and  of monthly-summary.pdf.
+            Reference: Page 6 table 4, figures on page 11 and 12, and  of monthly-summary.pdf.
             Do you have anything else to ask?'
             """
 
@@ -129,14 +132,14 @@ def get_mm_rag_agent():
     kernel = Kernel()
     kernel.add_service(
         AzureChatCompletion(
-            service_id="chat_service",
-            deployment_name=deployment,
+            service_id="rag_chat_service",
+            deployment_name='gpt-4.1-mini',
             api_key=subscription_key,
             endpoint=endpoint,
         )
     )
     settings = AzureChatPromptExecutionSettings(
-        service_id="chat_service",
+        service_id="rag_chat_service",
         temperature=0.4,
         top_p=1.0,
         frequency_penalty=0.0,
