@@ -5,8 +5,8 @@ An intelligent financial assistant powered by Azure OpenAI and Azure Cognitive S
 I created this during my internship at an undisclosed company, and no sensitive data is used.
 
 👉 **Current deployment on Streamlit Cloud does not work**
-
-However, you can try: streamlit run <your directory>/main.py to try the application locally.
+Streamlit Cloud currently has problems connecting with the Azure OpenAI Assistant API service.
+However, you can try running the application locally by using the command streamlit run <your directory>/main.py.
 
 ---
 
