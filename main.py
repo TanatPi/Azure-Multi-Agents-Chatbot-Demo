@@ -45,37 +45,36 @@ async def initialize_agents():
     st.session_state.ochestrator_agent = await get_ochestrator_agent()
     st.session_state.initialized = True
 
-# === Async main loop ===
-async def main():
-    if not st.session_state.initialized:
-        await initialize_agents()
+# === Force sync for async init at top ===
+if not st.session_state.initialized:
+    asyncio.run(initialize_agents())
 
-    # Display full history
-    for msg in st.session_state.chat_history:
-        with st.chat_message(msg["role"]):
-            st.markdown(msg["content"])
+# === Display full history ===
+for msg in st.session_state.chat_history:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
 
-    # Chat input
-    user_query = st.chat_input("Ask me anything about economic reports...")
+# === Chat input ===
+user_query = st.chat_input("Ask me anything about economic reports...")
 
-    if user_query:
-        st.session_state.chat_history.append({"role": "user", "content": user_query})
-        with st.chat_message("user"):
-            st.markdown(user_query)
+# === If user submits a query ===
+if user_query:
+    st.session_state.chat_history.append({"role": "user", "content": user_query})
 
-        with st.chat_message("assistant"):
-            with st.spinner("Thinking..."):
-                response, thread = await get_agent_response(
-                    user_query,
-                    st.session_state.thread,
-                    st.session_state.ochestrator_agent,
-                    st.session_state.pdf_rag_agent,
-                    st.session_state.pdf_search
-                )
-                st.session_state.thread = thread
-                st.markdown(response)
+    with st.chat_message("user"):
+        st.markdown(user_query)
 
-        st.session_state.chat_history.append({"role": "assistant", "content": response})
+    with st.chat_message("assistant"):
+        with st.spinner("Thinking..."):
+            # Run async logic in sync context
+            response, thread = asyncio.run(get_agent_response(
+                user_query,
+                st.session_state.thread,
+                st.session_state.ochestrator_agent,
+                st.session_state.pdf_rag_agent,
+                st.session_state.pdf_search
+            ))
+            st.session_state.thread = thread
+            st.markdown(response)
 
-# === Run async main with asyncio.create_task inside Streamlit ===
-asyncio.run(main())
+    st.session_state.chat_history.append({"role": "assistant", "content": response})
