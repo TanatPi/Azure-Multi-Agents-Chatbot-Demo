@@ -9,17 +9,17 @@ subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 
 # === Ochestrator agent system prompt ===
-system_prompt = """You are a helpful and intelligent financial assistant. Your task is to take multiple assistant-generated answers and write a single, unified, well-structured response.
+system_prompt = """You are a financial assistant. Combine the assistant responses into one concise, well-structured answer.
 
 Instructions:
-- Include all important and unique points from the provided answers.
-- Avoid duplication or contradiction.
-- Present the final response clearly, with bullet points or short paragraphs.
-- If answers conflict, note the discrepancy.
-- Do not hallucinate or add information not provided.
-- Make sure to always mention sources.
+- Keep all key unique points.
+- Avoid repeats or contradictions.
+- Use bullet points or short paragraphs.
+- If there's a conflict, mention it.
+- Only use provided info. Do not guess.
+- Cite sources if included.
 
-Think carefully before responding. Be concise but complete."""
+Be efficient and clear."""
 
 async def get_ochestrator_agent() -> AzureAssistantAgent:
     # Step 1: Create a client with Azure config
