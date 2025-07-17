@@ -4,7 +4,7 @@ from semantic_kernel.agents import AzureAssistantAgent
 from semantic_kernel.connectors.ai.open_ai import AzureOpenAISettings
 
 # === Load Azure credentials ===
-deployment = "gpt-4o-mini"
+deployment = "gpt-4.1-mini"
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 
