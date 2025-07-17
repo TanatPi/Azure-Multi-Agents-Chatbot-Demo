@@ -19,7 +19,7 @@ from azure.core.credentials import AzureKeyCredential
 
 
 # === ENV ===
-deployment = os.environ.get("AZURE_OPENAI_MODEL")
+deployment = "gpt-4o-mini"
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 embedding_endpoint = os.environ.get('AZURE_OPENAI_EMBEDDING_MODEL_RESOURCE')
@@ -133,7 +133,7 @@ def get_mm_rag_agent():
     kernel.add_service(
         AzureChatCompletion(
             service_id="rag_chat_service",
-            deployment_name='gpt-4.1-mini',
+            deployment_name="gpt-4o-mini",
             api_key=subscription_key,
             endpoint=endpoint,
         )

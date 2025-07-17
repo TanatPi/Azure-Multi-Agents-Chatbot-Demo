@@ -4,7 +4,7 @@ from semantic_kernel.agents import AzureAssistantAgent
 from semantic_kernel.connectors.ai.open_ai import AzureOpenAISettings
 
 # === Load Azure credentials ===
-deployment = os.environ.get("AZURE_OPENAI_MODEL")
+deployment = "gpt-4o-mini"
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 
@@ -27,7 +27,7 @@ async def get_ochestrator_agent() -> AzureAssistantAgent:
         deployment_name=deployment,
         api_key=subscription_key,
         endpoint=endpoint,
-        api_version = "2024-12-01-preview",
+        api_version = "2024-07-18 (Default)",
     )
 
     # Step 2: Create assistant definition (only once; reused during session)
