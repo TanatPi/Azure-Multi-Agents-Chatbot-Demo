@@ -27,7 +27,7 @@ async def get_ochestrator_agent() -> AzureAssistantAgent:
         deployment_name=deployment,
         api_key=subscription_key,
         endpoint=endpoint,
-        api_version = "2024-07-18",
+        api_version = "2024-12-01-preview",
     )
 
     # Step 2: Create assistant definition (only once; reused during session)
