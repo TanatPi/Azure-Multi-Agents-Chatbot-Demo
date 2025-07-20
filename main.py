@@ -1,5 +1,6 @@
 import streamlit as st
 import asyncio
+import time 
 
 # not need in real st deployment
 from dotenv import load_dotenv
@@ -66,6 +67,8 @@ if user_query:
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
+            start_time = time.time()
+
             # Run async logic in sync context
             response, thread = asyncio.run(get_agent_response(
                 user_query,
@@ -74,7 +77,12 @@ if user_query:
                 st.session_state.pdf_rag_agent,
                 st.session_state.pdf_search
             ))
+
+            end_time = time.time()
+            total_time = end_time - start_time
+
             st.session_state.thread = thread
             st.markdown(response)
+            st.markdown(f"⏱️ *Response generated in {total_time:.2f} seconds*")
 
     st.session_state.chat_history.append({"role": "assistant", "content": response})
