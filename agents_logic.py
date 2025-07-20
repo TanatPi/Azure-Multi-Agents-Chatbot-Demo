@@ -33,14 +33,14 @@ async def run_mmrag_agent(agent, search, user_query, filter=None, top_k=10):
 
 
 # === Final Orchestrator ===
-async def get_agent_response(user_query: str, thread, ochestrator_agent, pdf_rag_agent, pdf_search) -> tuple[str, str]:
+async def get_agent_response(user_query: str, thread, orchestrator_agent, pdf_rag_agent, pdf_search) -> tuple[str, str]:
     response_1, response_2, response_3 = await asyncio.gather(
         run_mmrag_agent(pdf_rag_agent, pdf_search, user_query, filter="key_prefix eq 'monthlystandpoint'", top_k = 5),
         run_mmrag_agent(pdf_rag_agent, pdf_search, user_query, filter="key_prefix eq 'ktm'", top_k = 10),
         run_mmrag_agent(pdf_rag_agent, pdf_search, user_query, filter="key_prefix eq 'kcma'", top_k = 20),
     )
 
-    ochestrator_prompt = f"""You are the final assistant. Your job is to synthesize and consolidate the following three answers into a single, coherent, complete response for the user:
+    orchestrator_prompt = f"""You are the final assistant. Your job is to synthesize and consolidate the following three answers into a single, coherent, complete response for the user:
 
         Answer from monthlystandpoint:
         {response_1}
@@ -54,10 +54,10 @@ async def get_agent_response(user_query: str, thread, ochestrator_agent, pdf_rag
         Please write your final response in a clear, structured way. Make sure no important point is missed.
         """
 
-    ochestrator_message = ChatMessageContent(role="user", content=ochestrator_prompt)
+    orchestrator_message = ChatMessageContent(role="user", content=orchestrator_prompt)
 
     final_response = ""
-    async for ochestration in ochestrator_agent.invoke(messages=[ochestrator_message], thread=thread):
+    async for ochestration in orchestrator_agent.invoke(messages=[orchestrator_message], thread=thread):
         final_response = str(ochestration)
         thread = ochestration.thread
 

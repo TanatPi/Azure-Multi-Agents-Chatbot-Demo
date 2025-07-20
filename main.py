@@ -12,7 +12,7 @@ from agents.mm_rag_agent import (
     get_mm_rag_agent,
     get_search_plugin,
 )
-from agents.ochestrator_agent import get_ochestrator_agent
+from agents.orchestrator_agent import get_orchestrator_agent
 from agents_logic import (get_agent_response)
 
 
@@ -25,8 +25,8 @@ if "thread" not in st.session_state:
     st.session_state.thread = None
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
-if "ochestrator_agent" not in st.session_state:
-    st.session_state.ochestrator_agent = None
+if "orchestrator_agent" not in st.session_state:
+    st.session_state.orchestrator_agent = None
 if "pdf_rag_agent" not in st.session_state:
     st.session_state.pdf_rag_agent = None
 if "pdf_search" not in st.session_state:
@@ -42,7 +42,7 @@ async def initialize_agents():
         table_index_name="pdf-economic-summary-tables",
         image_index_name="pdf-economic-summary-images"
     )
-    st.session_state.ochestrator_agent = await get_ochestrator_agent()
+    st.session_state.orchestrator_agent = await get_orchestrator_agent()
     st.session_state.initialized = True
 
 # === Force sync for async init at top ===
@@ -70,7 +70,7 @@ if user_query:
             response, thread = asyncio.run(get_agent_response(
                 user_query,
                 st.session_state.thread,
-                st.session_state.ochestrator_agent,
+                st.session_state.orchestrator_agent,
                 st.session_state.pdf_rag_agent,
                 st.session_state.pdf_search
             ))

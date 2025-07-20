@@ -8,10 +8,11 @@ deployment = "gpt-4.1-mini"
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 
-# === Ochestrator agent system prompt ===
-system_prompt = """You are a financial assistant. Combine the assistant responses into one concise, well-structured answer.
+# === Orchestrator agent system prompt ===
+system_prompt =  """You are a financial assistant. Combine the assistant responses into one concise, well-structured answer.
 
 Instructions:
+- Use clear, understanable, simple Thai.
 - Keep all key unique points.
 - Avoid repeats or contradictions.
 - Use bullet points or short paragraphs.
@@ -21,7 +22,7 @@ Instructions:
 
 Be efficient and clear."""
 
-async def get_ochestrator_agent() -> AzureAssistantAgent:
+async def get_orchestrator_agent() -> AzureAssistantAgent:
     # Step 1: Create a client with Azure config
     client = AzureAssistantAgent.create_client(
         deployment_name=deployment,
@@ -34,7 +35,7 @@ async def get_ochestrator_agent() -> AzureAssistantAgent:
     try:
         definition = await client.beta.assistants.create(
             model=deployment,
-            name="ochestrator-agent",
+            name="orchestrator-agent",
             instructions=system_prompt,
         )
     except Exception as e:
