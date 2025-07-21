@@ -16,15 +16,15 @@ prompt_filepath = os.path.join(
 )
 with open(prompt_filepath, "r", encoding="utf-8") as f:
     prompts = yaml.safe_load(f)
-system_prompt = prompts["orchestrator_prompt"]
+
 
 # === Create orchestrator agent ===
-def get_orchestrator_agent(kernel: Kernel) -> ChatCompletionAgent:
+def get_orchestrator_agent(kernel: Kernel, agent_name: str) -> ChatCompletionAgent:
     # Add AzureChatCompletion service only if not added yet
-    if "gpt-4.1-mini" not in kernel.services:
+    if "orchestrator" not in kernel.services:
         kernel.add_service(
             AzureChatCompletion(
-                    service_id="gpt-4.1-mini",
+                    service_id="orchestrator",
                     deployment_name=deployment,
                     api_key=subscription_key,
                     endpoint=endpoint,
@@ -32,16 +32,17 @@ def get_orchestrator_agent(kernel: Kernel) -> ChatCompletionAgent:
         )
 
     settings = AzureChatPromptExecutionSettings(
-        service_id="gpt-4.1-mini",
+        service_id="orchestrator",
         temperature=0.4,
         top_p=1.0,
         frequency_penalty=0.0,
         presence_penalty=0.0,
     )
+    system_prompt = prompts.get(agent_name + "_prompt", "")
     agent = ChatCompletionAgent(
         kernel=kernel,
         arguments=KernelArguments(settings=settings),
-        name="orchestrator",
+        name=agent_name,
         instructions=system_prompt,
     )
     return agent

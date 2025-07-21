@@ -9,4 +9,3 @@ Requests==2.32.4
 semantic-kernel==1.34.0
 pymupdf==1.26.3
 tiktoken
-streamlit

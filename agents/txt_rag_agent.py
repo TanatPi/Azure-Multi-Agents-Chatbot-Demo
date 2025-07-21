@@ -32,7 +32,7 @@ admin_key = os.environ.get('COG_SEARCH_ADMIN_KEY')
 
 
 # === Search Plugin ===
-class SearchPlugin:
+class SearchTextPlugin:
     def __init__(self, text_index_name = "callcenterinfo"):
         self.search_client_text = SearchClient(
             endpoint=search_endpoint,
@@ -79,33 +79,34 @@ class SearchPlugin:
 prompt_filepath = base_directory = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'agents', 'prompts.yml')
 with open(prompt_filepath, "r", encoding="utf-8") as f:
     prompts = yaml.safe_load(f)
-system_prompt = prompts["txt_rag_agent_prompt"]
 
 # === Agent & Plugin Constructor ===
-def get_txt_rag_agent():
-    kernel = Kernel()
-    kernel.add_service(
-        AzureChatCompletion(
-            service_id="txt_rag_chat_service",
-            deployment_name="gpt-4o-mini",
-            api_key=subscription_key,
-            endpoint=endpoint,
+def get_txt_rag_agent(kernel: Kernel, agent_name: str) -> ChatCompletionAgent:
+    # Add AzureChatCompletion service only if not added yet
+    if "rag_agent" not in kernel.services:
+        kernel.add_service(
+            AzureChatCompletion(
+                    service_id="rag_agent",
+                    deployment_name=deployment,
+                    api_key=subscription_key,
+                    endpoint=endpoint,
+            )
         )
-    )
     settings = AzureChatPromptExecutionSettings(
-        service_id="txt_rag_chat_service",
+        service_id="rag_agent",
         temperature=0.4,
         top_p=1.0,
         frequency_penalty=0.0,
         presence_penalty=0.0,
     )
+    system_prompt = prompts.get(agent_name + "_prompt", "")
     agent = ChatCompletionAgent(
         kernel=kernel,
         arguments=KernelArguments(settings=settings),
-        name="searchservivce-txt-rag-agent",
+        name=agent_name,
         instructions=system_prompt,
     )
     return agent
 
 def get_txt_search_plugin(text_index_name = "callcenterinfo"):
-    return SearchPlugin(text_index_name = text_index_name)
+    return SearchTextPlugin(text_index_name = text_index_name)

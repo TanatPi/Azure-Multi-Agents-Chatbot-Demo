@@ -106,17 +106,17 @@ system_prompt = prompts["mm_rag_agent_prompt"]
 # === Agent & Plugin Constructor ===
 def get_mm_rag_agent(kernel: Kernel) -> ChatCompletionAgent:
     # Add AzureChatCompletion service only if not added yet
-    if "gpt-4o-mini" not in kernel.services:
+    if "rag_agent" not in kernel.services:
         kernel.add_service(
             AzureChatCompletion(
-                    service_id="gpt-4o-mini",
+                    service_id="rag_agent",
                     deployment_name=deployment,
                     api_key=subscription_key,
                     endpoint=endpoint,
             )
         )
     settings = AzureChatPromptExecutionSettings(
-        service_id="gpt-4o-mini",
+        service_id="rag_agent",
         temperature=0.4,
         top_p=1.0,
         frequency_penalty=0.0,

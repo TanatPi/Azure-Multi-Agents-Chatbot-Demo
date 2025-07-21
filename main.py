@@ -17,6 +17,10 @@ from agents.mm_rag_agent import (
     get_mm_rag_agent,
     get_mm_search_plugin,
 )
+from agents.txt_rag_agent import (
+    get_txt_rag_agent,
+    get_txt_search_plugin,
+)
 from agents.orchestrator_agent import get_orchestrator_agent
 from agents.keyword_extractor_agent import get_keyword_extractor_agent
 
@@ -41,15 +45,18 @@ if "router_agent" not in st.session_state:
     st.session_state.router_agent = None
 if "reply_agent" not in st.session_state:
     st.session_state.reply_agent = None
-if "orchestrator_agent" not in st.session_state:
-    st.session_state.orchestrator_agent = None
+if "news_orchestrator_agent" not in st.session_state:
+    st.session_state.news_orchestrator_agent = None
 if "pdf_rag_agent" not in st.session_state:
+    st.session_state.pdf_rag_agent = None
+if "callcenter_rag_agent" not in st.session_state:
     st.session_state.pdf_rag_agent = None
 if "keyword_extractor_agent" not in st.session_state:
     st.session_state.keyword_extractor_agent = None
 if "pdf_search" not in st.session_state:
     st.session_state.pdf_search = None
-
+if "callcenter_search" not in st.session_state:
+    st.session_state.callcenter_search = None
 
 # === Shared Kernel Initialization ===
 def initialize_kernel():
@@ -67,16 +74,19 @@ async def initialize_agents():
 
     agents = {
         "router_agent": get_router_agent(kernel),
+        "callcenter_search": get_txt_search_plugin(
+            text_index_name="callcenterinfo",
+        ),
         "pdf_search": get_mm_search_plugin(
             text_index_name="pdf-economic-summary",
             table_index_name="pdf-economic-summary-tables",
             image_index_name="pdf-economic-summary-images"
         ),
         "pdf_rag_agent": get_mm_rag_agent(kernel),
-        "pdf_rag_agent": get_mm_rag_agent(kernel),
+        "callcenter_rag_agent": get_txt_rag_agent(kernel, "callcenter_rag_agent"),
         "reply_agent": get_reply_agent(kernel),
         "keyword_extractor_agent": get_keyword_extractor_agent(kernel),
-        "orchestrator_agent": get_orchestrator_agent(kernel),
+        "news_orchestrator_agent": get_orchestrator_agent(kernel,"news_orchestrator"),
     }
     st.session_state.agents = agents
     st.session_state.initialized = True
@@ -140,7 +150,7 @@ if user_query:
             # === Debug: Print thread info
             # if st.session_state.thread:
             #     asyncio.run(display_thread_messages(st.session_state.thread))
-            # st.markdown(f"⏱️ *Response generated in {total_time:.2f} seconds*")
+            st.markdown(f"⏱️ *Response generated in {total_time:.2f} seconds*")
 
             # === Print only if each token count exists ===
             if input_tokens_router is not None and output_tokens_router is not None:

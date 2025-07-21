@@ -2,6 +2,7 @@ import asyncio
 from semantic_kernel.agents import ChatHistoryAgentThread
 from semantic_kernel.contents.chat_message_content import ChatMessageContent
 from promptflow_logics.news_agents_logic import get_news_agent_response
+from promptflow_logics.callcenter_agents_logic import get_callcenter_agent_response
 from semantic_kernel.contents.utils.author_role import AuthorRole
 import streamlit as st
 
@@ -18,12 +19,17 @@ def count_tokens(text: str, tokenizer) -> int:
 
 # === Final Agent Flows ===
 async def get_agent_response(user_query: str, chat_history, main_thread, user_thread, agents):
+    # agents
     router_agent = agents["router_agent"]
     reply_agent = agents["reply_agent"]
     pdf_rag_agent = agents["pdf_rag_agent"]
-    pdf_search = agents["pdf_search"]
+    callcenter_rag_agent = agents["callcenter_rag_agent"]
     keyword_extractor_agent = agents["keyword_extractor_agent"]
-    orchestrator_agent = agents["orchestrator_agent"]
+    news_orchestrator_agent = agents["news_orchestrator_agent"]
+    # custom search tools
+    pdf_search = agents["pdf_search"]
+    callcenter_search = agents["callcenter_search"]
+
 
     input_tokens_router = None
     output_tokens_router = None
@@ -76,7 +82,7 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
         final_response, main_thread, rag_prompt_tokens, rag_completion_tokens, input_tokens_orchestrator, output_tokens_orchestrator, keyword_input_tokens, keyword_output_tokens   = await get_news_agent_response(
                 user_query,
                 user_thread,
-                orchestrator_agent,
+                news_orchestrator_agent,
                 pdf_rag_agent,
                 keyword_extractor_agent,
                 pdf_search,
@@ -84,6 +90,27 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
                 status
             )
         status["orchestrator"].empty()
+
+    elif intent == "CALLCENTER":
+        # === Create step placeholders ===
+        keyword_status = st.empty()
+        rag_status = st.empty()
+        orch_status = st.empty()
+        status = {
+                "keyword": keyword_status,
+                "rag": rag_status
+                }
+        # Run news agents flow in sync context
+        final_response, main_thread, rag_prompt_tokens, rag_completion_tokens, keyword_input_tokens, keyword_output_tokens = await get_callcenter_agent_response(
+                user_query,
+                user_thread,
+                callcenter_rag_agent,
+                keyword_extractor_agent,
+                callcenter_search,
+                language,
+                status
+            )
+        status["rag"].empty()
 
     else:
         reply_user_prompt = f"Since other agent are bypassed, take the chat history and answer {user_query} in {language} accordingly if possible."
