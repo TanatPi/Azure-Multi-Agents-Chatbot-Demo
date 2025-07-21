@@ -5,6 +5,7 @@ This project tracks my work during an internship at a company in Bangkok and ser
 
 > **📄 Note:** All documents used in this demo are publicly available.  
 > No sensitive or proprietary information is used.
+> I have permission from my direct supervisor to make this demo public.
 
 ---
 
