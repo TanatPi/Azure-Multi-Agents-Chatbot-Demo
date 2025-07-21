@@ -138,9 +138,9 @@ if user_query:
             st.session_state.user_thread = user_thread
             st.session_state.chat_history = chat_history
             # === Debug: Print thread info
-            if st.session_state.thread:
-                asyncio.run(display_thread_messages(st.session_state.thread))
-            st.markdown(f"⏱️ *Response generated in {total_time:.2f} seconds*")
+            # if st.session_state.thread:
+            #     asyncio.run(display_thread_messages(st.session_state.thread))
+            # st.markdown(f"⏱️ *Response generated in {total_time:.2f} seconds*")
 
             # === Print only if each token count exists ===
             if input_tokens_router is not None and output_tokens_router is not None:
