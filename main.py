@@ -14,7 +14,9 @@ from agents.mm_rag_agent import (
     get_search_plugin,
 )
 from agents.orchestrator_agent import get_orchestrator_agent
+from agents.keyword_extractor_agent import get_keyword_extractor_agent
 from agents_logic import (get_agent_response)
+
 
 
 # === Initialize Streamlit UI ===
@@ -30,6 +32,8 @@ if "orchestrator_agent" not in st.session_state:
     st.session_state.orchestrator_agent = None
 if "pdf_rag_agent" not in st.session_state:
     st.session_state.pdf_rag_agent = None
+if "keyword_extractor_agent" not in st.session_state:
+    st.session_state.keyword_extractor_agent = None
 if "pdf_search" not in st.session_state:
     st.session_state.pdf_search = None
 if "initialized" not in st.session_state:
@@ -43,6 +47,7 @@ async def initialize_agents():
         table_index_name="pdf-economic-summary-tables",
         image_index_name="pdf-economic-summary-images"
     )
+    st.session_state.keyword_extractor_agent = get_keyword_extractor_agent()
     st.session_state.orchestrator_agent = await get_orchestrator_agent()
     st.session_state.initialized = True
 
@@ -70,12 +75,13 @@ if user_query:
             start_time = time.time()
 
             # Run async logic in sync context
-            response, thread, rag_prompt, rag_completion, orch_prompt, orch_completion  = asyncio.run(
+            response, thread, rag_prompt, rag_completion, orch_prompt, orch_completion, keyword_prompt, keyword_completion   = asyncio.run(
                 get_agent_response(
                     user_query,
                     st.session_state.thread,
                     st.session_state.orchestrator_agent,
                     st.session_state.pdf_rag_agent,
+                    st.session_state.keyword_extractor_agent,
                     st.session_state.pdf_search
                 )
             )
@@ -86,6 +92,7 @@ if user_query:
             st.session_state.thread = thread
             st.markdown(response)
             st.markdown(f"⏱️ *Response generated in {total_time:.2f} seconds*")
+            st.markdown(f"📊 *Keyword Extractor tokens: {keyword_prompt} prompt + {keyword_completion} completion = {keyword_prompt + keyword_completion} total*")
             st.markdown(f"📊 *RAG tokens: {rag_prompt} prompt + {rag_completion} completion = {rag_prompt + rag_completion} total*")
             st.markdown(f"📊 *Orchestrator tokens: {orch_prompt} prompt + {orch_completion} completion = {orch_prompt + orch_completion} total*")
 
