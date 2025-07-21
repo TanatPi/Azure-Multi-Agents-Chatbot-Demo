@@ -15,7 +15,7 @@ This project tracks my work during an internship at a company in Bangkok and ser
 [🔗 Live Demo](https://mm-rag-agent-demo-xil5jtaiwjk6hnbtzkkh4x.streamlit.app/)  
 *(Subject to takedown if usage is high or upon request)*
 
-**Run Locally:**
+**Run Locally (with your own api keys and endpoints):**
 ```bash
 streamlit run <your-directory>/main.py
 ```
