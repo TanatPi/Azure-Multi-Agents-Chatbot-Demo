@@ -33,20 +33,10 @@ admin_key = os.environ.get('COG_SEARCH_ADMIN_KEY')
 
 # === Search Plugin ===
 class SearchPlugin:
-    def __init__(self, text_index_name = "pdf-economic-summary", table_index_name = "pdf-economic-summary-tables", image_index_name="pdf-economic-summary-images"):
+    def __init__(self, text_index_name = "callcenterinfo"):
         self.search_client_text = SearchClient(
             endpoint=search_endpoint,
             index_name=text_index_name,
-            credential=AzureKeyCredential(admin_key)
-        )
-        self.search_client_table = SearchClient(
-            endpoint=search_endpoint,
-            index_name=table_index_name,
-            credential=AzureKeyCredential(admin_key)
-        )
-        self.search_client_image = SearchClient(
-            endpoint=search_endpoint,
-            index_name=image_index_name,
             credential=AzureKeyCredential(admin_key)
         )
         self.embedding_endpoint = embedding_endpoint
@@ -75,25 +65,13 @@ class SearchPlugin:
         )
         return json.dumps([
             {
-                "page": doc.get("page", "N/A"),
-                "filename": doc.get("doc_name", "unknown.txt"),
-                "content": doc.get("content", ""),
-                "table": doc.get("table", "N/A"),
-                "figure": doc.get("figure", "N/A")
+             "content": doc.get("content", ""),
             } for doc in results
         ], ensure_ascii=False, indent=2)
 
     @kernel_function(description="Search document text content")
     async def search_text_content(self, query: Annotated[str, "User query"], filter=None, top_k=10) -> Annotated[str, "Search results"]:
-        return await self._search(query, self.search_client_text, select=["content", "page", "doc_name"], filter=filter, top_k=top_k)
-
-    @kernel_function(description="Search table data")
-    async def search_table_content(self, query: Annotated[str, "User query"], filter=None, top_k=10) -> Annotated[str, "Search results"]:
-        return await self._search(query, self.search_client_table, select=["content", "page", "table", "doc_name"], filter=filter, top_k=top_k)
-
-    @kernel_function(description="Search image data")
-    async def search_image_content(self, query: Annotated[str, "User query"], filter=None, top_k=10) -> Annotated[str, "Search results"]:
-        return await self._search(query, self.search_client_image, select=["content", "page", "figure", "doc_name"], filter=filter, top_k=top_k)
+        return await self._search(query, self.search_client_text, select=["content", ], filter=filter, top_k=top_k)
 
 
 # === System Prompt ===
@@ -101,22 +79,21 @@ class SearchPlugin:
 prompt_filepath = base_directory = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'agents', 'prompts.yml')
 with open(prompt_filepath, "r", encoding="utf-8") as f:
     prompts = yaml.safe_load(f)
-system_prompt = prompts["mm_rag_agent_prompt"]
+system_prompt = prompts["txt_rag_agent_prompt"]
 
 # === Agent & Plugin Constructor ===
-def get_mm_rag_agent(kernel: Kernel) -> ChatCompletionAgent:
-    # Add AzureChatCompletion service only if not added yet
-    if "gpt-4o-mini" not in kernel.services:
-        kernel.add_service(
-            AzureChatCompletion(
-                    service_id="gpt-4o-mini",
-                    deployment_name=deployment,
-                    api_key=subscription_key,
-                    endpoint=endpoint,
-            )
+def get_txt_rag_agent():
+    kernel = Kernel()
+    kernel.add_service(
+        AzureChatCompletion(
+            service_id="txt_rag_chat_service",
+            deployment_name="gpt-4o-mini",
+            api_key=subscription_key,
+            endpoint=endpoint,
         )
+    )
     settings = AzureChatPromptExecutionSettings(
-        service_id="gpt-4o-mini",
+        service_id="txt_rag_chat_service",
         temperature=0.4,
         top_p=1.0,
         frequency_penalty=0.0,
@@ -125,10 +102,10 @@ def get_mm_rag_agent(kernel: Kernel) -> ChatCompletionAgent:
     agent = ChatCompletionAgent(
         kernel=kernel,
         arguments=KernelArguments(settings=settings),
-        name="searchservivce-mm-rag-agent",
+        name="searchservivce-txt-rag-agent",
         instructions=system_prompt,
     )
     return agent
 
-def get_mm_search_plugin(text_index_name = "pdf-economic-summary", table_index_name = "pdf-economic-summary-tables", image_index_name="pdf-economic-summary-images"):
-    return SearchPlugin(text_index_name = text_index_name, table_index_name = table_index_name, image_index_name=image_index_name)
+def get_txt_search_plugin(text_index_name = "callcenterinfo"):
+    return SearchPlugin(text_index_name = text_index_name)

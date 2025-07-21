@@ -1,42 +1,40 @@
-# rag_agent.py
 import os
-import asyncio
 import yaml
-
-from semantic_kernel import Kernel
+from semantic_kernel.agents import ChatCompletionAgent
 from semantic_kernel.functions.kernel_arguments import KernelArguments
-from semantic_kernel.agents.chat_completion.chat_completion_agent import ChatCompletionAgent
 from semantic_kernel.connectors.ai.open_ai import AzureChatCompletion, AzureChatPromptExecutionSettings
+from semantic_kernel import Kernel
 
-# === ENV ===
-deployment = "gpt-4.1-nano"
+# === Load Azure credentials ===
+deployment = "gpt-4.1-mini"
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 
-
-# === System Prompt ===
+# === orchestrator agent system prompt ===
 # === Load system prompt from YAML ===
 prompt_filepath = base_directory = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'agents', 'prompts.yml')
 with open(prompt_filepath, "r", encoding="utf-8") as f:
     prompts = yaml.safe_load(f)
-system_prompt = prompts["keyword_extractor_agent_prompt"]
+system_prompt = prompts["router_agent_prompt"]
 
-# === Agent & Plugin Constructor ===
-def get_keyword_extractor_agent(kernel: Kernel) -> ChatCompletionAgent:
+
+
+# === Create orchestrator agent ===
+def get_router_agent(kernel: Kernel) -> ChatCompletionAgent:
     # Add AzureChatCompletion service only if not added yet
-    if "keyword_chat_service" not in kernel.services:
+    if "router_service" not in kernel.services:
         kernel.add_service(
             AzureChatCompletion(
-            service_id="keyword_chat_service",
-            deployment_name=deployment,
-            api_key=subscription_key,
-            endpoint=endpoint,
+                    service_id="router_service",
+                    deployment_name=deployment,
+                    api_key=subscription_key,
+                    endpoint=endpoint,
             )
         )
-    
+
     settings = AzureChatPromptExecutionSettings(
-        service_id="keyword_chat_service",
-        temperature=0.3,
+        service_id="router_service",
+        temperature=0.1,
         top_p=1.0,
         frequency_penalty=0.0,
         presence_penalty=0.0,
@@ -44,7 +42,7 @@ def get_keyword_extractor_agent(kernel: Kernel) -> ChatCompletionAgent:
     agent = ChatCompletionAgent(
         kernel=kernel,
         arguments=KernelArguments(settings=settings),
-        name="keyword-extractor-agent",
+        name="router_agent",
         instructions=system_prompt,
     )
     return agent

@@ -1,43 +1,47 @@
 import os
 import yaml
-from semantic_kernel.agents import AzureAssistantAgent
-from semantic_kernel.connectors.ai.open_ai import AzureOpenAISettings
+from semantic_kernel.agents import ChatCompletionAgent
+from semantic_kernel.functions.kernel_arguments import KernelArguments
+from semantic_kernel.connectors.ai.open_ai import AzureChatCompletion, AzureChatPromptExecutionSettings
+from semantic_kernel import Kernel
 
 # === Load Azure credentials ===
 deployment = "gpt-4.1-mini"
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 
-# === orchestrator agent system prompt ===
 # === Load system prompt from YAML ===
-prompt_filepath = base_directory = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'agents', 'prompts.yml')
+prompt_filepath = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'agents', 'prompts.yml'
+)
 with open(prompt_filepath, "r", encoding="utf-8") as f:
     prompts = yaml.safe_load(f)
 system_prompt = prompts["orchestrator_prompt"]
 
-async def get_orchestrator_agent() -> AzureAssistantAgent:
-    # Step 1: Create a client with Azure config
-    client = AzureAssistantAgent.create_client(
-        deployment_name=deployment,
-        api_key=subscription_key,
-        endpoint=endpoint,
-        api_version = "2024-12-01-preview",
-    )
+# === Create orchestrator agent ===
+def get_orchestrator_agent(kernel: Kernel) -> ChatCompletionAgent:
+    # Add AzureChatCompletion service only if not added yet
+    if "gpt-4.1-mini" not in kernel.services:
+        kernel.add_service(
+            AzureChatCompletion(
+                    service_id="gpt-4.1-mini",
+                    deployment_name=deployment,
+                    api_key=subscription_key,
+                    endpoint=endpoint,
+            )
+        )
 
-    # Step 2: Create assistant definition (only once; reused during session)
-    definition = await client.beta.assistants.create(
-        model=deployment,
-        name="orchestrator-agent",
+    settings = AzureChatPromptExecutionSettings(
+        service_id="gpt-4.1-mini",
+        temperature=0.4,
+        top_p=1.0,
+        frequency_penalty=0.0,
+        presence_penalty=0.0,
+    )
+    agent = ChatCompletionAgent(
+        kernel=kernel,
+        arguments=KernelArguments(settings=settings),
+        name="orchestrator",
         instructions=system_prompt,
     )
-
-
-    # Step 3: Instantiate the agent (no plugins for now)
-    agent = AzureAssistantAgent(
-        client=client,
-        definition=definition,
-        plugins=[],  # optionally pass your SK plugins here
-    )
-
     return agent
-
