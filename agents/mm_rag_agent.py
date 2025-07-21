@@ -4,7 +4,7 @@ import os
 import asyncio
 import json
 import requests
-
+import yaml
 from typing import Annotated
 
 from semantic_kernel import Kernel
@@ -29,6 +29,7 @@ headers = {
 }
 search_endpoint = os.environ.get('COG_SEARCH_ENDPOINT')
 admin_key = os.environ.get('COG_SEARCH_ADMIN_KEY')
+
 
 
 
@@ -99,25 +100,11 @@ class SearchPlugin:
 
 
 # === System Prompt ===
-system_prompt_RAG = f"""You are a helpful, professional female financial assistant. Answer **only** from the provided data — no external knowledge or assumptions.
-
-                Instructions:
-                - Use clear, simple English.
-                - Be concise: no greetings, filler, or extra commentary.
-                - Include all numbers. Cite page (e.g., "หน้า 6") and table (e.g., "ตารางที่ 2") if available.
-                - Do not omit any numbers or quantitative details.
-                - Combine image and text data only if they add different value.
-                - Refer to the document by its `filename`.
-                - Treat “อเมริกา”, “สหรัฐฯ”, and “สหรัฐ” as the same.
-                - Ignore figure numbers.
-
-                Format must be clean and machine-readable.
-
-                Example:
-                From p. 6 Table 4 and image on p. 11 of monthly-summary:
-                - Thai GDP in Q1/2025 grew 3.1% YoY, driven by 13.8% export growth
-                - Domestic demand remains weak; tourism is slowing
-            """
+# === Load system prompt from YAML ===
+prompt_filepath = base_directory = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'agents', 'prompts.yml')
+with open(prompt_filepath, "r", encoding="utf-8") as f:
+    prompts = yaml.safe_load(f)
+system_prompt = prompts["mm_rag_agent_prompt"]
 
 # === Agent & Plugin Constructor ===
 def get_mm_rag_agent():
@@ -141,7 +128,7 @@ def get_mm_rag_agent():
         kernel=kernel,
         arguments=KernelArguments(settings=settings),
         name="searchservivce-mm-rag-agent",
-        instructions=system_prompt_RAG,
+        instructions=system_prompt,
     )
     return agent
 

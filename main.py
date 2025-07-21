@@ -70,13 +70,15 @@ if user_query:
             start_time = time.time()
 
             # Run async logic in sync context
-            response, thread = asyncio.run(get_agent_response(
-                user_query,
-                st.session_state.thread,
-                st.session_state.orchestrator_agent,
-                st.session_state.pdf_rag_agent,
-                st.session_state.pdf_search
-            ))
+            response, thread, rag_prompt, rag_completion, orch_prompt, orch_completion  = asyncio.run(
+                get_agent_response(
+                    user_query,
+                    st.session_state.thread,
+                    st.session_state.orchestrator_agent,
+                    st.session_state.pdf_rag_agent,
+                    st.session_state.pdf_search
+                )
+            )
 
             end_time = time.time()
             total_time = end_time - start_time
@@ -84,5 +86,7 @@ if user_query:
             st.session_state.thread = thread
             st.markdown(response)
             st.markdown(f"⏱️ *Response generated in {total_time:.2f} seconds*")
+            st.markdown(f"📊 *RAG tokens: {rag_prompt} prompt + {rag_completion} completion = {rag_prompt + rag_completion} total*")
+            st.markdown(f"📊 *Orchestrator tokens: {orch_prompt} prompt + {orch_completion} completion = {orch_prompt + orch_completion} total*")
 
     st.session_state.chat_history.append({"role": "assistant", "content": response})
