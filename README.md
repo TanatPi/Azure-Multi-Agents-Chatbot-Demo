@@ -1,18 +1,28 @@
 # 💬 Azure Semantic Kernel Chatbot
 
-An intelligent financial assistant powered by Azure OpenAI and Azure Cognitive Search on the Semantic Kernel framework. I aim to create this to track and make available my current project during my internship at a company in Bangkok.
+An intelligent financial assistant powered by **Azure OpenAI** and **Azure Cognitive Search** on the **Semantic Kernel** framework.  
+This project tracks my work during an internship at a company in Bangkok and serves as a showcase of applied LLM agent orchestration.
 
-### Documents used in this demo are publicly available.
-Despite this project being a part of my internship, I want to declare that no sensitive data is used.
+> **📄 Note:** All documents used in this demo are publicly available.  
+> No sensitive or proprietary information is used.
 
-👉 Current deployment on Streamlit Cloud: https://mm-rag-agent-demo-xil5jtaiwjk6hnbtzkkh4x.streamlit.app/ (available until late August when my internship ends or until I decide/am requested to take it down if the usage is high)
-You can also try running the application locally by using the command streamlit run <your directory>/main.py, but you have to provide the script with your API keys and endpoints.
+---
+
+## 🚀 Deployment
+
+**Streamlit Cloud (available until late August):**  
+[🔗 Live Demo](https://mm-rag-agent-demo-xil5jtaiwjk6hnbtzkkh4x.streamlit.app/)  
+*(Subject to takedown if usage is high or upon request)*
+
+**Run Locally:**
+```bash
+streamlit run <your-directory>/main.py
 
 ---
 
 ## Current Features
 - Answer questions you would ask a bank call center.
-- Answer about economic news.
+- Answer about economic and investment news.
 
 ## 🧠 Functionalities
 - 🤖 Uses Semantic Kernel framework with custom agent flow and orchestration (The official orchestration is said to be in early stage and is unstable).
@@ -30,7 +40,7 @@ User: "How's the US stock market?"
 - Restructure the search index if needed
 - Add a new agent flow that is capable of automatically read csv/JSON with AzureAssistant Agent API v2, along with abilities to plot graph, etc.
 ##### Later
-- I may move away from relying completely on Azure to keep the demo accessible
+- I may move away from relying completely on Azure to keep the demo accessible.
 ---
 
 
