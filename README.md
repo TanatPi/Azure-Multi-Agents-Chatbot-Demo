@@ -17,7 +17,7 @@ This project tracks my work during an internship at a company in Bangkok and ser
 **Run Locally:**
 ```bash
 streamlit run <your-directory>/main.py
-
+```
 ---
 
 ## Current Features
