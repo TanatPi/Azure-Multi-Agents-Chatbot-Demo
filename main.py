@@ -26,8 +26,8 @@ from agents.keyword_extractor_agent import get_keyword_extractor_agent
 
 
 # === Initialize Streamlit UI ===
-st.set_page_config(page_title="Economic News GPT Chatbot", page_icon="💬", layout="wide")
-st.title("💬 Economic News Chatbot")
+st.set_page_config(page_title="JOHN-AI Chatbot", page_icon="💬", layout="wide")
+st.title("💬 JOHN-AI Chatbot")
 
 # === Initialize session state for agent and memory ===
 if "thread" not in st.session_state:
@@ -38,7 +38,7 @@ if "initialized" not in st.session_state:
     st.session_state.initialized = False
     # Add welcome message only once (when chat_history is first created)
     with st.chat_message("assistant"):
-        welcome_message = "👋 สวัสดีครับ! ผมชื่อวินัย (WIN-AI) หากคุณมีคำถามเกี่ยวกับข่าวสารเศรษฐกิจ การลงทุน หรือ KAsset สามารถสอบถามได้เลยครับ!"
+        welcome_message = "👋 สวัสดีครับ! ผมชื่อจอห์น หากคุณมีคำถามเกี่ยวกับข่าวสารเศรษฐกิจ การลงทุน หรือ อื่น ๆ สามารถสอบถามได้เลยครับ!"
         st.markdown(welcome_message)
 # agents
 if "router_agent" not in st.session_state:
