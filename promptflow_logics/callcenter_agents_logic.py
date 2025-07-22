@@ -14,7 +14,7 @@ def count_tokens(text: str, tokenizer) -> int:
 # === Final Agent Flows ===
 async def get_callcenter_agent_response(user_query: str, user_thread,
                                         txt_rag_agent, keyword_extractor_agent,
-                                        pdf_search, language, status):
+                                        pdf_search, language, status, container):
     # Step 1: Run Keyword Extractor
     if status:
         status["keyword"].markdown("🔍 Extracting keywords...")
@@ -50,9 +50,11 @@ async def get_callcenter_agent_response(user_query: str, user_thread,
     user_message = ChatMessageContent(role=AuthorRole.USER, content=user_prompt)
 
     response_text = ""
-    async for response in txt_rag_agent.invoke(messages=[user_message]):
-        response_text = str(response)
+    async for response in txt_rag_agent.invoke_stream(messages=[user_message]):
+        response_text += str(response)
+        container.markdown(response_text)
         main_thread = response.thread
+        has_streamed = True
 
     rag_completion_tokens = count_tokens(response_text, tokenizer_4o)
 
@@ -64,4 +66,5 @@ async def get_callcenter_agent_response(user_query: str, user_thread,
         rag_completion_tokens,
         keyword_input_tokens,
         keyword_output_tokens,
+        has_streamed
     )

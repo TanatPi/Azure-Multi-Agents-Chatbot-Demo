@@ -1,0 +1,262 @@
+﻿{
+  "generalInfo": {
+    "representDate": "30/04/2025",
+    "abbrName": "K-US500XRMF"
+  },
+  "fundType": {
+    "aimcGroupCode": "USEQ"
+  },
+  "investmentPolicy": {
+    "0": "กองทุนนี้เปลี่ยนชื่อย่อกองทุนมาจาก KUS500XRMF เมื่อวันที่ 12 มีนาคม 2568",
+    "1": "กองทุนจะลงทุนในกองทุน iShares Core S&P 500 ETF (กองทุนหลัก) ซึ่งเป็นกองทุนอีทีเอฟที่จดทะเบียนซื้อขายในตลาดหลักทรัพย์นิวยอร์ก (NYSE Arca) และมีนโยบายลงทุนเพื่อสร้างผลตอบแทนให้ใกล้เคียงกับผลตอบแทนของดัชนี S&P 500 ซึ่งเป็นดัชนีที่สะท้อนการเคลื่อนไหวของราคาหุ้นบริษัทขนาดใหญ่ในสหรัฐอเมริกา",
+    "2": "กองทุนจะป้องกันความเสี่ยงด้านอัตราแลกเปลี่ยนตามดุลยพินิจของผู้จัดการกองทุน",
+    "3": "บริษัทที่บริหารจัดการกองทุนหลัก คือ BlackRock Fund Advisors",
+    "4": "มุ่งหวังให้ผลประกอบการเคลื่อนไหวตามกองทุนหลัก โดยกองทุนหลักมุ่งหวังให้ผลประกอบการเคลื่อนไหวตามดัชนีชี้วัด (passive management/index tracking)"
+  },
+  "riskIndicator": {
+    "levelCode": "RS6",
+    "meaning": "ลงทุนในตราสารทุนเป็นหลัก โดยเฉลี่ยในรอบปีไม่น้อยกว่า 80% ของ NAV"
+  },
+  "fundManager": {
+    "0": {
+      "uniqueId": "0000089198",
+      "nameTitle": "น.ส.",
+      "name": "วีรยา",
+      "surname": "จุลมนต์",
+      "effectiveDate": "22/08/2024"
+    }
+  },
+  "benchmark": {
+    "0": {
+      "isMasterFund": true,
+      "code": "SPXT",
+      "ratio": 100.0,
+      "remark": "ปรับด้วยต้นทุนการป้องกันความเสี่ยงอัตราแลกเปลี่ยน เพื่อเทียบกับค่าสกุลเงินบาท ณ วันที่คำนวณผลตอบแทน ร้อยละ 90 และปรับด้วยอัตราแลกเปลี่ยนเพื่อเทียบกับค่าสกุลเงินบาท ณ วันที่คำนวณผลตอบแทน ร้อยละ 10"
+    }
+  },
+  "proportionOfAssetsInvestedByFund": {
+    "assetTypeBreakdown": {
+      "0": {
+        "name": "หน่วยลงทุน",
+        "ratio": 95.5
+      },
+      "1": {
+        "name": "เงินฝาก",
+        "ratio": 3.34
+      },
+      "2": {
+        "name": "อื่นๆ",
+        "ratio": 1.16
+      }
+    },
+    "top5Holdings": {
+      "0": {
+        "name": "iShares Core S&P 500 ETF",
+        "ratio": 95.5
+      },
+      "1": {
+        "name": "เงินฝาก บมจ.ธนาคารกรุงเทพ",
+        "ratio": 3.22
+      },
+      "2": {
+        "name": "เงินฝาก บมจ.ธนาคารกสิกรไทย",
+        "ratio": 0.11
+      },
+      "3": {
+        "name": "เงินฝาก JP Morgan Chase Bank, N.A.",
+        "ratio": 0.02
+      }
+    },
+    "top5HoldingOfMasterFunds": {
+      "0": {
+        "name": "APPLE INC",
+        "ratio": 7.0
+      },
+      "1": {
+        "name": "MICROSOFT CORP",
+        "ratio": 5.85
+      },
+      "2": {
+        "name": "NVIDIA CORP",
+        "ratio": 5.57
+      },
+      "3": {
+        "name": "AMAZON COM INC",
+        "ratio": 3.76
+      },
+      "4": {
+        "name": "META PLATFORMS INC CLASS A",
+        "ratio": 2.65
+      }
+    },
+    "countryAllocation": null,
+    "sectorAllocation": {
+      "0": {
+        "isMasterFund": true,
+        "name": "Information Technology",
+        "ratio": 29.56
+      },
+      "1": {
+        "isMasterFund": true,
+        "name": "Financials",
+        "ratio": 14.65
+      },
+      "2": {
+        "isMasterFund": true,
+        "name": "Health Care",
+        "ratio": 11.15
+      },
+      "3": {
+        "isMasterFund": true,
+        "name": "Consumer Discretionary",
+        "ratio": 10.28
+      },
+      "4": {
+        "isMasterFund": true,
+        "name": "Communication",
+        "ratio": 9.18
+      }
+    },
+    "issuerAllocation": null,
+    "weightAccordingToCreditRating": null
+  },
+  "masterFundsOrFundOfFunds": {
+    "domestic": null,
+    "foreign": {
+      "0": {
+        "name": "กองทุน iShares Core S&P 500 ETF",
+        "ISINCode": "US4642872000",
+        "bloombergCode": "IVV:US"
+      }
+    }
+  },
+  "classOfFund": {
+    "0": {
+      "className": "main",
+      "fundInfo": {
+        "shareClassLaunchDate": ""
+      },
+      "performance": {
+        "calendarYear": {
+          "0": {
+            "year": 2024,
+            "fundReturn": 4.47,
+            "benchmarkReturn": 5.48,
+            "peerAverage": null
+          }
+        },
+        "mostRecentPeriods": {
+          "yearToDate": {
+            "fundReturn": -6.22,
+            "benchmark": -6.07,
+            "peer": -8.1,
+            "fundStandardDeviation": 27.77,
+            "benchmarkStandardDeviation": 28.19
+          },
+          "threeMonths": {
+            "fundReturn": -7.92,
+            "benchmark": -7.92,
+            "peer": -10.36,
+            "fundStandardDeviation": 31.63,
+            "benchmarkStandardDeviation": 32.06
+          },
+          "sixMonths": {
+            "fundReturn": -3.14,
+            "benchmark": -2.8,
+            "peer": -3.6,
+            "fundStandardDeviation": 23.93,
+            "benchmarkStandardDeviation": 24.3
+          },
+          "oneYear": null,
+          "threeYears": null,
+          "fiveYears": null,
+          "tenYears": null,
+          "inceptionDate": {
+            "fundReturn": -2.02,
+            "benchmark": -0.92,
+            "peer": null,
+            "fundStandardDeviation": 20.99,
+            "benchmarkStandardDeviation": 21.43
+          }
+        }
+      },
+      "prospectusLink": "https://www.kasikornasset.com/FundDocument/Full_Prospectus/K-US500XRMF.pdf",
+      "subscriptionAndRedemption": {
+        "subscription": {
+          "periodCode": "9",
+          "otherPeriodText": "ทุกวันทำการซื้อขาย",
+          "timeStart": "08:30",
+          "timeEnd": "15:30",
+          "minimumInitial": {
+            "amount": 500.0,
+            "currency": "THB",
+            "unit": null
+          },
+          "minimumSubsequence": {
+            "amount": 500.0,
+            "currency": "THB",
+            "unit": null
+          }
+        },
+        "redemption": {
+          "periodCode": "9",
+          "otherPeriodText": "ทุกวันทำการซื้อขาย",
+          "timeStart": "08:30",
+          "timeEnd": "15:30",
+          "minimum": {
+            "amount": 500.0,
+            "currency": "THB",
+            "unit": null
+          },
+          "minimumBalance": {
+            "amount": 0.0,
+            "currency": "THB",
+            "unit": null
+          },
+          "settlementPeriodCode": "RV8"
+        },
+        "remark": "บริษัทจัดการจะชำระเงินค่าขายคืนหน่วยลงทุนให้แก่ผู้ขายคืนหน่วยลงทุนภายใน 6 วันทำการนับแต่วันทำการขายคืนหน่วยลงทุน (ปัจจุบันคืนเงิน T+3)"
+      },
+      "statisticInfo": {
+        "maximumDrawdown": -18.47,
+        "recoveringPeriod": null,
+        "fxHedging": 91.18,
+        "sharpeRatio": null,
+        "trackingError": null,
+        "alpha": null,
+        "beta": null,
+        "portfolioDuration": {
+          "day": null,
+          "month": 0,
+          "year": 0
+        },
+        "portfolioTurnoverRatio": 0.17,
+        "yieldToMaturity": null
+      },
+      "feesAndCharges": {
+        "mutualFundFees": {
+          "managementRate": {
+            "max": 3.21,
+            "actual": 0.54
+          },
+          "totalExpenseRate": {
+            "max": 4.87,
+            "actual": 0.6
+          },
+          "remark": "ค่าธรรมเนียมดังกล่าวรวมภาษีมูลค่าเพิ่ม ภาษีธุรกิจเฉพาะ หรือภาษีอื่นใดแล้ว\r\n- บริษัทจัดการอาจพิจารณาเปลี่ยนแปลงค่าธรรมเนียมที่เรียกเก็บจริง เพื่อให้สอดคล้องกับกลยุทธ์หรือค่าใช้จ่ายในการบริหารจัดการ\r\n"
+        },
+        "unitholderFees": {
+          "frontEndFeeRate": null,
+          "backEndFeeRate": {
+            "max": 2.0,
+            "actual": 0.0
+          },
+          "switchingInFeeRate": null,
+          "switchingOutFeeRate": null,
+          "transferFeeRate": null,
+          "remark": "ค่าธรรมเนียมดังกล่าวรวมภาษีมูลค่าเพิ่ม ภาษีธุรกิจเฉพาะ หรือภาษีอื่นใดแล้ว\r\n- บริษัทจัดการอาจพิจารณาเปลี่ยนแปลงค่าธรรมเนียมที่เรียกเก็บจริง เพื่อให้สอดคล้องกับกลยุทธ์หรือค่าใช้จ่ายในการบริหารจัดการ\r\n- ค่าธรรมเนียมการสับเปลี่ยนเข้า : อัตราเท่ากับค่าธรรมเนียมการรับซื้อคืนหน่วยลงทุนของกองทุนต้นทางหรือค่าธรรมเนียมการขายหน่วยลงทุนของกองทุนปลายทางแล้วแต่อัตราใดจะสูงกว่า\r\n- ค่าธรรมเนียมการสับเปลี่ยนออก \r\n- สับเปลี่ยนไป RMF ภายใน บลจ.กสิกรไทย : ปัจจุบันไม่เรียกเก็บ\r\n- สับเปลี่ยนไป RMF บลจ.อื่น : 1.00% ของมูลค่าหน่วยลงทุนของวันทำการล่าสุดหรือจำนวนเงินที่สับเปลี่ยน แล้วแต่กรณี\r\n- สับเปลี่ยนไปกองทุนอื่นภายใต้ บลจ. กสิกรไทย : อัตราเท่ากับค่าธรรมเนียมการรับซื้อคืนหน่วยลงทุนของกองทุนต้นทางหรือค่าธรรมเนียมการขายหน่วยลงทุนของกองทุนปลายทางแล้วแต่อัตราใดจะสูงกว่า"
+        }
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ from semantic_kernel.agents import ChatHistoryAgentThread
 from semantic_kernel.contents.chat_message_content import ChatMessageContent
 from promptflow_logics.news_agents_logic import get_news_agent_response
 from promptflow_logics.callcenter_agents_logic import get_callcenter_agent_response
+from promptflow_logics.fundfact_agents_logic import get_fundfact_agent_response
 from semantic_kernel.contents.utils.author_role import AuthorRole
 import streamlit as st
 
@@ -18,7 +19,10 @@ def count_tokens(text: str, tokenizer) -> int:
 
 
 # === Final Agent Flows ===
-async def get_agent_response(user_query: str, chat_history, main_thread, user_thread, agents):
+async def get_agent_response(user_query: str, chat_history, main_thread, user_thread, agents, container):
+
+    has_streamed = False # flag if the output is stream
+
     # agents
     router_agent = agents["router_agent"]
     reply_agent = agents["reply_agent"]
@@ -26,9 +30,12 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
     callcenter_rag_agent = agents["callcenter_rag_agent"]
     keyword_extractor_agent = agents["keyword_extractor_agent"]
     news_orchestrator_agent = agents["news_orchestrator_agent"]
+    fundfact_orchestrator_agent = agents["fundfact_orchestrator_agent"]
     # custom search tools
     pdf_search = agents["pdf_search"]
     callcenter_search = agents["callcenter_search"]
+    fundfact_linguistic_rag_agent = agents["fundfact_linguistic_rag_agent"]
+    fundfact_coder_rag_agent = agents["fundfact_coder_rag_agent"]
 
 
     input_tokens_router = None
@@ -79,7 +86,7 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
                 "orchestrator": orch_status,
                 }
         # Run news agents flow in sync context
-        final_response, main_thread, rag_prompt_tokens, rag_completion_tokens, input_tokens_orchestrator, output_tokens_orchestrator, keyword_input_tokens, keyword_output_tokens   = await get_news_agent_response(
+        final_response, thread, rag_prompt_tokens, rag_completion_tokens, input_tokens_orchestrator, output_tokens_orchestrator, keyword_input_tokens, keyword_output_tokens, has_streamed  = await get_news_agent_response(
                 user_query,
                 user_thread,
                 news_orchestrator_agent,
@@ -87,31 +94,67 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
                 keyword_extractor_agent,
                 pdf_search,
                 language,
-                status
+                status,
+                container
             )
         status["orchestrator"].empty()
-
+        if main_thread is not None:
+            async for msg in thread.get_messages():
+                if isinstance(msg, ChatMessageContent):
+                    main_thread._chat_history.add_message(msg)
+        else:
+            main_thread = thread
     elif intent == "CALLCENTER":
         # === Create step placeholders ===
         keyword_status = st.empty()
         rag_status = st.empty()
-        orch_status = st.empty()
         status = {
                 "keyword": keyword_status,
                 "rag": rag_status
                 }
         # Run news agents flow in sync context
-        final_response, main_thread, rag_prompt_tokens, rag_completion_tokens, keyword_input_tokens, keyword_output_tokens = await get_callcenter_agent_response(
+        final_response, thread, rag_prompt_tokens, rag_completion_tokens, keyword_input_tokens, keyword_output_tokens, has_streamed = await get_callcenter_agent_response(
                 user_query,
                 user_thread,
                 callcenter_rag_agent,
                 keyword_extractor_agent,
                 callcenter_search,
                 language,
-                status
+                status,
+                container
             )
         status["rag"].empty()
-
+        if main_thread is not None:
+            async for msg in thread.get_messages():
+                if isinstance(msg, ChatMessageContent):
+                    main_thread._chat_history.add_message(msg)
+        else:
+            main_thread = thread
+    elif intent == "FUNDFACT":
+        # === Create step placeholders ===
+        rag_status = st.empty()
+        orch_status = st.empty()
+        status = {
+                "rag": rag_status,
+                "orchestrator": orch_status,
+                }
+        # Run news agents flow in sync context
+        final_response, thread, rag_prompt_tokens, rag_completion_tokens, input_tokens_orchestrator, output_tokens_orchestrator, has_streamed = await get_fundfact_agent_response(
+                user_query,
+                fundfact_linguistic_rag_agent,
+                fundfact_coder_rag_agent,
+                fundfact_orchestrator_agent,
+                language,
+                status,
+                container
+            )
+        status["rag"].empty()
+        if main_thread is not None:
+            async for msg in thread.get_messages():
+                if isinstance(msg, ChatMessageContent):
+                    main_thread._chat_history.add_message(msg)
+        else:
+            main_thread = thread
     else:
         reply_user_prompt = f"Since other agent are bypassed, take the chat history and answer {user_query} in {language} accordingly if possible."
         reply_user_message = ChatMessageContent(role=AuthorRole.USER, content=reply_user_prompt)
@@ -120,10 +163,11 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
         input_tokens_reply = count_tokens(reply_user_prompt,tokenizer_4_1)
 
         final_response = ""
-        async for reply in reply_agent.invoke(messages=[reply_user_message],thread=main_thread):
-            final_response = str(reply)
+        async for reply in reply_agent.invoke_stream(messages=[reply_user_message],thread=main_thread):
+            final_response += str(reply)
+            container.markdown(final_response)
             main_thread = reply.thread
-    
+            has_streamed = True
         # === Token count for reply agent output
         output_tokens_reply = count_tokens(final_response,tokenizer_4_1)
 
@@ -144,5 +188,6 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
         input_tokens_reply,
         output_tokens_reply,
         input_tokens_router,
-        output_tokens_router
+        output_tokens_router,
+        has_streamed
     )

@@ -1,0 +1,282 @@
+﻿{
+  "generalInfo": {
+    "representDate": "30/04/2025",
+    "abbrName": "K-THAICGRMF"
+  },
+  "fundType": {
+    "aimcGroupCode": "EG"
+  },
+  "investmentPolicy": {
+    "0": "กองทุนนี้เปลี่ยนชื่อย่อกองทุนมาจาก KTHAICGRMF เมื่อวันที่ 12 มีนาคม 2568",
+    "1": "เน้นลงทุนในหุ้นของบริษัทที่มีการกำกับดูแลกิจการที่ดี รวมถึงบริษัทที่ได้รับการรับรองเป็นสมาชิกแนวร่วมต่อต้านคอร์รัปชันของภาคเอกชนไทย (CAC) ซึ่งการพิจารณาการกำกับดูแลกิจการที่ดีอาจพิจารณาจากการจัดอันดับ CG Scoring ของสมาคมส่งเสริมสถาบันกรรมการบริษัทไทย หรือหน่วยงานอื่นใดที่เกี่ยวข้อง",
+    "2": "วัตถุประสงค์การลงทุนที่เกี่ยวกับความยั่งยืน : กองทุนจะลงทุนในบริษัทที่มีการกำกับดูแลกิจการที่ดี (Good Governance) เพื่อให้สอดคล้องกับการลงทุนแบบยั่งยืน (Sustainable Investment)",
+    "3": "กรอบการลงทุน : กองทุนจะลงทุนในบริษัทที่มีการกำกับดูแลกิจการที่ดี (Good Governance) ได้รับการรับรองเป็นสมาชิกแนวร่วมต่อต้านคอร์รัปชันของภาคเอกชนไทย (CAC) ซึ่งการกำกับดูแลกิจการที่ดีอาจพิจารณาจากการจัดอันดับ CG Scoring ของสมาคมส่งเสริมสถาบันกรรมการบริษัทไทย (IOD) หรือหน่วยงานอื่นใดที่เกี่ยวข้อง",
+    "4": "อาจลงทุนในสัญญาซื้อขายล่วงหน้าเพื่อการเพิ่มประสิทธิภาพการบริหารการลงทุน (Efficient Portfolio Management)",
+    "5": "มุ่งหวังให้ผลประกอบการเคลื่อนไหวสูงกว่าดัชนีชี้วัด (active management)"
+  },
+  "riskIndicator": {
+    "levelCode": "RS6",
+    "meaning": "ลงทุนในตราสารทุนเป็นหลัก โดยเฉลี่ยในรอบปีไม่น้อยกว่า 80% ของ NAV"
+  },
+  "fundManager": {
+    "0": {
+      "uniqueId": "0000060168",
+      "nameTitle": "น.ส.",
+      "name": "วินิทร",
+      "surname": "ผ่องใส",
+      "effectiveDate": "22/11/2017"
+    }
+  },
+  "benchmark": {
+    "0": {
+      "isMasterFund": false,
+      "code": "SETTRI",
+      "ratio": 100.0,
+      "remark": "วัตถุประสงค์ในการอ้างอิงดัชนีชี้วัด : เพื่อใช้กำหนดองค์ประกอบของพอร์ตโฟลิโอและเปรียบเทียบผลการดำเนินงานของกองทุน"
+    }
+  },
+  "proportionOfAssetsInvestedByFund": {
+    "assetTypeBreakdown": {
+      "0": {
+        "name": "ตราสารทุน",
+        "ratio": 97.59
+      },
+      "1": {
+        "name": "เงินฝาก",
+        "ratio": 2.99
+      },
+      "2": {
+        "name": "อื่นๆ",
+        "ratio": -0.59
+      }
+    },
+    "top5Holdings": {
+      "0": {
+        "name": "หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์",
+        "ratio": 9.16
+      },
+      "1": {
+        "name": "หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส",
+        "ratio": 9.04
+      },
+      "2": {
+        "name": "หุ้น บมจ.ซีพี ออลล์",
+        "ratio": 8.19
+      },
+      "3": {
+        "name": "หุ้น บมจ.ไทยออยล์",
+        "ratio": 5.27
+      },
+      "4": {
+        "name": "หุ้น บมจ. พีทีที โกลบอล เคมิคอล",
+        "ratio": 4.29
+      }
+    },
+    "top5HoldingOfMasterFunds": null,
+    "countryAllocation": null,
+    "sectorAllocation": {
+      "0": {
+        "isMasterFund": false,
+        "name": "พลังงานและสาธารณูปโภค",
+        "ratio": 20.01
+      },
+      "1": {
+        "isMasterFund": false,
+        "name": "ธนาคาร",
+        "ratio": 17.58
+      },
+      "2": {
+        "isMasterFund": false,
+        "name": "พัฒนาอสังหาริมทรัพย์",
+        "ratio": 13.84
+      },
+      "3": {
+        "isMasterFund": false,
+        "name": "เทคโนโลยีสารสนเทศและการสื่อสาร",
+        "ratio": 12.2
+      },
+      "4": {
+        "isMasterFund": false,
+        "name": "พาณิชย์",
+        "ratio": 11.89
+      }
+    },
+    "issuerAllocation": null,
+    "weightAccordingToCreditRating": null
+  },
+  "masterFundsOrFundOfFunds": null,
+  "classOfFund": {
+    "0": {
+      "className": "main",
+      "fundInfo": {
+        "shareClassLaunchDate": ""
+      },
+      "performance": {
+        "calendarYear": {
+          "0": {
+            "year": 2020,
+            "fundReturn": 0.68,
+            "benchmarkReturn": -5.23,
+            "peerAverage": -9.61
+          },
+          "1": {
+            "year": 2021,
+            "fundReturn": 16.27,
+            "benchmarkReturn": 17.67,
+            "peerAverage": 19.03
+          },
+          "2": {
+            "year": 2022,
+            "fundReturn": -0.96,
+            "benchmarkReturn": 3.53,
+            "peerAverage": 1.13
+          },
+          "3": {
+            "year": 2023,
+            "fundReturn": -12.27,
+            "benchmarkReturn": -12.66,
+            "peerAverage": -11.89
+          },
+          "4": {
+            "year": 2024,
+            "fundReturn": -3.41,
+            "benchmarkReturn": 2.31,
+            "peerAverage": -1.94
+          }
+        },
+        "mostRecentPeriods": {
+          "yearToDate": {
+            "fundReturn": -11.87,
+            "benchmark": -12.49,
+            "peer": -12.02,
+            "fundStandardDeviation": 24.77,
+            "benchmarkStandardDeviation": 21.2
+          },
+          "threeMonths": {
+            "fundReturn": -5.23,
+            "benchmark": -6.8,
+            "peer": -6.7,
+            "fundStandardDeviation": 27.18,
+            "benchmarkStandardDeviation": 23.31
+          },
+          "sixMonths": {
+            "fundReturn": -16.99,
+            "benchmark": -16.28,
+            "peer": -16.6,
+            "fundStandardDeviation": 21.61,
+            "benchmarkStandardDeviation": 18.46
+          },
+          "oneYear": {
+            "fundReturn": -11.31,
+            "benchmark": -8.95,
+            "peer": -12.45,
+            "fundStandardDeviation": 17.9,
+            "benchmarkStandardDeviation": 15.3
+          },
+          "threeYears": {
+            "fundReturn": -8.98,
+            "benchmark": -7.38,
+            "peer": -8.97,
+            "fundStandardDeviation": 13.99,
+            "benchmarkStandardDeviation": 12.82
+          },
+          "fiveYears": {
+            "fundReturn": -0.14,
+            "benchmark": 1.4,
+            "peer": -0.23,
+            "fundStandardDeviation": 14.92,
+            "benchmarkStandardDeviation": 13.62
+          },
+          "tenYears": null,
+          "inceptionDate": {
+            "fundReturn": -2.23,
+            "benchmark": -1.58,
+            "peer": null,
+            "fundStandardDeviation": 15.7,
+            "benchmarkStandardDeviation": 15.59
+          }
+        }
+      },
+      "prospectusLink": "https://www.kasikornasset.com/FundDocument/Full_Prospectus/K-THAICGRMF.pdf",
+      "subscriptionAndRedemption": {
+        "subscription": {
+          "periodCode": "1",
+          "otherPeriodText": null,
+          "timeStart": "08:30",
+          "timeEnd": "15:30",
+          "minimumInitial": {
+            "amount": 500.0,
+            "currency": "THB",
+            "unit": null
+          },
+          "minimumSubsequence": {
+            "amount": 500.0,
+            "currency": "THB",
+            "unit": null
+          }
+        },
+        "redemption": {
+          "periodCode": "1",
+          "otherPeriodText": null,
+          "timeStart": "08:30",
+          "timeEnd": "15:30",
+          "minimum": {
+            "amount": 500.0,
+            "currency": "THB",
+            "unit": null
+          },
+          "minimumBalance": {
+            "amount": 0.0,
+            "currency": "THB",
+            "unit": null
+          },
+          "settlementPeriodCode": "RV8"
+        },
+        "remark": ""
+      },
+      "statisticInfo": {
+        "maximumDrawdown": -35.26,
+        "recoveringPeriod": null,
+        "fxHedging": null,
+        "sharpeRatio": -0.75,
+        "trackingError": 5.89,
+        "alpha": -1.6,
+        "beta": 1.02,
+        "portfolioDuration": {
+          "day": null,
+          "month": 0,
+          "year": 0
+        },
+        "portfolioTurnoverRatio": 3.52,
+        "yieldToMaturity": 0.01
+      },
+      "feesAndCharges": {
+        "mutualFundFees": {
+          "managementRate": {
+            "max": 3.21,
+            "actual": 1.87
+          },
+          "totalExpenseRate": {
+            "max": 4.52,
+            "actual": 1.98
+          },
+          "remark": "ค่าธรรมเนียมดังกล่าวรวมภาษีมูลค่าเพิ่ม ภาษีธุรกิจเฉพาะ หรือภาษีอื่นใดแล้ว\r\n- บริษัทจัดการอาจพิจารณาเปลี่ยนแปลงค่าธรรมเนียมที่เรียกเก็บจริง เพื่อให้สอดคล้องกับกลยุทธ์หรือค่าใช้จ่ายในการบริหารจัดการ\r\n- บริษัทจัดการจะนำค่าธรรมเนียมการจัดการดังกล่าวไปบริจาคในอัตราร้อยละ 40 ของค่าธรรมเนียมการจัดการที่เรียกเก็บจากกองทุน ให้กับหน่วยงานที่ส่งเสริมธรรมาภิบาลไทย และหรือหน่วยงานที่ส่งเสริมการต่อต้านคอร์รัปชั่น และหรือองค์กรอื่นใดที่เกี่ยวเนื่องกับหน่วยงานดังกล่าว"
+        },
+        "unitholderFees": {
+          "frontEndFeeRate": {
+            "max": 2.0,
+            "actual": 0.0
+          },
+          "backEndFeeRate": {
+            "max": 2.0,
+            "actual": 0.0
+          },
+          "switchingInFeeRate": null,
+          "switchingOutFeeRate": null,
+          "transferFeeRate": null,
+          "remark": "ค่าธรรมเนียมดังกล่าวรวมภาษีมูลค่าเพิ่ม ภาษีธุรกิจเฉพาะ หรือภาษีอื่นใดแล้ว\r\n- บริษัทจัดการอาจพิจารณาเปลี่ยนแปลงค่าธรรมเนียมที่เรียกเก็บจริง เพื่อให้สอดคล้องกับกลยุทธ์หรือค่าใช้จ่ายในการบริหารจัดการ\r\n- ค่าธรรมเนียมการสับเปลี่ยนเข้า : เท่ากับค่าธรรมเนียมการขาย\r\n- ค่าธรรมเนียมการสับเปลี่ยนออก \r\n- สับเปลี่ยนไป RMF ภายใน บลจ.กสิกรไทย : ปัจจุบันไม่เรียกเก็บ\r\n- สับเปลี่ยนไป RMF บลจ.อื่น : 1.00% ของมูลค่าหน่วยลงทุนของวันทำการล่าสุดหรือจำนวนเงินที่สับเปลี่ยน แล้วแต่กรณี\r\n- สับเปลี่ยนไปกองทุนอื่นภายใต้ บลจ. กสิกรไทย : อัตราเท่ากับค่าธรรมเนียมการรับซื้อคืนหน่วยลงทุนของกองทุนต้นทางหรือค่าธรรมเนียมการขายหน่วยลงทุนของกองทุนปลายทางแล้วแต่อัตราใดจะสูงกว่า"
+        }
+      }
+    }
+  }
+}

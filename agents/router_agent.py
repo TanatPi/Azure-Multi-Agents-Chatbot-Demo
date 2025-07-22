@@ -5,6 +5,7 @@ from semantic_kernel.functions.kernel_arguments import KernelArguments
 from semantic_kernel.connectors.ai.open_ai import AzureChatCompletion, AzureChatPromptExecutionSettings
 from semantic_kernel import Kernel
 
+
 # === Load Azure credentials ===
 deployment = "gpt-4.1-mini"
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")

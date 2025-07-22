@@ -23,11 +23,13 @@ from agents.txt_rag_agent import (
 )
 from agents.orchestrator_agent import get_orchestrator_agent
 from agents.keyword_extractor_agent import get_keyword_extractor_agent
-
+from agents.fundfact_linguistic_rag_agent import get_fundfact_linguistic_rag_agent
+from agents.fundfact_coder_rag_agent import get_fundfact_coder_rag_agent
+from semantic_kernel.agents import ChatHistoryAgentThread
 
 # === Initialize Streamlit UI ===
-st.set_page_config(page_title="JOHN-AI Chatbot", page_icon="💬", layout="wide")
-st.title("💬 JOHN-AI Chatbot")
+st.set_page_config(page_title="WIN-AI Chatbot", page_icon="💬", layout="wide")
+st.title("💬 WIN-AI Chatbot")
 
 # === Initialize session state for agent and memory ===
 if "thread" not in st.session_state:
@@ -38,7 +40,7 @@ if "initialized" not in st.session_state:
     st.session_state.initialized = False
     # Add welcome message only once (when chat_history is first created)
     with st.chat_message("assistant"):
-        welcome_message = "👋 สวัสดีครับ! ผมชื่อจอห์น หากคุณมีคำถามเกี่ยวกับข่าวสารเศรษฐกิจ การลงทุน หรือ อื่น ๆ สามารถสอบถามได้เลยครับ!"
+        welcome_message = "👋 สวัสดีครับ! ผมชื่อวินัย (WIN-AI) หากคุณมีคำถามเกี่ยวกับข่าวสารเศรษฐกิจ การลงทุน หรือ KAsset สามารถสอบถามได้เลยครับ!"
         st.markdown(welcome_message)
 # agents
 if "router_agent" not in st.session_state:
@@ -47,6 +49,12 @@ if "reply_agent" not in st.session_state:
     st.session_state.reply_agent = None
 if "news_orchestrator_agent" not in st.session_state:
     st.session_state.news_orchestrator_agent = None
+if "fundfact_orchestrator_agent" not in st.session_state:
+    st.session_state.fundfact_orchestrator_agent = None
+if "fundfact_coder_rag_agent" not in st.session_state:
+    st.session_state.fundfact_coder_rag_agent = None
+if "fundfact_linguistic_rag_agent" not in st.session_state:
+    st.session_state.fundfact_linguistic_rag_agent = None
 if "pdf_rag_agent" not in st.session_state:
     st.session_state.pdf_rag_agent = None
 if "callcenter_rag_agent" not in st.session_state:
@@ -87,10 +95,13 @@ async def initialize_agents():
         "reply_agent": get_reply_agent(kernel),
         "keyword_extractor_agent": get_keyword_extractor_agent(kernel),
         "news_orchestrator_agent": get_orchestrator_agent(kernel,"news_orchestrator"),
+        "fundfact_orchestrator_agent": get_orchestrator_agent(kernel,"fundfact_orchestrator"),
+        "fundfact_linguistic_rag_agent": await get_fundfact_linguistic_rag_agent(),
+        "fundfact_coder_rag_agent": await get_fundfact_coder_rag_agent()
     }
     st.session_state.agents = agents
+    st.session_state.thread: ChatHistoryAgentThread = None
     st.session_state.initialized = True
-
 # === Force sync for async init at top ===
 if not st.session_state.initialized:
     asyncio.run(initialize_agents())
@@ -126,24 +137,26 @@ if user_query:
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             start_time = time.time()
-            
+            # Create an empty markdown box to stream into
+            streamed_output_container = st.empty()
             # Run async logic in sync context
             (response, chat_history, thread, user_thread, rag_prompt, rag_completion, 
              orch_prompt, orch_completion, keyword_prompt, keyword_completion, input_tokens_reply, output_tokens_reply,
-                      input_tokens_router, output_tokens_router )= asyncio.run(
-                get_agent_response(
-                    user_query,
-                    st.session_state.chat_history,
-                    st.session_state.thread,
-                    st.session_state.user_thread,
-                    st.session_state.agents,
-                )
+                    input_tokens_router, output_tokens_router, has_streamed)= asyncio.run(
+                        get_agent_response(
+                            user_query,
+                            st.session_state.chat_history,
+                            st.session_state.thread,
+                            st.session_state.user_thread,
+                            st.session_state.agents,
+                            streamed_output_container
+                        )
             )
 
             end_time = time.time()
             total_time = end_time - start_time
-
-            st.markdown(response)
+            if not has_streamed:
+                st.markdown(response)
             st.session_state.thread = thread
             st.session_state.user_thread = user_thread
             st.session_state.chat_history = chat_history
