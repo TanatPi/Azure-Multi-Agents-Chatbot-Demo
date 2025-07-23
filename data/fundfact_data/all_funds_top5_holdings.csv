@@ -1,0 +1,722 @@
+fund_name,rank,holding_name,ratio
+KPVDSF,1,พันธบัตร (CBF25512A),5.61
+KPVDSF,2,พันธบัตร (CBF25616A),5.44
+KPVDSF,3,พันธบัตร (CBF25513A),5.08
+KPVDSF,4,หุ้นกู้ (SCGC259A),5.04
+KPVDSF,5,หุ้นกู้ (MTC266E),4.42
+K-ESGSI-ThaiESG,1,พันธบัตร (ESGLB35DA),42.36
+K-ESGSI-ThaiESG,2,พันธบัตร (ESGLB376A),22.2
+K-ESGSI-ThaiESG,3,พันธบัตร (SLB406A),16.45
+K-ESGSI-ThaiESG,4,พันธบัตร (LB436A),6.61
+K-ESGSI-ThaiESG,5,พันธบัตร (LB456A),5.29
+KPVDFI,1,พันธบัตร (LB336A),8.13
+KPVDFI,2,หุ้นกู้ (SCGC279A),4.88
+KPVDFI,3,พันธบัตร (LB31DA),4.69
+KPVDFI,4,เงินฝาก ธนาคารอาคารสงเคราะห์,3.67
+KPVDFI,5,พันธบัตร (LB353A),3.36
+K70LTF-A(D),1,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,28.44
+K70LTF-A(D),2,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,7.95
+K70LTF-A(D),3,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,6.62
+K70LTF-A(D),4,หุ้น บมจ.ซีพี ออลล์,5.06
+K70LTF-A(D),5,หุ้น บมจ.ธนาคารกรุงไทย,3.77
+K-SELECT,1,เงินฝาก บมจ.ธนาคารกรุงเทพ,18.56
+K-SELECT,2,หุ้น บมจ. เมืองไทย แคปปิตอล,9.78
+K-SELECT,3,หุ้น บมจ.ทรูคอร์ปอเรชั่น,9.43
+K-SELECT,4,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,9.04
+K-SELECT,5,หุ้น บมจ.ซีพี ออลล์,7.17
+K-AHYA-UI,1,"LO-Asia Diversified High Yield Bond,X1 (USD) IA",97.35
+K-AHYA-UI,2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),1.8
+K-FIRMF,1,พันธบัตร (LB336A),6.69
+K-FIRMF,2,หุ้นกู้ (SCGC279A),5.81
+K-FIRMF,3,หุ้นกู้ (TIDLOR278B),3.56
+K-FIRMF,4,หุ้นกู้ (WHA283B),3.12
+K-FIRMF,5,พันธบัตร (LB26DA),3.09
+K-WPSPARK,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนทั่วไป,35.06
+K-WPSPARK,2,JPM Global Select Equity I (acc) - USD,11.19
+K-WPSPARK,3,JPM US Select Equity Fund – I Acc USD,9.7
+K-WPSPARK,4,JPMorgan Funds US Equity All Cap Fund I (acc)-USD,6.07
+K-WPSPARK,5,JPM Europe Equity I (acc) - EUR,5.31
+K-PLAN2,1,พันธบัตร (CB26108A),5.64
+K-PLAN2,2,พันธบัตร (CB26205A),5.32
+K-PLAN2,3,SPDR S&P500 ETF,4.92
+K-PLAN2,4,Invesco Nasdaq 100 ETF,4.49
+K-PLAN2,5,พันธบัตร (CBF25O14A),2.88
+K-WPSPEEDRMF,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนทั่วไป,21.36
+K-WPSPEEDRMF,2,JPM Global Select Equity I (acc) - USD,15.8
+K-WPSPEEDRMF,3,JPM US Select Equity Fund – I Acc USD,15.63
+K-WPSPEEDRMF,4,JPMorgan Funds US Equity All Cap Fund I (acc)-USD,8.05
+K-WPSPEEDRMF,5,JPM Europe Equity I (acc) - EUR,6.87
+K-S50RMF,1,หุ้น บมจ.เดลต้า อีเลคโทรนิคส์(ประเทศไทย),10.96
+K-S50RMF,2,หุ้น บมจ.ปตท.,7.94
+K-S50RMF,3,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,7.87
+K-S50RMF,4,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,7.82
+K-S50RMF,5,หุ้น บมจ.ท่าอากาศยานไทย,4.9
+K-MVEQ,1,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,9.21
+K-MVEQ,2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,8.15
+K-MVEQ,3,เงินฝาก บมจ.ธนาคารกรุงเทพ,7.64
+K-MVEQ,4,หุ้น บมจ.ทิสโก้ไฟแนนเชียลกรุ๊ป,7.06
+K-MVEQ,5,หุ้น บมจ.ปตท.,6.04
+K-GPROP-A(A),1,"Janus Henderson Horizon Global Property Equities Fund,Class H3q USD",97.77
+K-GPROP-A(A),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,1.45
+K-GPROP-A(A),3,เงินฝาก The Bank of New York Mellon SA/NV,1.09
+K-GPROP-A(A),4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.01
+K-JPX-A(A),1,Next Funds Topix Exchange Traded Fund,101.96
+K-JPX-A(A),2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),2.21
+K-JPX-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.07
+K-HIT-A(A),1,Allianz Thematica-P,102.44
+K-HIT-A(A),2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),2.02
+K-HIT-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.3
+K-HIT-A(A),4,เงินฝาก Clearsteam Banking Luxembourg,0.03
+K-AB22A,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนสถาบันพิเศษ,60.76
+K-AB22A,2,กองทุนเปิดเค หุ้นกู้ ชนิดผู้ลงทุนสถาบันพิเศษ,20.39
+K-AB22A,3,หุ้นกู้ (NCPT100053),6.4
+K-AB22A,4,พันธบัตร (CBF26119A),6.04
+K-AB22A,5,เงินฝาก บมจ.ธนาคารกรุงเทพ,3.85
+K-INDIA-A(A),1,Goldman Sachs India Equity Portfolio,98.84
+K-INDIA-A(A),2,เงินฝาก บมจ.ธนาคารกสิกรไทย,3.86
+K-INDIA-A(A),3,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.24
+K-INDIA-A(A),4,เงินฝาก The Bank of New York Mellon SA/NV,0.37
+K-GINFRA-A(D),1,Wellington Enduring Asset fund,96.66
+K-GINFRA-A(D),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,4.92
+K-GINFRA-A(D),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,1.99
+K-GINFRA-A(D),4,เงินฝาก JP MORGAN CHASE BANK,0.01
+K-GINFRA-A(D),5,เงินฝาก The Bank of New York Mellon SA/NV,0.01
+K-GHRMF,1,JP Morgan Funds - Global Healthcare Fund (JPHLUAA LX),96.66
+K-GHRMF,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.1
+K-GHRMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.09
+K-GEMO,1,SISF GLOBAL EMERGING MARKET OPPORTUNITIES,96.87
+K-GEMO,2,เงินฝาก ธนาคารซิตี้แบงก์ เอ็น เอ,2.89
+K-GEMO,3,เงินฝาก ธนาคารซิตี้แบงก์ เอ็น เอ,0.13
+K-GEMO,4,เงินฝาก ธนาคารซิตี้แบงก์ เอ็น เอ,0.01
+K-GEMO,5,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.01
+K-VALUE,1,หุ้น บมจ.ธนาคารกสิกรไทย,9.32
+K-VALUE,2,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,9.31
+K-VALUE,3,หุ้น บมจ.ปตท.สำรวจและผลิตปิโตรเลียม,9.2
+K-VALUE,4,หุ้น บมจ.ธนาคารกรุงไทย,8.67
+K-VALUE,5,หุ้น บมจ.ปตท.,8.38
+KASF,1,พันธบัตร (CB25D11A),11.76
+KASF,2,พันธบัตร (CBF25714A),9.8
+KASF,3,พันธบัตร (CB25N06A),8.83
+KASF,4,พันธบัตร (CBF25O14A),7.95
+KASF,5,พันธบัตร (CBF25616A),6.95
+K-PROPIRMF,1,หุ้น Link REIT,10.05
+K-PROPIRMF,2,หุ้น Ascendas Real Estate Investment Trust,8.52
+K-PROPIRMF,3,หุ้น ทรัสต์เพื่อการลงทุนในอสังหาริมทรัพย์และสิทธิการเช่าอสังหาริมทรัพย์เพื่ออุตสาหกรรมเฟรเซอร์ส พร็อพเพอร์ตี้,8.04
+K-PROPIRMF,4,หุ้น Capitaland MallTrust,7.91
+K-PROPIRMF,5,หุ้น ทรัสต์เพื่อการลงทุนในอสังหาริมทรัพย์และสิทธิการเช่า แอ็กซ์ตร้า ฟิวเจอร์ ซิตี้,7.89
+K-PLAN3,1,SPDR S&P500 ETF,8.42
+K-PLAN3,2,Invesco Nasdaq 100 ETF,8.16
+K-PLAN3,3,พันธบัตร (CB26205A),5.04
+K-PLAN3,4,iShares India 50 ETF (INDY US Equity),4.18
+K-PLAN3,5,หุ้น บมจ.ซีพี ออลล์,3.93
+K20SLTF-A(D),1,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,15.63
+K20SLTF-A(D),2,หุ้น บมจ. เซ็นทรัลพัฒนา,10.02
+K20SLTF-A(D),3,หุ้น บมจ.ซีพี ออลล์,8.04
+K20SLTF-A(D),4,หุ้น บมจ.ทรูคอร์ปอเรชั่น,8.02
+K20SLTF-A(D),5,หุ้น บมจ.ธนาคารกรุงไทย,7.71
+K-TREASURY,1,พันธบัตร (CB25717A),9.02
+K-TREASURY,2,พันธบัตร (CB25515A),7.04
+K-TREASURY,3,พันธบัตร (CB25612A),6.29
+K-TREASURY,4,พันธบัตร (CBF25714B),5.79
+K-TREASURY,5,พันธบัตร (CB25724A),5.46
+K-CHANGE-A(A),1,Baillie Gifford Positive Change Fund,100.85
+K-CHANGE-A(A),2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.29
+K-CHANGE-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.04
+K-2510,1,พันธบัตร (CB25D11A),8.56
+K-2510,2,พันธบัตร (CBF26427A),7.07
+K-2510,3,หุ้นกู้ (TBEV26NA),6.09
+K-2510,4,หุ้นกู้ (BJC276A),5.78
+K-2510,5,หุ้นกู้ (TIDLOR258A),4.68
+K-2530,1,พันธบัตร (LB29DA),7.45
+K-2530,2,หุ้นกู้ (TBEV26NA),5.14
+K-2530,3,พันธบัตร (LB31DA),4.07
+K-2530,4,หุ้นกู้ (BSRC281A),3.23
+K-2530,5,พันธบัตร (LB284A),3.23
+K-APB-A(A),1,Lombard Odier Funds SICAV-Asia Value Bond SHS N USD Unhedged-Capitalisation,95.98
+K-APB-A(A),2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),2.78
+K-APB-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.83
+K-APB-A(A),4,เงินฝาก JP MORGAN CHASE BANK,0.02
+KSDLTF,1,หุ้น บมจ.ปตท.,8.18
+KSDLTF,2,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,7.11
+KSDLTF,3,หุ้น บมจ.ซีพี ออลล์,6.06
+KSDLTF,4,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,6.0
+KSDLTF,5,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,5.63
+K-CHANGERMF,1,Baillie Gifford Positive Change Fund,101.17
+K-CHANGERMF,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,1.89
+K-CHANGERMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.02
+K-CHANGERMF,4,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,0.01
+K-GARMF,1,BGF-GLOBAL ALLOCATION FUND A2,96.85
+K-GARMF,2,เงินฝาก ธนาคารซิตี้แบงก์ เอ็น เอ,2.43
+K-GARMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.03
+K-GARMF,4,เงินฝาก ธนาคารซิตี้แบงก์ เอ็น เอ,0.01
+KACB,1,พันธบัตร (CBF25O14A),5.72
+KACB,2,พันธบัตร (CB26205A),5.48
+KACB,3,พันธบัตร (CB26305A),4.81
+KACB,4,หุ้นกู้ (GULF299A),3.75
+KACB,5,พันธบัตร (CB26402A),3.08
+K-GSTEPB,1,พันธบัตร (US912803CG62),59.74
+K-GSTEPB,2,Amundi Index Euro Corporate SRI- UCITS ETF DR- EUR- FP,14.8
+K-GSTEPB,3,พันธบัตร (US912797PT86),2.52
+K-GSTEPB,4,Amundi Index US Corp SRI UCITS ETF,2.46
+K-GSTEPB,5,Amundi Euro High Yield Liquid Bond IBOXX (C),2.46
+K-INDX,1,iShares India 50 ETF (INDY US Equity),96.87
+K-INDX,2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),2.76
+K-INDX,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.45
+K-INDX,4,เงินฝาก JP MORGAN CHASE BANK,0.03
+K-BLRMF,1,พันธบัตร (CB26205A),5.78
+K-BLRMF,2,พันธบัตร (CB26108A),5.33
+K-BLRMF,3,หุ้นกู้ (IVL26NA),3.65
+K-BLRMF,4,พันธบัตร (ILB283A),3.61
+K-BLRMF,5,พันธบัตร (CBF25513A),3.28
+K-PROPI-A(D),1,หุ้น Link REIT,10.31
+K-PROPI-A(D),2,หุ้น Ascendas Real Estate Investment Trust,8.49
+K-PROPI-A(D),3,หุ้น ทรัสต์เพื่อการลงทุนในอสังหาริมทรัพย์และสิทธิการเช่าอสังหาริมทรัพย์เพื่ออุตสาหกรรมเฟรเซอร์ส พร็อพเพอร์ตี้,8.01
+K-PROPI-A(D),4,หุ้น Capitaland MallTrust,7.9
+K-PROPI-A(D),5,หุ้น ทรัสต์เพื่อการลงทุนในอสังหาริมทรัพย์และสิทธิการเช่า แอ็กซ์ตร้า ฟิวเจอร์ ซิตี้,7.87
+K-WPSPEEDUP,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนทั่วไป,21.53
+K-WPSPEEDUP,2,JPM Global Select Equity I (acc) - USD,16.09
+K-WPSPEEDUP,3,JPM US Select Equity Fund – I Acc USD,14.04
+K-WPSPEEDUP,4,JPMorgan Funds US Equity All Cap Fund I (acc)-USD,8.45
+K-WPSPEEDUP,5,JPM Europe Equity I (acc) - EUR,7.23
+K-ALLGR-UI-A(A),1,"LO Funds- All Roads Growth,Syst .NAV Hdg, (USD) I",96.76
+K-ALLGR-UI-A(A),2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),1.71
+K-ALLGR-UI-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.07
+K-ALLGR-UI-A(A),4,เงินฝาก JP MORGAN CHASE BANK,0.01
+K-GB-A(D),1,JPM Aggregate Bond I (acc) - USD,96.72
+K-GB-A(D),2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.72
+K-GB-A(D),3,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,0.03
+K-GB-A(D),4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.01
+K-EUROPE-A(D),1,Allianz Europe Equity Growth Fund. Class AT-EUR,100.06
+K-EUROPE-A(D),2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.89
+K-EUROPE-A(D),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.3
+K-ALLRD-UI-A(A),1,"LO Funds - All Roads, Syst. NAV Hdg, (USD), I Class A",95.98
+K-ALLRD-UI-A(A),2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.9
+K-ALLRD-UI-A(A),3,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,0.01
+K-ALLRD-UI-A(A),4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.01
+K-MONEY,1,พันธบัตร (CBF25714B),6.31
+K-MONEY,2,พันธบัตร (CBF25O20A),5.04
+K-MONEY,3,พันธบัตร (CBF25O06A),5.01
+K-MONEY,4,พันธบัตร (CB25502A),4.55
+K-MONEY,5,เงินฝาก Agricultural Bank Of China,4.53
+K-MIDSMALL,1,หุ้น บมจ. เมืองไทย แคปปิตอล,7.83
+K-MIDSMALL,2,หุ้น บมจ.การบินกรุงเทพ,6.1
+K-MIDSMALL,3,หุ้น บมจ. แพลน บี มีเดีย,5.96
+K-MIDSMALL,4,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),5.59
+K-MIDSMALL,5,หุ้น บมจ.คาราบาวกรุ๊ป,5.57
+K-FIXED-A,1,พันธบัตร (LB456A),5.24
+K-FIXED-A,2,พันธบัตร (LB336A),4.67
+K-FIXED-A,3,พันธบัตร (LB353A),4.59
+K-FIXED-A,4,เงินฝาก บมจ.ธนาคารกรุงเทพ,4.48
+K-FIXED-A,5,พันธบัตร (LB346A),3.45
+K-USARMF,1,Brown Advisory U.S. Sustainable Growth Fund,96.56
+K-USARMF,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.45
+K-USARMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.17
+K-USARMF,4,เงินฝาก The Bank of New York Mellon SA/NV,0.02
+K-GINCOME-A(A),1,JPMorgan Global Income Fund Class I (mth) - USD (hedged),96.87
+K-GINCOME-A(A),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,1.39
+K-GINCOME-A(A),3,เงินฝาก The Bank of New York Mellon SA/NV,0.99
+K-GINCOME-A(A),4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.04
+K-FEQ,1,เงินฝาก บมจ.ธนาคารกรุงเทพ,16.55
+K-FEQ,2,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,7.93
+K-FEQ,3,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,6.83
+K-FEQ,4,หุ้น บมจ.ซีพี ออลล์,5.52
+K-FEQ,5,หุ้น บมจ.ไมเนอร์ อินเตอร์เนชั่นแนล,4.24
+KAEQ,1,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,9.71
+KAEQ,2,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,9.43
+KAEQ,3,หุ้น บมจ.ซีพี ออลล์,6.45
+KAEQ,4,เงินฝาก บมจ.ธนาคารกรุงเทพ,4.47
+KAEQ,5,หุ้น บมจ.ทรูคอร์ปอเรชั่น,4.32
+K-FI22J,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนสถาบันพิเศษ,62.35
+K-FI22J,2,กองทุนเปิดเค หุ้นกู้ ชนิดผู้ลงทุนสถาบันพิเศษ,15.93
+K-FI22J,3,หุ้นกู้ (NCPT100053),10.73
+K-FI22J,4,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,4.02
+K-FI22J,5,พันธบัตร (CBF25714A),3.12
+K-ALPHA-AGG-UI,1,กองทุนเปิดเค ALL-EN ห้ามขายผู้ลงทุนรายย่อย-A ชนิดสะสมมูลค่า,58.8
+K-ALPHA-AGG-UI,2,กองทุนเปิดเค โกลบอล เฮลท์แคร์ หุ้นทุน,5.93
+K-ALPHA-AGG-UI,3,กองทุนเปิดเค ตราสารหนี้ พลัส ชนิดผู้ลงทุนทั่วไป,5.13
+K-ALPHA-AGG-UI,4,กองทุนเปิดพรินซิเพิล เวียดนาม อิควิตี้ ชนิดผู้ลงทุนกลุ่ม,3.53
+K-ALPHA-AGG-UI,5,SPDR GOLD TRUST,3.12
+K-GPINUH-A(A),1,JPMorgan ETFs (Ireland) ICAV - Global Equity Premium Income UCITS ETF - USD,96.9
+K-GPINUH-A(A),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.5
+K-GPINUH-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.14
+K-GPINUH-A(A),4,เงินฝาก JP MORGAN CHASE BANK,0.05
+K-PLANET-A(A),1,"LO Funds - Climate Transition (USD), I Class A",97.56
+K-PLANET-A(A),2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.0
+K-PLANET-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.3
+K-GTECHRMF,1,Threadneedle Lux - Global Technology,96.31
+K-GTECHRMF,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.24
+K-GTECHRMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.36
+K-GTECHRMF,4,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,0.01
+K-GOLD-A(A),1,SPDR GOLD TRUST,97.47
+K-GOLD-A(A),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,1.88
+K-GOLD-A(A),3,เงินฝาก The Bank of New York Mellon SA/NV,0.01
+K-GOLD-A(A),4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.01
+K-ASIA,1,Templeton Asian Smaller Companies Fund - I(acc) USD ,97.69
+K-ASIA,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,1.99
+K-ASIA,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.22
+K-WORLDX,1,ISHARES MSCI ACWI INDEX FUND,97.77
+K-WORLDX,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,1.99
+K-WORLDX,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.09
+K-WORLDX,4,เงินฝาก The Bank of New York Mellon SA/NV,0.03
+K-GLOBE,1,Invesco Nasdaq 100 ETF,40.15
+K-GLOBE,2,SPDR S&P500 ETF,29.98
+K-GLOBE,3,ISHARES CORE EURO STOXX 50 UCITS ETF (DE),6.97
+K-GLOBE,4,เงินฝาก ธนาคารซิตี้แบงก์ เอ็น เอ,3.85
+K-GLOBE,5,iShares India 50 ETF (INDY US Equity),2.97
+K-GIFRMF,1,Wellington Enduring Asset fund,96.74
+K-GIFRMF,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.58
+K-GIFRMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.23
+K-GSELECT,1,JPMorgan Global Select Equity ETF,95.4
+K-GSELECT,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,4.18
+K-GSELECT,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.27
+K-GSELECT,4,เงินฝาก JP MORGAN CHASE BANK,0.05
+K-STEQ-A(A),1,เงินฝาก บมจ.ธนาคารกรุงเทพ,10.87
+K-STEQ-A(A),2,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,9.08
+K-STEQ-A(A),3,หุ้น บมจ.ซีพี ออลล์,8.31
+K-STEQ-A(A),4,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,7.02
+K-STEQ-A(A),5,หุ้น บมจ.เดลต้า อีเลคโทรนิคส์(ประเทศไทย),5.79
+K-AHYB-UI,1,"LO-Asia Diversified High Yield Bond,X1 (USD) IA",97.82
+K-AHYB-UI,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,1.76
+K-AHYB-UI,3,เงินฝาก The Bank of New York Mellon SA/NV,0.01
+K-SEMQ,1,Templeton Emerging Markets Fund,97.56
+K-SEMQ,2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),1.97
+K-SEMQ,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.08
+K-SEMQ,4,เงินฝาก JP MORGAN CHASE BANK,0.01
+K-GBRMF,1,พันธบัตร (LB336A),17.21
+K-GBRMF,2,พันธบัตร (ILB283A),5.38
+K-GBRMF,3,พันธบัตร (CBF26216A),4.86
+K-GBRMF,4,พันธบัตร (LB346A),4.38
+K-GBRMF,5,พันธบัตร (LB353A),4.08
+K-ICT,1,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,55.14
+K-ICT,2,หุ้น บมจ.ทรูคอร์ปอเรชั่น,26.3
+K-ICT,3,หุ้น กองทุนรวมโครงสร้างพื้นฐานโทรคมนาคม ดิจิทัล,5.49
+K-ICT,4,กองทุนรวมโครงสร้างพื้นฐานบรอดแบนด์อินเทอร์เน็ต สามบีบี,2.99
+K-ICT,5,หุ้น บริษัท จัสมิน เทเลคอม ซิสเต็มส์ จำกัด (มหาชน) ,1.83
+K-US500XRMF,1,iShares Core S&P 500 ETF,95.5
+K-US500XRMF,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,3.22
+K-US500XRMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.11
+K-US500XRMF,4,"เงินฝาก JP Morgan Chase Bank, N.A.",0.02
+K-FI22G,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนสถาบันพิเศษ,62.5
+K-FI22G,2,กองทุนเปิดเค หุ้นกู้ ชนิดผู้ลงทุนสถาบันพิเศษ,20.07
+K-FI22G,3,หุ้นกู้ (NCPT100053),8.21
+K-FI22G,4,พันธบัตร (CBF25714A),3.95
+K-FI22G,5,พันธบัตร (CBF26119A),3.45
+K-THAICGRMF,1,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,9.16
+K-THAICGRMF,2,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,9.04
+K-THAICGRMF,3,หุ้น บมจ.ซีพี ออลล์,8.19
+K-THAICGRMF,4,หุ้น บมจ.ไทยออยล์,5.27
+K-THAICGRMF,5,หุ้น บมจ. พีทีที โกลบอล เคมิคอล,4.29
+K-2520,1,พันธบัตร (LB27NA),5.62
+K-2520,2,พันธบัตร (CB25D11A),4.91
+K-2520,3,หุ้นกู้ (TBEV26NA),4.8
+K-2520,4,หุ้นกู้ (BJC276A),4.26
+K-2520,5,พันธบัตร (LB29DA),3.48
+K-ALLBASIC,1,"LO Funds - All Roads Conservative,Stst. NAV Hdg,(USD)",65.67
+K-ALLBASIC,2,"LO Funds- All Roads Growth,Syst .NAV Hdg, (USD) I",28.68
+K-ALLBASIC,3,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),4.83
+K-ALLBASIC,4,เงินฝาก JP MORGAN CHASE BANK,0.02
+K-ALLBASIC,5,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.02
+K-INDIARMF,1,Goldman Sachs India Equity Portfolio,96.34
+K-INDIARMF,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.38
+K-INDIARMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,1.7
+K-INDIARMF,4,เงินฝาก JP MORGAN CHASE BANK,0.78
+KPVDEQ,1,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,8.72
+KPVDEQ,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,7.54
+KPVDEQ,3,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,6.7
+KPVDEQ,4,หุ้น บมจ.ซีพี ออลล์,6.5
+KPVDEQ,5,หุ้น บมจ.เดลต้า อีเลคโทรนิคส์(ประเทศไทย),4.26
+KMSLTF-A(A),1,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,8.64
+KMSLTF-A(A),2,หุ้น บมจ. เมืองไทย แคปปิตอล,7.98
+KMSLTF-A(A),3,หุ้น บมจ.การบินกรุงเทพ,6.12
+KMSLTF-A(A),4,หุ้น บมจ. แพลน บี มีเดีย,5.8
+KMSLTF-A(A),5,หุ้น บมจ.ศักดิ์สยามลิสซิ่ง,5.51
+K-SF-A,1,พันธบัตร (CB26402A),4.59
+K-SF-A,2,พันธบัตร (CB25D11A),3.32
+K-SF-A,3,พันธบัตร (CB26108A),2.91
+K-SF-A,4,พันธบัตร (CB26305A),2.87
+K-SF-A,5,พันธบัตร (CB25619A),2.38
+K-AHYC-UI,1,"LO-Asia Diversified High Yield Bond,X1 (USD) IA",97.74
+K-AHYC-UI,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,1.96
+K-VIETNAM-SSF,1,กองทุนเปิดเค เวียดนาม หุ้นทุน,93.52
+K-VIETNAM-SSF,2,เงินฝาก ธนาคารฮ่องกงและเซี่ยงไฮ้แบงกิ้งคอร์ปอเรชั่น จำกัด,3.74
+K-VIETNAM-SSF,3,หุ้น ใบแสดงสิทธิในผลประโยชน์ E1VFVN30,2.84
+K-VIETNAM-SSF,4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.01
+K-2035RMF,1,Capital Group New Perspective Fund (LUX) Class Z,14.55
+K-2035RMF,2,Capital Group Global Equity Fund (LUX) Class Z,11.59
+K-2035RMF,3,Capital Group New Economy Fund (LUX) Class Z,11.46
+K-2035RMF,4,Capital Group World Growth and Income (LUX) Class Z,9.57
+K-2035RMF,5,Capital Group Global Allocation Fund (LUX) Class Z,7.69
+K-EUSMALL,1,Invesco Continental European Small Cap Equity Fund,100.4
+K-EUSMALL,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.32
+K-EUSMALL,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.01
+K-EUSMALL,4,เงินฝาก The Bank of New York Mellon SA/NV,0.01
+K-BANKING,1,หุ้น บมจ.เอสซีบี เอกซ์,19.86
+K-BANKING,2,หุ้น บมจ.ธนาคารกสิกรไทย,18.84
+K-BANKING,3,หุ้น บมจ.ธนาคารกรุงไทย,15.16
+K-BANKING,4,หุ้น บมจ.ธนาคารกรุงเทพ,13.3
+K-BANKING,5,หุ้น บมจ.ธนาคารทหารไทย,8.88
+K-GHEALTH(UH),1,JP Morgan Funds - Global Healthcare Fund (JPHLUAA LX),97.8
+K-GHEALTH(UH),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.13
+K-GHEALTH(UH),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.32
+K-ENERGY,1,หุ้น บมจ.ปตท.,30.38
+K-ENERGY,2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,24.88
+K-ENERGY,3,หุ้น บมจ.ปตท.สำรวจและผลิตปิโตรเลียม,13.54
+K-ENERGY,4,หุ้น บมจ.ปตท. น้ำมันและการค้าปลีก,5.97
+K-ENERGY,5,หุ้น บมจ. โกลบอล เพาเวอร์ ซินเนอร์ยี่,3.02
+K-GDBOND-A(A),1,Nomura Funds Ireland-Global Dynamic Bond Fund Class I USD,95.48
+K-GDBOND-A(A),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,3.13
+K-GDBOND-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.6
+K-GDBOND-A(A),4,เงินฝาก The Bank of New York Mellon SA/NV,0.01
+K-CHINA-A(A),1,JPM China I (acc) - USD,98.96
+K-CHINA-A(A),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.12
+K-CHINA-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.07
+K-WPBALANCED,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนทั่วไป,44.24
+K-WPBALANCED,2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),9.35
+K-WPBALANCED,3,JPM Global Select Equity I (acc) - USD,7.43
+K-WPBALANCED,4,JPM US Select Equity Fund – I Acc USD,6.51
+K-WPBALANCED,5,JPM Global Aggregate Bond I (acc) - USD,5.65
+K-2500,1,พันธบัตร (CB25703B),15.47
+K-2500,2,เงินฝาก บมจ.ธนาคารกสิกรไทย,13.03
+K-2500,3,พันธบัตร (CBF26427A),9.01
+K-2500,4,เงินฝาก ธนาคารอาคารสงเคราะห์,7.75
+K-2500,5,หุ้นกู้ (TIDLOR258A),5.97
+K-SGM,1,LO-Short Term Money Market (USD),53.16
+K-SGM,2,"เงินฝาก JP Morgan Chase Bank, N.A.",7.15
+K-SGM,3,iShares Global Gov BND-USDHA,7.05
+K-SGM,4,LYXOR CORE US TRS 10,7.04
+K-SGM,5,LOF Global BBB-BB Fundamental(LOFGUIA LX),5.96
+K-WORLDXRMF,1,ISHARES MSCI ACWI INDEX FUND,95.3
+K-WORLDXRMF,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,5.91
+K-WORLDXRMF,3,เงินฝาก JP MORGAN CHASE BANK,0.36
+K-WORLDXRMF,4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.21
+K-PLANETRMF,1,"LO Funds - Climate Transition (USD), I Class A",96.65
+K-PLANETRMF,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.44
+K-PLANETRMF,3,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,0.25
+K-PLANETRMF,4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.22
+K-USA-A(A),1,Brown Advisory U.S. Sustainable Growth Fund,98.06
+K-USA-A(A),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,1.71
+K-USA-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.31
+K-FI22H,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนสถาบันพิเศษ,65.38
+K-FI22H,2,หุ้นกู้ (NCPT100053),10.38
+K-FI22H,3,พันธบัตร (CBF26119A),9.5
+K-FI22H,4,กองทุนเปิดเค หุ้นกู้ ชนิดผู้ลงทุนสถาบันพิเศษ,7.49
+K-FI22H,5,เงินฝาก บมจ.ธนาคารกรุงเทพ,7.27
+K-CASH,1,พันธบัตร (CB25717A),8.91
+K-CASH,2,พันธบัตร (CB25515A),8.26
+K-CASH,3,พันธบัตร (CBF25714B),6.07
+K-CASH,4,พันธบัตร (CB25703B),6.03
+K-CASH,5,พันธบัตร (CBF25O06A),5.07
+K-WPBALRMF,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนทั่วไป,43.88
+K-WPBALRMF,2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),10.08
+K-WPBALRMF,3,JPM Global Select Equity I (acc) - USD,7.53
+K-WPBALRMF,4,JPM US Select Equity Fund – I Acc USD,6.44
+K-WPBALRMF,5,JPM Global Aggregate Bond I (acc) - USD,5.68
+K-WPLIGHT,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนทั่วไป,52.26
+K-WPLIGHT,2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),13.6
+K-WPLIGHT,3,JPM Global Aggregate Bond I (acc) - USD,7.25
+K-WPLIGHT,4,JPM Global Select Equity I (acc) - USD,4.06
+K-WPLIGHT,5,JPM US Select Equity Fund – I Acc USD,3.5
+K-FIXEDPLUS-A,1,พันธบัตร (LB353A),5.74
+K-FIXEDPLUS-A,2,พันธบัตร (LB456A),4.72
+K-FIXEDPLUS-A,3,พันธบัตร (LB336A),3.59
+K-FIXEDPLUS-A,4,พันธบัตร (LB346A),3.37
+K-FIXEDPLUS-A,5,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),3.3
+K-SFRMF,1,หุ้นกู้ (SCGC259A),4.78
+K-SFRMF,2,หุ้นกู้ (FPT25DA),4.78
+K-SFRMF,3,หุ้นกู้ (MTC266E),4.19
+K-SFRMF,4,หุ้นกู้ (LHFG26DA),3.89
+K-SFRMF,5,พันธบัตร (CBF25513A),3.63
+K-VIETNAM,1,หุ้น Mobile World Investment Corp,9.58
+K-VIETNAM,2,หุ้น Asia Commercial Bank,9.02
+K-VIETNAM,3,หุ้น JSC Bank for Foreign Trade of Vietnam,8.05
+K-VIETNAM,4,หุ้น FPT Corp,7.68
+K-VIETNAM,5,หุ้น VIETNAM TECHNOLOGICAL & COMM,7.65
+K-GSELECTU-A(A),1,JPMorgan Global Select Equity ETF,97.91
+K-GSELECTU-A(A),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.12
+K-GSELECTU-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.07
+K-GSELECTU-A(A),4,เงินฝาก JP MORGAN CHASE BANK,0.03
+K-JP-A(D),1,"Lazard Japanese Strategic Equity Fund, Class A Acc JPY",100.56
+K-JP-A(D),2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),1.89
+K-JP-A(D),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.46
+K-JP-A(D),4,เงินฝาก JP MORGAN CHASE BANK,0.11
+K-SUPSTAR-SSFX,1,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,9.69
+K-SUPSTAR-SSFX,2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,8.82
+K-SUPSTAR-SSFX,3,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,7.16
+K-SUPSTAR-SSFX,4,หุ้น บมจ.ซีพี ออลล์,6.12
+K-SUPSTAR-SSFX,5,หุ้น บมจ.ทรูคอร์ปอเรชั่น,4.49
+K-JPRMF,1,"Lazard Japanese Strategic Equity Fund, Class A Acc JPY",99.38
+K-JPRMF,2,เงินฝาก บมจ.ธนาคารกสิกรไทย,1.51
+K-JPRMF,3,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,1.21
+K-JPRMF,4,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,0.51
+K-STAR-A(A),1,เงินฝาก บมจ.ธนาคารกรุงเทพ,8.88
+K-STAR-A(A),2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,8.87
+K-STAR-A(A),3,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,7.28
+K-STAR-A(A),4,หุ้น บมจ.ซีพี ออลล์,6.32
+K-STAR-A(A),5,หุ้น บมจ.เดลต้า อีเลคโทรนิคส์(ประเทศไทย),4.99
+K-USXNDQ-A(A),1,Invesco Nasdaq 100 ETF,96.42
+K-USXNDQ-A(A),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.1
+K-USXNDQ-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.17
+K-SFPLUS-A,1,พันธบัตร (CB26305A),4.56
+K-SFPLUS-A,2,พันธบัตร (CB26205A),4.31
+K-SFPLUS-A,3,พันธบัตร (CB25D11A),4.26
+K-SFPLUS-A,4,พันธบัตร (CB26402A),3.92
+K-SFPLUS-A,5,พันธบัตร (CB25918A),3.43
+KMVLTF-A(A),1,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,9.44
+KMVLTF-A(A),2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,8.61
+KMVLTF-A(A),3,หุ้น บมจ.ทิสโก้ไฟแนนเชียลกรุ๊ป,7.41
+KMVLTF-A(A),4,หุ้น บมจ.ปตท.,6.43
+KMVLTF-A(A),5,หุ้น บมจ.กรุงเทพดุสิตเวชการ,5.93
+K-GDBOND-A(A),1,Nomura Funds Ireland-Global Dynamic Bond Fund Class I USD,95.48
+K-GDBOND-A(A),2,เงินฝาก บมจ.ธนาคารกรุงเทพ,3.13
+K-GDBOND-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.6
+K-GDBOND-A(A),4,เงินฝาก The Bank of New York Mellon SA/NV,0.01
+K-US500X-A(A),1,iShares Core S&P 500 ETF,96.88
+K-US500X-A(A),2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),2.31
+K-US500X-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.19
+K-US500X-A(A),4,เงินฝาก JP MORGAN CHASE BANK,0.01
+K-ALLEN-UI-A(A),1,LO Funds IV-All Roads Enhanced (USD) I Class A,97.75
+K-ALLEN-UI-A(A),2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,1.15
+K-ALLEN-UI-A(A),3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.06
+K-CHX,1,CSOP FTSE China A50 ETF-RMB (82822 HK Equity),95.85
+K-CHX,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.44
+K-CHX,3,เงินฝาก The Bank of New York Mellon SA/NV,0.04
+K-ASIACV-A(A),1,iShares MSCI All Country Asia ex-Japan ETF,35.88
+K-ASIACV-A(A),2,Schroders ISF Emerging Asia C Acc USD Share Class,20.92
+K-ASIACV-A(A),3,"Lo Funds -  Asia High conviction, (USD), N Class A",19.09
+K-ASIACV-A(A),4,iShares MSCI China UCITS ETF,11.73
+K-ASIACV-A(A),5,Goldman Sachs India Equity Portfolio,5.62
+K-AHY,1,"LO-Asia Diversified High Yield Bond,X1 (USD) IA",97.46
+K-AHY,2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),1.98
+K-AHY,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.02
+KEQLTF-A(A),1,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,10.99
+KEQLTF-A(A),2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,9.38
+KEQLTF-A(A),3,หุ้น บมจ.ซีพี ออลล์,7.19
+KEQLTF-A(A),4,หุ้น บมจ.ธนาคารกรุงไทย,5.35
+KEQLTF-A(A),5,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,5.28
+K-GTECH,1,Threadneedle Lux - Global Technology,96.3
+K-GTECH,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.08
+K-GTECH,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.29
+K-GTECH,4,เงินฝาก JP MORGAN CHASE BANK,0.07
+K-GTECH,5,เงินฝาก The Bank of New York Mellon SA/NV,0.03
+K-CHINARMF,1,JPM China I (acc) - USD,97.77
+K-CHINARMF,2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),2.67
+K-CHINARMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.06
+K-CHINARMF,4,เงินฝาก JP MORGAN CHASE BANK,0.01
+KS50LTF-A(A),1,หุ้น บมจ.เดลต้า อีเลคโทรนิคส์(ประเทศไทย),11.07
+KS50LTF-A(A),2,หุ้น บมจ.ปตท.,8.02
+KS50LTF-A(A),3,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,7.96
+KS50LTF-A(A),4,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,7.86
+KS50LTF-A(A),5,หุ้น บมจ.ท่าอากาศยานไทย,4.95
+K-EURMF,1,Allianz Europe Equity Growth Fund. Class AT-EUR,101.3
+K-EURMF,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.2
+K-EURMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.11
+K-EURMF,4,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,0.01
+K-GA-A(A),1,BGF-GLOBAL ALLOCATION FUND A2,96.59
+K-GA-A(A),2,เงินฝาก ธนาคารซิตี้แบงก์ เอ็น เอ,2.0
+K-GA-A(A),3,เงินฝาก ธนาคารซิตี้แบงก์ เอ็น เอ,0.08
+K-GA-A(A),4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.07
+K-VIETNAMRMF,1,กองทุนเปิดเค เวียดนาม หุ้นทุน,93.98
+K-VIETNAMRMF,2,เงินฝาก ธนาคารฮ่องกงและเซี่ยงไฮ้แบงกิ้งคอร์ปอเรชั่น จำกัด,3.46
+K-VIETNAMRMF,3,หุ้น ใบแสดงสิทธิในผลประโยชน์ E1VFVN30,2.77
+K-VIETNAMRMF,4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.13
+K-FITS,1,กองทุนเปิดเค โกลบอล บอนด์-A ชนิดจ่ายเงินปันผล,24.72
+K-FITS,2,กองทุนเปิดเค หุ้นกู้ ชนิดผู้ลงทุนทั่วไป,22.25
+K-FITS,3,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนทั่วไป,15.43
+K-FITS,4,กองทุนเปิดเค โกลบอล อิควิตี้ พาสซีฟ,10.15
+K-FITS,5,กองทุนเปิดเค หุ้นยูเอส พาสซีฟ-A ชนิดสะสมมูลค่า,4.59
+K-CCTV-A(A),1,UBS (Lux) IS - China A Opportunity (USD) P-acc ,28.47
+K-CCTV-A(A),2,iShares MSCI China UCITS ETF,19.7
+K-CCTV-A(A),3,Invesco Great Wall CSI Dividend Low Volatility 100 ETF,18.0
+K-CCTV-A(A),4,CSOP FTSE China A50 ETF-RMB (82822 HK Equity),15.37
+K-CCTV-A(A),5,iShares Hang Seng Tech ETF,6.55
+K-MSRMF,1,หุ้น บมจ. เมืองไทย แคปปิตอล,7.81
+K-MSRMF,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,6.83
+K-MSRMF,3,หุ้น บมจ.การบินกรุงเทพ,5.89
+K-MSRMF,4,หุ้น บมจ. แพลน บี มีเดีย,5.8
+K-MSRMF,5,หุ้น บมจ.คาราบาวกรุ๊ป,5.51
+KGLTF-A(D),1,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,8.71
+KGLTF-A(D),2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,8.29
+KGLTF-A(D),3,หุ้น บมจ.เดลต้า อีเลคโทรนิคส์(ประเทศไทย),6.01
+KGLTF-A(D),4,หุ้น บมจ.ซีพี ออลล์,5.66
+KGLTF-A(D),5,หุ้น บมจ.ปตท.,4.7
+K-FI22I,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนสถาบันพิเศษ,57.72
+K-FI22I,2,กองทุนเปิดเค หุ้นกู้ ชนิดผู้ลงทุนสถาบันพิเศษ,21.29
+K-FI22I,3,หุ้นกู้ (NCPT100053),8.7
+K-FI22I,4,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),5.3
+K-FI22I,5,พันธบัตร (CB26305A),4.2
+K-EUSAGE,1,CPR Silver Age Fund,102.24
+K-EUSAGE,2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),3.42
+K-EUSAGE,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.59
+K-DFIXED,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนสถาบันพิเศษ,56.66
+K-DFIXED,2,กองทุนเปิดเค หุ้นกู้ ชนิดผู้ลงทุนสถาบันพิเศษ,21.53
+K-DFIXED,3,พันธบัตร (CB26305A),5.25
+K-DFIXED,4,พันธบัตร (CB25619A),4.25
+K-DFIXED,5,หุ้นกู้ (MTC266E),3.43
+K-GPEQ-UI,1,EQT Nexus Fund SICAV – ENXF SICAV - I,98.93
+K-GPEQ-UI,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,1.26
+K-FITM,1,กองทุนเปิดเค โกลบอล อิควิตี้ พาสซีฟ,20.47
+K-FITM,2,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนทั่วไป,12.03
+K-FITM,3,กองทุนเปิดเค หุ้นกู้ ชนิดผู้ลงทุนทั่วไป,11.95
+K-FITM,4,กองทุนเปิดเค โกลบอล บอนด์-A ชนิดจ่ายเงินปันผล,11.58
+K-FITM,5,กองทุนเปิดเค หุ้นยูเอส พาสซีฟ-A ชนิดสะสมมูลค่า,8.66
+RKF4,1,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,9.75
+RKF4,2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,8.86
+RKF4,3,หุ้น บมจ.ซีพี ออลล์,6.55
+RKF4,4,เงินฝาก บมจ.ธนาคารกรุงเทพ,6.41
+RKF4,5,หุ้น บมจ.กรุงเทพดุสิตเวชการ,4.3
+K-OIL,1,Invesco DB Oil Fund,96.93
+K-OIL,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.55
+K-OIL,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.08
+K-OIL,4,"เงินฝาก JP Morgan Chase Bank, N.A.",0.02
+K-FIXEDPRO,1,iShares USD Floating Rate Bond UCITS ETF,16.24
+K-FIXEDPRO,2,พันธบัตร (LB336A),13.66
+K-FIXEDPRO,3,พันธบัตร (LB456A),11.9
+K-FIXEDPRO,4,iShares USD Treasury Bond 7-10yr UCITS ETF USD Acc,9.63
+K-FIXEDPRO,5,หุ้นกู้ (SC267B),5.84
+K-WPULTIRMF,1,JPM Global Select Equity I (acc) - USD,20.63
+K-WPULTIRMF,2,JPM US Select Equity Fund – I Acc USD,20.42
+K-WPULTIRMF,3,JPMorgan Funds US Equity All Cap Fund I (acc)-USD,10.75
+K-WPULTIRMF,4,JPM Europe Equity I (acc) - EUR,9.56
+K-WPULTIRMF,5,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนทั่วไป,9.32
+K-GSTEPA,1,พันธบัตร (US912803BW22),59.58
+K-GSTEPA,2,Amundi Index Euro Corporate SRI- UCITS ETF DR- EUR- FP,14.97
+K-GSTEPA,3,พันธบัตร (US912797PT86),5.36
+K-GSTEPA,4,Amundi Index US Corp SRI UCITS ETF,2.53
+K-GSTEPA,5,Amundi Euro High Yield Liquid Bond IBOXX (C),2.52
+K-ATECH,1,JP Morgan Pacific Technology Fund Share Class C (acc)-USD,97.32
+K-ATECH,2,เงินฝาก ธนาคารไทยพาณิชย์ จำกัด (มหาชน),2.3
+K-ATECH,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.24
+K-CBOND-A,1,พันธบัตร (CB26205A),5.47
+K-CBOND-A,2,พันธบัตร (CB26305A),3.68
+K-CBOND-A,3,หุ้นกู้ (MTC266E),3.02
+K-CBOND-A,4,พันธบัตร (CBF25811A),2.85
+K-CBOND-A,5,หุ้นกู้ (GULF299A),2.64
+K-GDRMF,1,SPDR GOLD TRUST,97.1
+K-GDRMF,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.21
+K-GDRMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.45
+K-GDRMF,4,เงินฝาก The Bank of New York Mellon SA/NV,0.03
+K-STARRMF,1,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,8.86
+K-STARRMF,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,8.08
+K-STARRMF,3,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,7.35
+K-STARRMF,4,หุ้น บมจ.ซีพี ออลล์,6.22
+K-STARRMF,5,หุ้น บมจ. เมืองไทย แคปปิตอล,4.71
+K-SET50,1,หุ้น บมจ.เดลต้า อีเลคโทรนิคส์(ประเทศไทย),10.99
+K-SET50,2,หุ้น บมจ.ปตท.,7.96
+K-SET50,3,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,7.89
+K-SET50,4,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,7.84
+K-SET50,5,หุ้น บมจ.ท่าอากาศยานไทย,4.91
+K-AB22B,1,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนสถาบันพิเศษ,56.22
+K-AB22B,2,กองทุนเปิดเค หุ้นกู้ ชนิดผู้ลงทุนสถาบันพิเศษ,22.26
+K-AB22B,3,พันธบัตร (CBF26119A),7.1
+K-AB22B,4,หุ้นกู้ (NCPT100053),6.13
+K-AB22B,5,เงินฝาก บมจ.ธนาคารกรุงเทพ,4.54
+K-EQUITY,1,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,9.58
+K-EQUITY,2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,8.84
+K-EQUITY,3,เงินฝาก ธนาคารซิตี้แบงก์ เอ็น เอ,7.15
+K-EQUITY,4,หุ้น บมจ.ซีพี ออลล์,6.44
+K-EQUITY,5,หุ้น บมจ.ทรูคอร์ปอเรชั่น,4.29
+K-AGRI,1,Invesco DB Agriculture Fund,97.58
+K-AGRI,2,เงินฝาก ธนาคารฮ่องกงและเซี่ยงไฮ้แบงกิ้งคอร์ปอเรชั่น จำกัด,1.89
+K-AGRI,3,เงินฝาก ธนาคารฮ่องกงและเซี่ยงไฮ้แบงกิ้งคอร์ปอเรชั่น จำกัด,0.42
+K-AGRI,4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.07
+K-GPC-UI,1,"Goldman Sachs Private Credit Corp.(iCapital) Access Offshore SPC, Class I-Dis",58.37
+K-GPC-UI,2,"Goldman Sachs Alternatives SICAV - European Credit, Class I0D",40.52
+K-GPC-UI,3,เงินฝาก JP MORGAN CHASE BANK,7.85
+K-GPC-UI,4,เงินฝาก JP MORGAN CHASE BANK,5.26
+K-GPC-UI,5,เงินฝาก บมจ.ธนาคารกรุงเทพ,1.27
+ABFTH,1,หุ้นกู้ (PTTC268A),5.12
+ABFTH,2,พันธบัตร (LB29DA),4.48
+ABFTH,3,พันธบัตร (LB426A),4.01
+ABFTH,4,พันธบัตร (LB31DA),3.97
+ABFTH,5,พันธบัตร (LB326A),3.73
+K-EUX,1,ISHARES CORE EURO STOXX 50 UCITS ETF (DE),104.15
+K-EUX,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.18
+K-EUX,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.25
+K-EUX,4,เงินฝาก JP MORGAN CHASE BANK,0.07
+K-GHEALTH,1,JP Morgan Funds - Global Healthcare Fund (JPHLUAA LX),96.7
+K-GHEALTH,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.39
+K-GHEALTH,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.26
+K-BL30-A(A),1,พันธบัตร (ESGLB35DA),25.53
+K-BL30-A(A),2,พันธบัตร (SLB406A),7.03
+K-BL30-A(A),3,หุ้นกู้ (EGCO38NA),5.93
+K-BL30-A(A),4,พันธบัตร (ESGLB376A),5.69
+K-BL30-A(A),5,พันธบัตร (CBF25811A),3.68
+K-ASIAX,1,iShares MSCI All Country Asia ex-Japan ETF,97.39
+K-ASIAX,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.22
+K-ASIAX,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.21
+K-ASIAX,4,เงินฝาก The Bank of New York Mellon SA/NV,0.09
+K-USXNDQRMF,1,Invesco Nasdaq 100 ETF,97.15
+K-USXNDQRMF,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.42
+K-USXNDQRMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.54
+K-USXNDQRMF,4,เงินฝาก JP MORGAN CHASE BANK,0.29
+K-PLAN1,1,พันธบัตร (CB26205A),9.33
+K-PLAN1,2,หุ้นกู้ (CPF312A),3.18
+K-PLAN1,3,พันธบัตร (CB26402A),3.16
+K-PLAN1,4,พันธบัตร (CBF25714A),2.93
+K-PLAN1,5,พันธบัตร (CB25D11A),2.74
+K-GSELECTRMF,1,JPMorgan Global Select Equity ETF,96.92
+K-GSELECTRMF,2,เงินฝาก บมจ.ธนาคารกรุงเทพ,2.33
+K-GSELECTRMF,3,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.23
+K-GSELECTRMF,4,เงินฝาก JP MORGAN CHASE BANK,0.03
+K-FITXL,1,กองทุนเปิดเค โกลบอล อิควิตี้ พาสซีฟ,29.39
+K-FITXL,2,กองทุนเปิดเค หุ้นยูเอส พาสซีฟ-A ชนิดสะสมมูลค่า,12.6
+K-FITXL,3,กองทุนเปิดเค ดัชนีหุ้นยุโรป,10.75
+K-FITXL,4,กองทุนเปิดเค หุ้นเอเชีย พาสซีฟ,7.84
+K-FITXL,5,กองทุนเปิดเค หุ้นยูเอส ดัชนีเอ็นดีคิว 100-Aชนิดสะสมมูลค่า,7.72
+K-FLRMF,1,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,13.54
+K-FLRMF,2,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,8.05
+K-FLRMF,3,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,6.91
+K-FLRMF,4,หุ้น บมจ.ซีพี ออลล์,5.36
+K-FLRMF,5,หุ้น บมจ.ไมเนอร์ อินเตอร์เนชั่นแนล,4.8
+K-GINCOMERMF,1,JPMorgan Global Income Fund Class I (mth) - USD (hedged),96.03
+K-GINCOMERMF,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,1.66
+K-GINCOMERMF,3,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,1.01
+K-GINCOMERMF,4,เงินฝาก บมจ.ธนาคารกสิกรไทย,0.27
+RKBC,1,พันธบัตร (CBF26427A),7.12
+RKBC,2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,5.48
+RKBC,3,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,4.79
+RKBC,4,หุ้น บมจ.ซีพี ออลล์,4.33
+RKBC,5,พันธบัตร (CB25D11A),3.84
+K-ALPHA-MOD-UI,1,กองทุนเปิดเค ALL-GR ห้ามขายผู้ลงทุนรายย่อย-A ชนิดสะสมมูลค่า,58.99
+K-ALPHA-MOD-UI,2,กองทุนเปิดเค ตราสารหนี้ พลัส ชนิดผู้ลงทุนทั่วไป,8.06
+K-ALPHA-MOD-UI,3,กองทุนเปิดเค โกลบอล ไดนามิก บอนด์-A ชนิดสะสมมูลค่า,6.07
+K-ALPHA-MOD-UI,4,กองทุนเปิดเค โกลบอล เฮลท์แคร์ หุ้นทุน,3.9
+K-ALPHA-MOD-UI,5,กองทุนเปิดเค เอเชีย ไฮยีลด์ บอนด์,3.0
+KDLTF-A(D),1,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,10.99
+KDLTF-A(D),2,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,9.36
+KDLTF-A(D),3,หุ้น บมจ.ซีพี ออลล์,7.19
+KDLTF-A(D),4,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,5.45
+KDLTF-A(D),5,หุ้น บมจ.ธนาคารกรุงไทย,5.35
+K-TNZ-A(A),1,หุ้น บมจ.เดลต้า อีเลคโทรนิคส์(ประเทศไทย),10.25
+K-TNZ-A(A),2,หุ้น บมจ.ปตท.,7.61
+K-TNZ-A(A),3,หุ้น บมจ.แอดวานซ์ อินโฟร์ เซอร์วิส,7.34
+K-TNZ-A(A),4,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,6.1
+K-TNZ-A(A),5,หุ้น บมจ.ท่าอากาศยานไทย,4.55
+K-AEC,1,iShares MSCI Malaysia Index Fund,9.86
+K-AEC,2,iShares MSCI Singapore Index Fund,9.61
+K-AEC,3,JPM ASEAN Equity I (acc) - USD,9.11
+K-AEC,4,VANECK INDONESIA INDEX ETF,8.52
+K-AEC,5,หุ้น Bank Central Asia Tbk PT,8.24
+K-AHYD-UI,1,"LO-Asia Diversified High Yield Bond,X1 (USD) IA",95.98
+K-AHYD-UI,2,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,2.5
+K-AHYD-UI,3,เงินฝาก บมจ.ธนาคารทหารไทยธนชาต,0.01
+K-TFT6,1,เงินฝาก บมจ.ธนาคารกรุงเทพ,49.62
+K-TFT6,2,หุ้น บมจ.บีทีเอส กรุ๊ป โฮลดิ้งส์,8.6
+K-TFT6,3,หุ้น บมจ. กัลฟ์ ดีเวลลอปเมนท์,8.12
+K-TFT6,4,หุ้น บมจ.เดลต้า อีเลคโทรนิคส์(ประเทศไทย),7.68
+K-TFT6,5,หุ้น บมจ.เซ็นทรัล รีเทล คอร์ปอเรชั่น,4.7
+K-WPULTIMATE,1,JPM Global Select Equity I (acc) - USD,20.76
+K-WPULTIMATE,2,JPM US Select Equity Fund – I Acc USD,18.14
+K-WPULTIMATE,3,JPMorgan Funds US Equity All Cap Fund I (acc)-USD,10.94
+K-WPULTIMATE,4,JPM Europe Equity I (acc) - EUR,10.07
+K-WPULTIMATE,5,กองทุนเปิดเค ตราสารหนี้ ชนิดผู้ลงทุนทั่วไป,9.11
+K-2040RMF,1,Capital Group New Perspective Fund (LUX) Class Z,14.54
+K-2040RMF,2,Capital Group Global Equity Fund (LUX) Class Z,11.65
+K-2040RMF,3,Capital Group New Economy Fund (LUX) Class Z,11.61
+K-2040RMF,4,Capital Group World Growth and Income (LUX) Class Z,9.67
+K-2040RMF,5,Capital Group Global Allocation Fund (LUX) Class Z,7.75
+K-FITL,1,กองทุนเปิดเค โกลบอล อิควิตี้ พาสซีฟ,27.17
+K-FITL,2,กองทุนเปิดเค หุ้นยูเอส พาสซีฟ-A ชนิดสะสมมูลค่า,11.16
+K-FITL,3,กองทุนเปิดเค ดัชนีหุ้นยุโรป,9.5
+K-FITL,4,กองทุนเปิดเค หุ้นเอเชีย พาสซีฟ,7.0
+K-FITL,5,กองทุนเปิดเค หุ้นยูเอส ดัชนีเอ็นดีคิว 100-Aชนิดสะสมมูลค่า,6.53

@@ -33,8 +33,8 @@ def get_orchestrator_agent(kernel: Kernel, agent_name: str) -> ChatCompletionAge
 
     settings = AzureChatPromptExecutionSettings(
         service_id="orchestrator",
-        temperature=0.4,
-        top_p=1.0,
+        temperature=0.3,
+        top_p=0.9,
         frequency_penalty=0.0,
         presence_penalty=0.0,
     )

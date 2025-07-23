@@ -65,6 +65,8 @@ if "pdf_search" not in st.session_state:
     st.session_state.pdf_search = None
 if "callcenter_search" not in st.session_state:
     st.session_state.callcenter_search = None
+if "fundfact_linguistic_search" not in st.session_state:
+    st.session_state.callcenter_search = None
 
 # === Shared Kernel Initialization ===
 def initialize_kernel():
@@ -82,6 +84,9 @@ async def initialize_agents():
 
     agents = {
         "router_agent": get_router_agent(kernel),
+        "fundfact_linguistic_search": get_txt_search_plugin(
+            text_index_name="mutualfunds",
+        ),
         "callcenter_search": get_txt_search_plugin(
             text_index_name="callcenterinfo",
         ),
@@ -96,7 +101,7 @@ async def initialize_agents():
         "keyword_extractor_agent": get_keyword_extractor_agent(kernel),
         "news_orchestrator_agent": get_orchestrator_agent(kernel,"news_orchestrator"),
         "fundfact_orchestrator_agent": get_orchestrator_agent(kernel,"fundfact_orchestrator"),
-        "fundfact_linguistic_rag_agent": await get_fundfact_linguistic_rag_agent(),
+        "fundfact_linguistic_rag_agent": get_txt_rag_agent(kernel, "fundfact_linguistic_rag_agent"),
         "fundfact_coder_rag_agent": await get_fundfact_coder_rag_agent()
     }
     st.session_state.agents = agents

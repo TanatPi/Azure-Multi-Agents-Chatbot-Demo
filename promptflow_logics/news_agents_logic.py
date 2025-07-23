@@ -50,7 +50,7 @@ async def run_mmrag_agent(agents, search, user_query, search_keywords, filter=No
 
 
 # === Final Agent Flows ===
-async def get_news_agent_response(user_query: str, user_thread,orchestrator_agent, pdf_rag_agent, keyword_extractor_agent, pdf_search,language, status,container):
+async def get_news_agent_response(user_query: str, user_thread, main_thread,orchestrator_agent, pdf_rag_agent, keyword_extractor_agent, pdf_search,language, status,container):
     ##### 1. Run Keyword extractor
     if status: status["keyword"].markdown("🔍 Extracting keywords...")
     keyword_agent_user_prompt = f"Extract keywords from this query: {user_query}"
@@ -89,13 +89,13 @@ async def get_news_agent_response(user_query: str, user_thread,orchestrator_agen
         status["rag"].empty()
     orchestrator_prompt = f"""The information given to you are:
 
-        information from Monthly Standpoint (monthlystandpoint) document:
+        information from Monthly Standpoint (monthlystandpoint) document (covering news in this month):
         {responses[0]}
 
-        information from Know the Markets (KTM) document:
+        information from Know the Markets (KTM) document (covering news in this quarter):
         {responses[1]}
 
-        information from KAsset Capital Market Assumptions (KCMA) document:
+        information from KAsset Capital Market Assumptions (KCMA) document (publish at the start of the year, covering assumptions for the whole year):
         {responses[2]}
 
         If {user_query} mention specific documents, left out what is not stated.
@@ -112,12 +112,12 @@ async def get_news_agent_response(user_query: str, user_thread,orchestrator_agen
     input_tokens_orchestrator = count_tokens(orchestrator_prompt,tokenizer_4_1)
 
     final_response = ""
-    async for orchestration in orchestrator_agent.invoke_stream(messages=[orchestrator_message]):
+    container.markdown(final_response)
+    async for orchestration in orchestrator_agent.invoke_stream(messages=[orchestrator_message], thread = main_thread):
         final_response += str(orchestration)
         container.markdown(final_response)
         main_thread = orchestration.thread
         has_streamed = True
-
     # === Token count for output to orchestrator
     output_tokens_orchestrator = count_tokens(final_response,tokenizer_4_1)
 

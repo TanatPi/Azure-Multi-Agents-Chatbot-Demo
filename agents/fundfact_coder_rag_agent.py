@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # === Load Azure credentials ===
-deployment = "gpt-4o-mini"
+deployment = "gpt-4.1"
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 

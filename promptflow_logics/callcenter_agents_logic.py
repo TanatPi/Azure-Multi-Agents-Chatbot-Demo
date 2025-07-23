@@ -14,7 +14,7 @@ def count_tokens(text: str, tokenizer) -> int:
 # === Final Agent Flows ===
 async def get_callcenter_agent_response(user_query: str, user_thread,
                                         txt_rag_agent, keyword_extractor_agent,
-                                        pdf_search, language, status, container):
+                                        txt_search, language, status, container):
     # Step 1: Run Keyword Extractor
     if status:
         status["keyword"].markdown("🔍 Extracting keywords...")
@@ -35,7 +35,7 @@ async def get_callcenter_agent_response(user_query: str, user_thread,
         status["rag"].markdown("📚 Running RAG agents...")
         status["keyword"].empty()
 
-    context_text = await pdf_search.search_text_content(search_keywords, filter=None, top_k=10)
+    context_text = await txt_search.search_text_content(search_keywords, filter=None, top_k=10)
 
     user_prompt = f"""Use the following JSON context to answer the question in {language}:
 

@@ -2,7 +2,8 @@ import asyncio
 import os
 from semantic_kernel.contents.chat_message_content import ChatMessageContent
 from semantic_kernel.agents import AzureAssistantAgent
-import asyncio
+from semantic_kernel.contents.utils.author_role import AuthorRole
+
 
 
 import sys
@@ -24,16 +25,37 @@ deployment = "gpt-4o-mini"
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 # === Helper Function ===
-async def run_agent(agent, query):
-    response_text = ""
-    input_tokens = count_tokens(query, tokenizer_4o)
+async def run_agent(agent, query, search_keywords = None, search_tool = None):
+    if search_tool is not None:
+        context_text = await search_tool.search_text_content(search_keywords, filter=None, top_k=100)
 
-    async for msg in agent.invoke(query):
-        # Main text response
-        if hasattr(msg, "content") and msg.content:
-            response_text += str(msg.content)
+        user_prompt = f"""Use the following JSON context to answer the question:
 
-    output_tokens = count_tokens(response_text,tokenizer_4o)
+        Context text data:
+        {context_text}
+
+        Question: {query}
+        """
+
+        input_tokens = count_tokens(user_prompt,tokenizer_4o)
+
+        user_message = ChatMessageContent(role=AuthorRole.USER, content=user_prompt)
+
+        response_text = ""
+        async for response in agent.invoke(messages=[user_message]):
+            response_text = str(response)
+
+        output_tokens = count_tokens(response_text,tokenizer_4o)
+    else:
+        response_text = ""
+        input_tokens = count_tokens(query, tokenizer_4o)
+
+        async for msg in agent.invoke(query):
+            # Main text response
+            if hasattr(msg, "content") and msg.content:
+                response_text += str(msg.content)
+
+        output_tokens = count_tokens(response_text,tokenizer_4o)
     return {
         "text": response_text.strip(),
         "input_tokens": input_tokens,
@@ -41,12 +63,28 @@ async def run_agent(agent, query):
     }
 
 # === Final Orchestrator ===
-async def get_fundfact_agent_response(user_query: str,fundfact_linguistic_rag_agent,fundfact_coder_rag_agent, ochestrator_agent, language, status, container) -> tuple[str, str]:
+async def get_fundfact_agent_response(user_query: str, user_thread,keyword_extractor_agent,fundfact_linguistic_rag_agent,fundfact_linguistic_search,fundfact_coder_rag_agent, ochestrator_agent, language, status, container) -> tuple[str, str]:
+    # Step 1: Run Keyword Extractor
+    if status:
+        status["keyword"].markdown("🔍 Extracting keywords...")
 
-    fundfact_response_task = run_agent(fundfact_linguistic_rag_agent, user_query)
+    keyword_agent_user_prompt = f"Extract keywords from this query: {user_query}"
+    keyword_agent_message = ChatMessageContent(role=AuthorRole.USER, content=keyword_agent_user_prompt)
+
+    keyword_input_tokens = count_tokens(keyword_agent_user_prompt, tokenizer_4_1)
+    search_keywords = user_query
+
+    async for response in keyword_extractor_agent.invoke(messages=[keyword_agent_message], thread=user_thread):
+        search_keywords = str(response)
+
+    keyword_output_tokens = count_tokens(search_keywords, tokenizer_4_1)
+
+
+    fundfact_response_task = run_agent(fundfact_linguistic_rag_agent, user_query, search_keywords, fundfact_linguistic_search)
     csv_response_task = run_agent(fundfact_coder_rag_agent, user_query)
 
     if status:
+        status["keyword"].empty()
         status["rag"].markdown("📚 Running RAG agents...")
     results = await asyncio.gather(
         fundfact_response_task,
@@ -95,6 +133,8 @@ async def get_fundfact_agent_response(user_query: str,fundfact_linguistic_rag_ag
         rag_prompt_tokens,
         rag_completion_tokens,
         input_tokens_orchestrator,
-        output_tokens_orchestrator,
+        output_tokens_orchestrator, 
+        keyword_input_tokens, 
+        keyword_output_tokens,
         has_streamed
     )
