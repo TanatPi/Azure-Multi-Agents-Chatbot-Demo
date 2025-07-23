@@ -117,7 +117,7 @@ def get_mm_rag_agent(kernel: Kernel) -> ChatCompletionAgent:
         )
     settings = AzureChatPromptExecutionSettings(
         service_id="rag_agent",
-        temperature=0.4,
+        temperature=0.1,
         top_p=1.0,
         frequency_penalty=0.0,
         presence_penalty=0.0,

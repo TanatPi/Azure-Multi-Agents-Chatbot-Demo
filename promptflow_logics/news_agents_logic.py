@@ -18,8 +18,8 @@ def count_tokens(text: str, tokenizer) -> int:
 async def run_mmrag_agent(agents, search, user_query, search_keywords, filter=None, top_k=10):
     context_text, context_table, context_image = await asyncio.gather(
         search.search_text_content(search_keywords, filter=filter, top_k=top_k),
-        search.search_table_content(search_keywords, filter=filter, top_k=top_k),
-        search.search_image_content(search_keywords, filter=filter, top_k=top_k),
+        search.search_table_content(search_keywords, filter=filter, top_k=5),
+        search.search_image_content(search_keywords, filter=filter, top_k=4),
     )
 
     user_prompt = f"""Use the following JSON context to answer the question:
@@ -72,9 +72,9 @@ async def get_news_agent_response(user_query: str, user_thread,orchestrator_agen
         status["keyword"].empty()
     # Run all sub-agents concurrently and collect token counts
     results = await asyncio.gather(
-        run_mmrag_agent(pdf_rag_agent, pdf_search, user_query, search_keywords,filter="key_prefix eq 'monthlystandpoint'", top_k=4),
-        run_mmrag_agent(pdf_rag_agent, pdf_search, user_query, search_keywords,filter="key_prefix eq 'ktm'", top_k=7),
-        run_mmrag_agent(pdf_rag_agent, pdf_search, user_query, search_keywords,filter="key_prefix eq 'kcma'", top_k=12),
+        run_mmrag_agent(pdf_rag_agent, pdf_search, user_query, search_keywords,filter="key_prefix eq 'monthlystandpoint'", top_k=10),
+        run_mmrag_agent(pdf_rag_agent, pdf_search, user_query, search_keywords,filter="key_prefix eq 'ktm'", top_k=20),
+        run_mmrag_agent(pdf_rag_agent, pdf_search, user_query, search_keywords,filter="key_prefix eq 'kcma'", top_k=40),
     )
 
     responses = [r[0] for r in results]
@@ -89,16 +89,18 @@ async def get_news_agent_response(user_query: str, user_thread,orchestrator_agen
         status["rag"].empty()
     orchestrator_prompt = f"""The information given to you are:
 
-        information from monthlystandpoint:
+        information from Monthly Standpoint (monthlystandpoint) document:
         {responses[0]}
 
-        information from KTM:
+        information from Know the Markets (KTM) document:
         {responses[1]}
 
-        information from KCMA:
+        information from KAsset Capital Market Assumptions (KCMA) document:
         {responses[2]}
 
-        Use those to answer the original question:
+        If {user_query} mention specific documents, left out what is not stated.
+        Otherwise, consider all three, but prioritize KCMA and monthlystandpoint over KTM in terms of correctness.
+        Cross-check the fact and use those to answer the original question:
         {user_query}
 
         Please write your final response in a clear {language}, structured way. Make sure no important point is missed.
