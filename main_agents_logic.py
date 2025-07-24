@@ -101,13 +101,13 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
                 container
             )
         status["orchestrator"].empty()
-        main_thread = thread
-        # if main_thread is not None:
-        #     async for msg in thread.get_messages():
-        #         if isinstance(msg, ChatMessageContent):
-        #             main_thread._chat_history.add_message(msg)
-        # else:
-        #     main_thread = thread
+        # main_thread = thread
+        if main_thread is not None:
+            async for msg in thread.get_messages():
+                if isinstance(msg, ChatMessageContent):
+                    main_thread._chat_history.add_message(msg)
+        else:
+            main_thread = thread
     elif intent == "CALLCENTER":
         # === Create step placeholders ===
         keyword_status = st.empty()

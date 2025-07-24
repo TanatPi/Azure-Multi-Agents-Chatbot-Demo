@@ -89,20 +89,24 @@ async def get_news_agent_response(user_query: str, user_thread, main_thread,orch
         status["rag"].empty()
     orchestrator_prompt = f"""The information given to you are:
 
-        information from Monthly Standpoint (monthlystandpoint) document (covering news in this month):
+        - information from Monthly Standpoint (monthlystandpoint) document (covering news in this month):
         {responses[0]}
+        You can use the file name of this document to determine which month it is now. 
 
-        information from Know the Markets (KTM) document (covering news in this quarter):
+        - information from Know the Markets (KTM) document (covering news in this quarter):
         {responses[1]}
 
-        information from KAsset Capital Market Assumptions (KCMA) document (publish at the start of the year, covering assumptions for the whole year):
+        - information from KAsset Capital Market Assumptions (KCMA) document (publish at the start of the year, covering assumptions for the whole year):
         {responses[2]}
 
-        If {user_query} mention specific documents, left out what is not stated.
-        Otherwise, consider all three, but prioritize KCMA and monthlystandpoint over KTM in terms of correctness.
-        Cross-check the fact and use those to answer the original question:
-        {user_query}
+        - user question: {user_query}
 
+        # Additional instruction:
+        - If user question mention specific documents, left out what is not stated.
+        - If user question mention about viewpoint/overview/perspective and the time frame is not given or given but within this month, refers to monthlystandpoint **only**.
+        - Otherwise, consider all three, but prioritize KCMA and monthlystandpoint over KTM in terms of correctness.
+        Cross-check the fact and use those to answer the user question.
+        
         Please write your final response in a clear {language}, structured way. Make sure no important point is missed.
         """
 
