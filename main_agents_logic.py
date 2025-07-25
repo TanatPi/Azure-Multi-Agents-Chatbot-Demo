@@ -24,7 +24,8 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
     has_streamed = False # flag if the output is stream
 
     # agents
-    router_agent = agents["router_agent"]
+    main_router_agent = agents["main_router_agent"]
+    news_router_agent = agents["news_router_agent"]
     reply_agent = agents["reply_agent"]
     pdf_rag_agent = agents["pdf_rag_agent"]
     callcenter_rag_agent = agents["callcenter_rag_agent"]
@@ -55,7 +56,7 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
     router_user_message = ChatMessageContent(role=AuthorRole.USER, content=user_query)
 
     ### Run router
-    async for route in router_agent.invoke(messages=[router_user_message], thread=user_thread):
+    async for route in main_router_agent.invoke(messages=[router_user_message], thread=user_thread):
         route_str = str(route).strip()
         user_thread = route.thread
 
@@ -79,19 +80,22 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
 
     if intent == "NEWS":
         # === Create step placeholders ===
+        routing_status = st.empty()
         keyword_status = st.empty()
         rag_status = st.empty()
         orch_status = st.empty()
         status = {
+                "router": routing_status,
                 "keyword": keyword_status,
                 "rag": rag_status,
                 "orchestrator": orch_status,
                 }
         # Run news agents flow in sync context
-        final_response, thread, rag_prompt_tokens, rag_completion_tokens, input_tokens_orchestrator, output_tokens_orchestrator, keyword_input_tokens, keyword_output_tokens, has_streamed  = await get_news_agent_response(
+        final_response, thread, sub_input_tokens_router, sub_output_tokens_router, rag_prompt_tokens, rag_completion_tokens, input_tokens_orchestrator, output_tokens_orchestrator, keyword_input_tokens, keyword_output_tokens, has_streamed  = await get_news_agent_response(
                 user_query,
                 user_thread,
                 main_thread,
+                news_router_agent,
                 news_orchestrator_agent,
                 pdf_rag_agent,
                 keyword_extractor_agent,
@@ -100,14 +104,15 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
                 status,
                 container
             )
+        input_tokens_router += sub_input_tokens_router
+        output_tokens_orchestrator += sub_output_tokens_router
         status["orchestrator"].empty()
-        # main_thread = thread
-        if main_thread is not None:
-            async for msg in thread.get_messages():
-                if isinstance(msg, ChatMessageContent):
-                    main_thread._chat_history.add_message(msg)
+        if main_thread is not None and thread is not main_thread:
+            for msg in thread._chat_history:
+                main_thread._chat_history.add_message(msg)
         else:
             main_thread = thread
+
     elif intent == "CALLCENTER":
         # === Create step placeholders ===
         keyword_status = st.empty()
@@ -128,12 +133,12 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
                 container
             )
         status["rag"].empty()
-        if main_thread is not None:
-            async for msg in thread.get_messages():
-                if isinstance(msg, ChatMessageContent):
-                    main_thread._chat_history.add_message(msg)
+        if main_thread is not None and thread is not main_thread:
+            for msg in thread._chat_history:
+                main_thread._chat_history.add_message(msg)
         else:
             main_thread = thread
+
     elif intent == "FUNDFACT":
         # === Create step placeholders ===
         keyword_status = st.empty()
@@ -158,10 +163,9 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
                 container
             )
         status["rag"].empty()
-        if main_thread is not None:
-            async for msg in thread.get_messages():
-                if isinstance(msg, ChatMessageContent):
-                    main_thread._chat_history.add_message(msg)
+        if main_thread is not None and thread is not main_thread:
+            for msg in thread._chat_history:
+                main_thread._chat_history.add_message(msg)
         else:
             main_thread = thread
     else:

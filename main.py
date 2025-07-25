@@ -43,8 +43,10 @@ if "initialized" not in st.session_state:
         welcome_message = "👋 สวัสดีครับ! ผมชื่อวินัย (WIN-AI) หากคุณมีคำถามเกี่ยวกับข่าวสารเศรษฐกิจ การลงทุน หรือ KAsset สามารถสอบถามได้เลยครับ!"
         st.markdown(welcome_message)
 # agents
-if "router_agent" not in st.session_state:
-    st.session_state.router_agent = None
+if "main_router_agent" not in st.session_state:
+    st.session_state.main_router_agent = None
+if "news_router_agent" not in st.session_state:
+    st.session_state.news_router_agent = None
 if "reply_agent" not in st.session_state:
     st.session_state.reply_agent = None
 if "news_orchestrator_agent" not in st.session_state:
@@ -83,7 +85,8 @@ async def initialize_agents():
     kernel = st.session_state.shared_kernel
 
     agents = {
-        "router_agent": get_router_agent(kernel),
+        "main_router_agent": get_router_agent(kernel, "main_router_agent"),
+        "news_router_agent": get_router_agent(kernel, "news_router_agent"),
         "fundfact_linguistic_search": get_txt_search_plugin(
             text_index_name="mutualfunds",
         ),

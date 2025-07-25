@@ -16,12 +16,11 @@ endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 prompt_filepath = base_directory = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'agents', 'prompts.yml')
 with open(prompt_filepath, "r", encoding="utf-8") as f:
     prompts = yaml.safe_load(f)
-system_prompt = prompts["router_agent_prompt"]
 
 
 
 # === Create orchestrator agent ===
-def get_router_agent(kernel: Kernel) -> ChatCompletionAgent:
+def get_router_agent(kernel: Kernel, agent_name: str) -> ChatCompletionAgent:
     # Add AzureChatCompletion service only if not added yet
     if "router_service" not in kernel.services:
         kernel.add_service(
@@ -32,7 +31,7 @@ def get_router_agent(kernel: Kernel) -> ChatCompletionAgent:
                     endpoint=endpoint,
             )
         )
-
+    system_prompt = prompts.get(agent_name + "_prompt", "")
     settings = AzureChatPromptExecutionSettings(
         service_id="router_service",
         temperature=0.1,
@@ -43,7 +42,7 @@ def get_router_agent(kernel: Kernel) -> ChatCompletionAgent:
     agent = ChatCompletionAgent(
         kernel=kernel,
         arguments=KernelArguments(settings=settings),
-        name="router_agent",
+        name=agent_name,
         instructions=system_prompt,
     )
     return agent
