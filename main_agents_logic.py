@@ -162,7 +162,7 @@ async def get_agent_response(user_query: str, chat_history, main_thread, user_th
                 status,
                 container
             )
-        status["rag"].empty()
+        status["orchestrator"].empty()
         if main_thread is not None and thread is not main_thread:
             for msg in thread._chat_history:
                 main_thread._chat_history.add_message(msg)

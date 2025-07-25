@@ -64,14 +64,14 @@ class SearchTextPlugin:
             filter=filter,
         )
         return json.dumps([
-            {
+            {"id": doc.get("id",""),
              "content": doc.get("content", ""),
             } for doc in results
         ], ensure_ascii=False, indent=2)
 
     @kernel_function(description="Search document text content")
     async def search_text_content(self, query: Annotated[str, "User query"], filter=None, top_k=10) -> Annotated[str, "Search results"]:
-        return await self._search(query, self.search_client_text, select=["content", ], filter=filter, top_k=top_k)
+        return await self._search(query, self.search_client_text, select=["content", "id" ], filter=filter, top_k=top_k)
 
 
 # === System Prompt ===

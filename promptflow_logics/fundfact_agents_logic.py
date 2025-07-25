@@ -27,7 +27,7 @@ endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
 # === Helper Function ===
 async def run_agent(agent, query, search_keywords = None, search_tool = None):
     if search_tool is not None:
-        context_text = await search_tool.search_text_content(search_keywords, filter=None, top_k=100)
+        context_text = await search_tool.search_text_content(search_keywords, filter=None, top_k=50)
 
         user_prompt = f"""Use the following JSON context to answer the question:
 
@@ -83,7 +83,7 @@ async def get_fundfact_agent_response(user_query: str, user_thread,keyword_extra
     fundfact_response_task = run_agent(fundfact_linguistic_rag_agent, user_query, search_keywords, fundfact_linguistic_search)
     csv_response_task = run_agent(fundfact_coder_rag_agent, user_query)
 
-    if status:
+    if status and (status is not None):
         status["keyword"].empty()
         status["rag"].markdown("📚 Running RAG agents...")
     results = await asyncio.gather(
@@ -96,16 +96,16 @@ async def get_fundfact_agent_response(user_query: str, user_thread,keyword_extra
     rag_prompt_tokens = sum(r["input_tokens"] for r in results)
     rag_completion_tokens = sum(r["output_tokens"] for r in results)
 
-    if status: 
+    if status and (status is not None): 
         status["orchestrator"].markdown("🧠 Synthesizing final RAG response...")
         status["rag"].empty()
 
     orchestrator_prompt = f"""You are the final assistant. Your job is to synthesize and consolidate the following three answers into a single, coherent, complete response for the user:
 
-        Answer from linguist JSON agent:
+        Answer from text documents:
         {responses[0]}
 
-        Answer from csv code interpreter agent:
+        Answer from spreadsheet:
         {responses[1]}
 
         Please write your final response in a clear in {language}, structured way. Make sure no important point is missed.
@@ -120,7 +120,8 @@ async def get_fundfact_agent_response(user_query: str, user_thread,keyword_extra
 
     async for orchestration in ochestrator_agent.invoke_stream(messages=[orchestrator_message]):
         final_response += str(orchestration)
-        container.markdown(final_response)
+        if container is not None:
+            container.markdown(final_response)
         thread = orchestration.thread
         has_streamed = True
 
