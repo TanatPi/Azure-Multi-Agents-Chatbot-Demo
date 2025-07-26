@@ -101,11 +101,11 @@ async def get_news_agent_response(user_query: str, user_thread, main_thread, new
     # Apply nonlinear scaling + bias to scores
     def biased_score(route, score):
         if route == "MONTHLYSTANDPOINT":
-            # Squared boost: more weight even at mid scores
-            return (score **2 ) / 10 # log1p(x) = log(1 + x)
+            # Square root boost: more weight even at mid scores
+            return min(math.sqrt(score) * math.sqrt(10), 10) # sqrt(score) * sqrt(10), bounded to 10
         elif route == "KTM":
-            # Squaroot penalty: suppress low scores
-            return math.sqrt(score)
+            # Squared penalty: suppress low scores
+            return min((score ** 2) / 10, 10)
         elif route == "KCMA":
             # Linear but bounded to max of 10
             return min(score, 10)
