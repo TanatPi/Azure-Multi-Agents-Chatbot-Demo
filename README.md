@@ -51,7 +51,8 @@ Main Router Agent (Detects Intent & Language)
 ├── FUNDFACT   → Fundfact Agents Flow (Keyword Extractor, RAG Agents, Orchestrator)
 └── BYPASS     → Reply Agent (General Q&A)
     ↓
-Final Answer (Displayed via Streamlit) ```
+Final Answer (Displayed via Streamlit)
+```
 
 ### 2. Code Module Documentation
 
