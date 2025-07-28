@@ -1,23 +1,29 @@
 import asyncio
-from semantic_kernel.contents.chat_message_content import ChatMessageContent
-from semantic_kernel.contents.utils.author_role import AuthorRole
 import ast
 import math
 from datetime import datetime
-today_str = datetime.now().strftime("%B %d, %Y")  # e.g., "July 24, 2025"
-#### === Helper functions ===
-# === Helper to count token ===
+
+from semantic_kernel.contents.chat_message_content import ChatMessageContent
+from semantic_kernel.contents.utils.author_role import AuthorRole
+
 import tiktoken
 
-tokenizer_4o = tiktoken.encoding_for_model("gpt-4o-mini") 
-tokenizer_4_1 = tiktoken.get_encoding("o200k_base") # gpt-4.1
+# === Constants ===
+today_str = datetime.now().strftime("%B %d, %Y")  # e.g., "July 24, 2025"
+
+# === Tokenizers for counting tokens with different models ===
+tokenizer_4o = tiktoken.encoding_for_model("gpt-4o-mini")
+tokenizer_4_1 = tiktoken.get_encoding("o200k_base")  # gpt-4.1
 
 def count_tokens(text: str, tokenizer) -> int:
+    """Count tokens in a text string given a tokenizer."""
     return len(tokenizer.encode(text))
 
-# === Helper to call one sub-agent ===
+
+# === Helper to call one RAG sub-agent with text and table search ===
 async def run_mmrag_agent(agents, search, user_query, search_keywords, filter=None, top_k=10):
-    context_text, context_table= await asyncio.gather(
+    # Concurrently search text and tables for context
+    context_text, context_table = await asyncio.gather(
         search.search_text_content(search_keywords, filter=filter, top_k=top_k),
         search.search_table_content(search_keywords, filter=filter, top_k=5),
     )
@@ -33,21 +39,32 @@ async def run_mmrag_agent(agents, search, user_query, search_keywords, filter=No
         Question: {user_query}
         """
 
-    input_tokens = count_tokens(user_prompt,tokenizer_4o)
-
+    input_tokens = count_tokens(user_prompt, tokenizer_4o)
     user_message = ChatMessageContent(role=AuthorRole.USER, content=user_prompt)
 
     response_text = ""
     async for response in agents.invoke(messages=[user_message]):
         response_text = str(response)
 
-    output_tokens = count_tokens(response_text,tokenizer_4o)
-
+    output_tokens = count_tokens(response_text, tokenizer_4o)
     return response_text, input_tokens, output_tokens
 
-# === Final Agent Flows ===
-async def get_news_agent_response(user_query: str, user_thread, main_thread, news_router_agent, orchestrator_agent, pdf_rag_agent, keyword_extractor_agent, pdf_search, language, status, container):
-    # === 0. Run sub-router ===
+
+# === Main flow for getting news agent response ===
+async def get_news_agent_response(
+    user_query: str,
+    user_thread,
+    main_thread,
+    news_router_agent,
+    orchestrator_agent,
+    pdf_rag_agent,
+    keyword_extractor_agent,
+    pdf_search,
+    language,
+    status,
+    container
+):
+    # Step 0: Run the router agent to get route scores
     if status:
         status["router"].markdown("🔀 Selecting appropriate documents...")
 
@@ -57,20 +74,21 @@ async def get_news_agent_response(user_query: str, user_thread, main_thread, new
         route_str = str(route).strip()
         user_thread = route.thread
 
-    # === Token count for router input/output ===
+    # Token counts for router input and output
     input_tokens_router = count_tokens(user_query, tokenizer_4_1)
     output_tokens_router = count_tokens(route_str, tokenizer_4_1)
 
-    # === Parse router output (expecting a dict with scores) ===
+    # Parse router output (expect a dict with scores)
     try:
         route_scores = ast.literal_eval(route_str)
         assert isinstance(route_scores, dict)
         valid_routes = {"MONTHLYSTANDPOINT", "KCMA", "KTM"}
         route_scores = {k: v for k, v in route_scores.items() if k in valid_routes and isinstance(v, (int, float))}
     except Exception:
-        route_scores = {"MONTHLYSTANDPOINT": 10, "KCMA": 0, "KTM": 0}  # fallback
+        # Fallback if parsing fails
+        route_scores = {"MONTHLYSTANDPOINT": 10, "KCMA": 0, "KTM": 0}
 
-    # === 1. Run Keyword Extractor ===
+    # Step 1: Keyword extraction
     if status:
         status["keyword"].markdown("🔍 Extracting keywords...")
         status["router"].empty()
@@ -85,34 +103,33 @@ async def get_news_agent_response(user_query: str, user_thread, main_thread, new
 
     keyword_output_tokens = count_tokens(search_keywords, tokenizer_4_1)
 
-    # === 2. Run RAG agents with score-scaled top_k ===
+    # Step 2: Run RAG agents with score-based adjusted top_k
     if status:
         status["rag"].markdown("📚 Running RAG agents...")
         status["keyword"].empty()
 
-
-    # Default base top_k per route
+    # Base top_k per route
     default_top_k = {
         "MONTHLYSTANDPOINT": 20,
         "KTM": 15,
         "KCMA": 35,
     }
 
-    # Apply nonlinear scaling + bias to scores
+    # Nonlinear bias for route scores
     def biased_score(route, score):
         if route == "MONTHLYSTANDPOINT":
-            # Square root boost: more weight even at mid scores
-            return min(math.sqrt(score) * math.sqrt(10), 10) # sqrt(score) * sqrt(10), bounded to 10
+            # sqrt boost for MONTHLYSTANDPOINT
+            return min(math.sqrt(score) * math.sqrt(10), 10)
         elif route == "KTM":
-            # Squared penalty: suppress low scores
+            # squared penalty for KTM
             return min((score ** 2) / 10, 10)
         elif route == "KCMA":
-            # Linear but bounded to max of 10
+            # linear bounded score for KCMA
             return min(score, 10)
         else:
             return score
 
-    # Adjusted top_k with score biasing
+    # Calculate adjusted top_k for each route
     adjusted_top_k = {
         route: max(1, int(default_top_k[route] * (biased_score(route, score) / 10)))
         for route, score in route_scores.items() if score > 0
@@ -129,6 +146,7 @@ async def get_news_agent_response(user_query: str, user_thread, main_thread, new
     rag_prompt_tokens = 0
     rag_completion_tokens = 0
 
+    # Launch parallel RAG queries for each active route
     for route, top_k in adjusted_top_k.items():
         filter_str = route_filters[route]
         task = run_mmrag_agent(pdf_rag_agent, pdf_search, user_query, search_keywords, filter=filter_str, top_k=top_k)
@@ -141,7 +159,7 @@ async def get_news_agent_response(user_query: str, user_thread, main_thread, new
         rag_prompt_tokens += prompt_toks
         rag_completion_tokens += completion_toks
 
-    # === 3. Run Orchestrator ===
+    # Step 3: Run Orchestrator to combine responses
     if status:
         status["orchestrator"].markdown("🧠 Synthesizing final RAG response...")
         status["rag"].empty()
@@ -184,7 +202,8 @@ async def get_news_agent_response(user_query: str, user_thread, main_thread, new
     input_tokens_orchestrator = count_tokens(orchestrator_prompt, tokenizer_4_1)
 
     final_response = ""
-    container.markdown(final_response)
+    container.markdown(final_response)  # clear container before streaming
+
     async for orchestration in orchestrator_agent.invoke_stream(messages=[orchestrator_message]):
         final_response += str(orchestration)
         container.markdown(final_response)
@@ -204,5 +223,5 @@ async def get_news_agent_response(user_query: str, user_thread, main_thread, new
         output_tokens_orchestrator,
         keyword_input_tokens,
         keyword_output_tokens,
-        has_streamed
+        has_streamed,
     )
