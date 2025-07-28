@@ -41,16 +41,17 @@ The WIN-AI Chatbot is designed to provide accurate and insightful answers relate
 - Streaming responses in real-time via a Streamlit web interface.
 
 #### Architecture Overview
+```text
 User Query
-↓
+    ↓
 Main Router Agent (Detects Intent & Language)
-↓
-├── NEWS → News Agents Flow (Router, Keyword Extractor, RAG Agents, Orchestrator)
+    ↓
+├── NEWS       → News Agents Flow (Router, Keyword Extractor, RAG Agents, Orchestrator)
 ├── CALLCENTER → Callcenter Agents Flow (Keyword Extractor, RAG Agent)
-├── FUNDFACT → Fundfact Agents Flow (Keyword Extractor, RAG Agents, Orchestrator)
-└── BYPASS → Reply Agent (General Q&A)
-↓
-Final Answer (Displayed via Streamlit)
+├── FUNDFACT   → Fundfact Agents Flow (Keyword Extractor, RAG Agents, Orchestrator)
+└── BYPASS     → Reply Agent (General Q&A)
+    ↓
+Final Answer (Displayed via Streamlit) ```
 
 ### 2. Code Module Documentation
 
