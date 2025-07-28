@@ -53,47 +53,84 @@ Main Router Agent (Detects Intent & Language)
     ↓
 Final Answer (Displayed via Streamlit)
 ```
+---
 
-### 2. Code Module Documentation
+#### 📁 Code Structure and Module Overview
 
-#### 2.1 `main.py`  
+This section outlines the purpose of each module and how they work together in the agent pipeline.
+
+---
+
+##### 2.1 `main.py`  
 - Entry point for the Streamlit UI.  
 - Initializes all agents through the shared Kernel instance.  
 - Manages session state for conversation threads and chat history.  
 - Handles user input, triggers the agent processing pipeline, and streams responses back to the UI.
 
-#### 2.2 `main_agents_logic.py`  
+##### 2.2 `main_agents_logic.py`  
 - Core async orchestration logic directing requests to the appropriate sub-flows based on detected intent.  
-- Supports flows for NEWS, CALLCENTER, FUNDFACT, and general BYPASS reply.  
+- Supports flows for `NEWS`, `CALLCENTER`, `FUNDFACT`, and general `BYPASS` reply.  
 - Tracks token usage for prompt and completion to monitor usage.
 
-#### 2.3 `news_agents_logic.py`  
-- Handles the NEWS intent flow.  
-- Uses a News Router Agent to select relevant document sources.  
+---
+
+#### 🧩 Sub-Agent Pipelines
+
+##### 2.3 `promptflow_logics/news_agents_logic.py`  
+- Handles the `NEWS` intent flow.  
+- Uses a News Router Agent to select relevant document sources (`MONTHLYSTANDPOINT`, `KCMA`, `KTM`).  
 - Performs keyword extraction to refine search queries.  
-- Calls multiple RAG agents to retrieve and synthesize information, finalized by the Orchestrator Agent.
+- Retrieves content via a multi-modal RAG agent (text, tables) and synthesizes the result using an Orchestrator Agent.
 
-#### 2.4 `fundfact_agents_logic.py`  
-- Manages the FUNDFACT intent.  
-- Employs keyword extraction, linguistic RAG agent, coder RAG agent, and an orchestrator for fund-specific questions.  
-- Consolidates answers from both text documents and spreadsheets into a clear, comprehensive response.
+##### 2.4 `promptflow_logics/fundfact_agents_logic.py`  
+- Manages the `FUNDFACT` intent.  
+- Extracts keywords and invokes:
+  - A **linguistic RAG agent** (searches financial facts from text).
+  - A **coder RAG agent** (interprets structured data like CSVs).
+- Consolidates both answers using an Orchestrator Agent into a unified financial explanation.
 
-#### 2.5 `callcenter_agents_logic.py`  
-- Supports CALLCENTER intent queries.  
-- Extracts keywords and uses a Text RAG agent to search a customer support knowledge base and generate answers.
+##### 2.5 `promptflow_logics/callcenter_agents_logic.py`  
+- Handles `CALLCENTER` intent.  
+- Performs keyword extraction and uses a text-based RAG agent to search a customer support knowledge base.  
+- Streams results back to the user in natural language.
 
-#### 2.6 `reply_agent.py`  
-- Provides fallback/general Q&A support (BYPASS intent).  
-- Uses an LLM to answer based on chat history context.
+---
 
-#### 2.7 `mm_rag_agent.py`  
-- Handles document retrieval and summarization from economic documents using Azure Cognitive Search.  
-- Supports text, table, and image indices.  
-- Uses LLM for generating answers based on retrieved data.
+#### 🧠 Agent Modules
 
-#### 2.8 `router_agent.py`  
-- Implements main and sub-router agents to detect intent and route queries accordingly.  
-- Uses prompt-based logic for routing decisions.
+##### 2.6 `agents/reply_agent.py`  
+- Handles the fallback `BYPASS` intent when no specialized route is chosen.  
+- Provides general Q&A responses using the chat history context.
+
+##### 2.7 `agents/mm_rag_agent.py`  
+- Provides multi-modal RAG capabilities using Azure Cognitive Search.  
+- Searches across text, table, and image indices from economic PDFs.  
+- Used in the NEWS pipeline.
+
+##### 2.8 `agents/txt_rag_agent.py`  
+- Creates standard text-only RAG agents for Callcenter and FundFact flows.  
+- Supports custom index names for each domain.
+
+##### 2.9 `agents/router_agent.py`  
+- Creates two agents:  
+  - **Main Router Agent**: Determines the top-level intent (NEWS, FUNDFACT, CALLCENTER, BYPASS).  
+  - **News Router Agent**: Further routes within NEWS flow to specific sources based on document type relevance.
+
+##### 2.10 `agents/orchestrator_agent.py`  
+- Used in both NEWS and FUNDFACT flows.  
+- Consolidates multiple RAG agent outputs into a single coherent response.  
+- Encourages structured, non-repetitive, and multi-source-aware answers.
+
+##### 2.11 `agents/keyword_extractor_agent.py`  
+- Lightweight agent used in all flows (except BYPASS).  
+- Extracts search-relevant keywords from the user query using prompt-based logic.
+
+##### 2.12 `agents/fundfact_linguistic_rag_agent.py`  
+- Specialized text RAG agent for extracting financial fact narratives.
+
+##### 2.13 `agents/fundfact_coder_rag_agent.py`  
+- Uses the **Azure Assistant Agent (API v2)** for parsing structured files (e.g., CSVs).  
+- Can eventually support plotting, graph generation, or code-related outputs.
 
 ---
 
