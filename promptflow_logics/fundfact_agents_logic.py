@@ -71,6 +71,7 @@ async def run_agent(agent, query, search_keywords=None, search_tool=None):
         user_input = f"""Answer the question: {query} given the dictionary of filename : file_id stored with you are {file_id_summary}"""
         
         response_text = ""
+        input_tokens = count_tokens(user_input, tokenizer_4o)
         async for msg in agent.invoke(user_input):
             if hasattr(msg, "content") and msg.content:
                 response_text += str(msg.content)
