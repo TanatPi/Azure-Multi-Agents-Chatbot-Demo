@@ -1,6 +1,7 @@
 import asyncio
 import os
 import sys
+from pathlib import Path
 from semantic_kernel.contents.chat_message_content import ChatMessageContent
 from semantic_kernel.contents.utils.author_role import AuthorRole
 
@@ -21,6 +22,25 @@ def count_tokens(text: str, tokenizer) -> int:
 deployment = "gpt-4o-mini"
 subscription_key = os.environ.get("AZURE_OPENAI_KEY")
 endpoint = os.environ.get("AZURE_OPENAI_RESOURCE")
+
+# === File ID Storage for Assistant Context Awareness ===
+FILE_ID_PATH = Path.cwd() / "agents" / "azure_assistant_file_ids.json"
+
+def get_uploaded_file_summary() -> str:
+    """
+    Reads uploaded file IDs and returns a short summary in Markdown format.
+    This is helpful for the assistant when it references external files.
+    """
+    if not FILE_ID_PATH.exists():
+        return ""
+    with open(FILE_ID_PATH, "r", encoding="utf-8") as f:
+        file_ids = json.load(f)
+    if not file_ids:
+        return ""
+    lines = ["You may refer to the following uploaded files:"]
+    for filename, fid in file_ids.items():
+        lines.append(f"- `{filename}` (file ID: `{fid}`)")
+    return "\n".join(lines)
 
 # === Helper function to run agent with optional search context ===
 async def run_agent(agent, query, search_keywords=None, search_tool=None):
@@ -46,11 +66,12 @@ async def run_agent(agent, query, search_keywords=None, search_tool=None):
         output_tokens = count_tokens(response_text, tokenizer_4o)
 
     else:
-        # Direct query without search context
+        # If no search is used, pass query + file reference directly
+        file_id_summary = get_uploaded_file_summary()
+        user_input = f"""Answer the question: {query} given the dictionary of filename : file_id stored with you are {file_id_summary}"""
+        
         response_text = ""
-        input_tokens = count_tokens(query, tokenizer_4o)
-
-        async for msg in agent.invoke(query):
+        async for msg in agent.invoke(user_input):
             if hasattr(msg, "content") and msg.content:
                 response_text += str(msg.content)
 
@@ -121,6 +142,7 @@ async def get_fundfact_agent_response(
         Answer from spreadsheet:
         {responses[1]}
 
+        Use the answer from the spreadsheet as the **primary source** of truth, especially when the question asks about which fund invests in a specific stock, country, commodity, or sector.
         Please write your final response in a clear in {language}, structured way. Make sure no important point is missed.
         """
 
