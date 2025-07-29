@@ -9,7 +9,7 @@ I have permission from my direct supervisor to make this demo public up to this 
 ---
 
 ## 🚀 Deployment
-**Run Locally (with your own api keys and endpoints):**
+**Run Locally (with your own api keys and endpoints/ data index on Azure Cognitive Search):**
 ```bash
 streamlit run <your-directory>/main.py
 ```
