@@ -5,16 +5,10 @@ This project tracks my work during an internship at a company in Bangkok and ser
 
 > **📄 Note:** All documents used in this demo are publicly available.  
 > No sensitive or proprietary information is used.
-> I have permission from my direct supervisor to make this demo public.
-
+I have permission from my direct supervisor to make this demo public up to this point (29/7/2025), but it will no longer be updated with new functionalities.
 ---
 
 ## 🚀 Deployment
-
-**Streamlit Cloud (available until late August):**  
-[🔗 Live Demo](https://mm-rag-agent-demo-xil5jtaiwjk6hnbtzkkh4x.streamlit.app/)  
-*(Subject to takedown if usage is high or upon request)*
-
 **Run Locally (with your own api keys and endpoints):**
 ```bash
 streamlit run <your-directory>/main.py
